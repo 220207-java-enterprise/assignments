@@ -17,7 +17,7 @@ Reimbursements are to be one of the following types:
 - OTHER 
 
 ##### System Use Case Diagrams
-![System Use Case Diagrams](https://github.com/220207-java-enterprise/assignments/foundations-project/imgs/ERS%20Use%20Case%20Diagram.png)
+![System Use Case Diagrams](https://raw.githubusercontent.com/220207-java-enterprise/assignments/main/foundations-project/imgs/ERS%20Use%20Case%20Diagram.png)
 
 ##### Reimbursment Status State Flow
 ![Reimbursment Status State Flow](https://raw.githubusercontent.com/220207-java-enterprise/assignments/main/foundations-project/imgs/ERS%20State%20Flow%20Diagram.png)
