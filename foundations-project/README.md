@@ -7,7 +7,7 @@ For the foundations module of your training you are tasked with building an API 
 ### Project Design Specifications and Documents
 
 ##### Reimbursment Status State Flow
-![Reimbursment Status State Flow](https://github.com/220207-java-enterprise/assignments/foundations-project/imgs/ERS State Flow Diagram.png)
+![Reimbursment Status State Flow](https://github.com/220207-java-enterprise/assignments/foundations-project/imgs/ERS%20State%20Flow%20Diagram.png)
 
 ##### Reimbursement Types
 Reimbursements are to be one of the following types:
@@ -17,11 +17,10 @@ Reimbursements are to be one of the following types:
 - OTHER 
 
 ##### Relational Data Model
-![Relational Model](https://github.com/220207-java-enterprise/assignments/foundations-project/imgs/ERS Relational Model.png)
+![Relational Model](https://github.com/220207-java-enterprise/assignments/foundations-project/imgs/ERS%20Relational%20Model.png)
 
 ##### System Use Case Diagrams
-![System Use Case Diagrams](https://github.com/220207-java-enterprise/assignments/foundations-project/imgs/ERS Use Case Diagram.png)
-
+![System Use Case Diagrams](https://github.com/220207-java-enterprise/assignments/foundations-project/imgs/ERS%20Use%20Case%20Diagram.png)
 
 ##### Technologies
 
