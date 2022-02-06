@@ -6,8 +6,8 @@ For the foundations module of your training you are tasked with building an API 
 
 ### Project Design Specifications and Documents
 
-##### Reimbursment Status State Flow
-![Reimbursment Status State Flow](https://github.com/220207-java-enterprise/assignments/foundations-project/imgs/ERS%20State%20Flow%20Diagram.png)
+##### Relational Data Model
+![Relational Model](https://github.com/220207-java-enterprise/assignments/blob/main/foundations-project/imgs/ERS%20Relational%20Model.png)
 
 ##### Reimbursement Types
 Reimbursements are to be one of the following types:
@@ -16,11 +16,11 @@ Reimbursements are to be one of the following types:
 - FOOD 
 - OTHER 
 
-##### Relational Data Model
-![Relational Model](https://github.com/220207-java-enterprise/assignments/foundations-project/imgs/ERS%20Relational%20Model.png)
-
 ##### System Use Case Diagrams
 ![System Use Case Diagrams](https://github.com/220207-java-enterprise/assignments/foundations-project/imgs/ERS%20Use%20Case%20Diagram.png)
+
+##### Reimbursment Status State Flow
+![Reimbursment Status State Flow](https://raw.githubusercontent.com/220207-java-enterprise/assignments/main/foundations-project/imgs/ERS%20State%20Flow%20Diagram.png)
 
 ##### Technologies
 
@@ -30,7 +30,9 @@ Reimbursements are to be one of the following types:
 **Application Tier**
 - Java 8
 - Apache Maven
+- JDBC
 - Java EE Servlets
+- JSON Web Tokens
 - JUnit
 - Mockito
 
@@ -38,7 +40,7 @@ Reimbursements are to be one of the following types:
 
 The PRISM application is another internal system that your expense reimbursement will communicate with when employee reimbursement requests are approved. You can find the codebase for the PRISM application with instructions for running it locally [here](https://github.com/220207-java-enterprise/prism).
 
-## Functional Requirements
+### Functional Requirements
 
 - The system will register itself with the 3rd-party PRISM application
 - An new employee or new finance manager can request registration with the system
@@ -55,7 +57,7 @@ The PRISM application is another internal system that your expense reimbursement
 - An admin user can deactivate user accounts, making them unable to log into the system
 - An admin user can reset a registered user's password
 
-## Non-Functional Requirements
+### Non-Functional Requirements
 
 - Basic validation is enforced to ensure that invalid/improper data is not persisted
 - User passwords will be encrypted by the system before persisting them to the data source
@@ -67,7 +69,7 @@ The PRISM application is another internal system that your expense reimbursement
 - The system's data schema and component design is documented and diagrammed 
 - The system keeps detailed logs on info, error, and fatal events that occur 
 
-## Suggested Bonus Features
+### Suggested Bonus Features
 - Authenticated employees are able to upload an receipt image along with their reimbursement request
 - The system notifies the user of changes to their account registration status by email
 - The system notifies the user of changes to their reimbursement request status by email
@@ -75,7 +77,9 @@ The PRISM application is another internal system that your expense reimbursement
 - Run your application within a Docker container
 - Automate builds using GitHub Actions
 
-## Technical Scoring Rubric
+## Scoring and Milestones
+
+### Technical Scoring Rubric
 
 | Requirement                                                                                       | Functional/Non-Functional | Value |
 |---------------------------------------------------------------------------------------------------|---------------------------|-------|
@@ -103,7 +107,7 @@ The PRISM application is another internal system that your expense reimbursement
 | The system's data schema and component design is documented and diagrammed                        | Non-Functional            | 5     |
 | The system keeps detailed logs on info, error, and fatal events that occur                        | Non-Functional            | 5     |
 
-## Soft Skill Scoring Rubric 
+### Soft Skill Scoring Rubric 
 
 | Metric                                                                                            | Value |
 |---------------------------------------------------------------------------------------------------|-------|
@@ -112,7 +116,7 @@ The PRISM application is another internal system that your expense reimbursement
 | The associate is able to correctly use technical terminology when discussing system functionality | 5     |
 | The associate's demonstration is easy to follow and well-prepared                                 | 5     |
 
-## Developer Scoring Rubric
+### Developer Scoring Rubric
 
 | Metric                                                                                            | Value |
 |---------------------------------------------------------------------------------------------------|-------|
