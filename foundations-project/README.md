@@ -22,7 +22,7 @@ Reimbursements are to be one of the following types:
 ##### Reimbursment Status State Flow
 ![Reimbursment Status State Flow](https://raw.githubusercontent.com/220207-java-enterprise/assignments/main/foundations-project/imgs/ERS%20State%20Flow%20Diagram.png)
 
-##### Technologies
+### Technologies
 
 **Persistence Tier**
 - PostGreSQL (running on Docker)
