@@ -8,7 +8,7 @@ Koans are a paradoxical anecdote or riddle, used in Zen Buddhism to demonstrate 
 
 Running Instructions:
 =====================
-1. Clone this repository to your local machine by running `git clone https://github.com/220207-java-enterprise/java-koans.git` in a directory of your choosing.
+1. Clone this repository to your local machine by running `git clone https://github.com/220207-java-enterprise/assignments.git` in a directory of your choosing.
 2. Open a terminal and cd into the cloned repository directory and the `java-koan` directory contained within it: `cd assignments/java-koans`
 3. Within it you'll find:
   - *koans*: this directory contains the application and its lessons, it is all that is needed to advance through the koans themselves and **it can be distributed independently**
