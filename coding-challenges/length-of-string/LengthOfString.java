@@ -8,8 +8,9 @@ public class LengthOfString {
 	System.out.println("Enter a string: ");
 	String s = ac.next();
 	if (s.length() > 10) {
-	s = s.substring(0,10);
-	System.out.println(s);
+	System.out.print(s.charAt(0));
+	System.out.print(s.length()-2);
+	System.out.print(s.charAt(s.length()-1));
 	}
 	else{
 	System.out.println(s);
