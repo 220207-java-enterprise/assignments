@@ -8,7 +8,7 @@ public class AboutKoans {
 
     @Koan
     public void findAboutKoansFile() {
-        
+        fail("delete this line to advance");
     }
 
     @Koan
