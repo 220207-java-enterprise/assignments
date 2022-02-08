@@ -1,6 +1,7 @@
-# Problem: Sum of Array
+# Problem: Sum of Array II
 
-**Tasks:**
-1. Create the class **SumOfArray**
-2. Create an **array** of **integers [1, 2, 3, 4, 5]**
-3. Print out the sum of the array
+**Tasks**
+1. create the class SumOfArrayII
+2. Get user input for array size
+3. Let the user enter in their own values
+4. print out the sum of the array
