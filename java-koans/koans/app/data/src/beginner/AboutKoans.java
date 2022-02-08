@@ -7,7 +7,9 @@ import static com.sandwich.util.Assert.fail;
 public class AboutKoans {
 
     @Koan
-    public void findAboutKoansFile() {}
+    public void findAboutKoansFile() {
+        fail("delete this line to advance");
+    }
 
     @Koan
     public void definitionOfKoanCompletion() {
