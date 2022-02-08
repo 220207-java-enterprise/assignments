@@ -1,0 +1,27 @@
+import java.util.scanner.*;
+
+public class LengthOfString {
+
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.nextline)
+	
+		int length = s.nextInt();
+		int[] input = new int(length];
+
+		System.out.println("Please enter a word: ");
+	
+		if int < 10
+		System.out.println(input)
+
+		else charAt(0)
+		string.charAt(index)
+		Integer.toString(number)
+	
+		for int i = 0; i < length; i++) {
+		input[i] = s.nextInt();
+		}
+		System.out.println("Sum of the integers in your array: " + sum)
+
+
+	}
+}
