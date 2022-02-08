@@ -1,0 +1,20 @@
+public class SumOfArrayII {
+
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in)
+	
+		int length = s.nextInt();
+		int[] input = new int(length];
+
+	System.out.println("Please enter the array elements");
+	
+	for int i = 0; i < length; i++) {
+	input[i] = s.nextInt();
+	}
+	
+	int total = sumOfElements(input);
+
+	System.out.println("Sum of the integers in your array: " + sum)
+
+
+}
