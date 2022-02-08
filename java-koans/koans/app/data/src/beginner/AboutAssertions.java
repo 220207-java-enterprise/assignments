@@ -1,4 +1,4 @@
-rpackage beginner;
+package beginner;
 
 import com.sandwich.koan.Koan;
 
@@ -9,20 +9,20 @@ public class AboutAssertions {
 
     @Koan
     public void assertBooleanTrue() {
-        // must be true
-	assertTrue(true);
+        // there are two possibilities, true or false, what would it be here?
+        assertTrue(__);
     }
 
     @Koan
     public void assertBooleanFalse() {
-        assertFalse(false);
+        assertFalse(__);
     }
 
     @Koan
     public void assertNullObject() {
         // reference to the object can be null, a magic keyword, null, which means
         // that there is nothing there
-        assertNull(null);
+        assertNull(__);
     }
 
     @Koan
