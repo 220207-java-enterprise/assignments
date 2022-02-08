@@ -10,41 +10,41 @@ public class AboutAssertions {
     @Koan
     public void assertBooleanTrue() {
         // there are two possibilities, true or false, what would it be here?
-        assertTrue(true);
+        assertTrue(__);
     }
 
     @Koan
     public void assertBooleanFalse() {
-        assertFalse(false);
+        assertFalse(__);
     }
 
     @Koan
     public void assertNullObject() {
         // reference to the object can be null, a magic keyword, null, which means
         // that there is nothing there
-        assertNull(null);
+        assertNull(__);
     }
 
     @Koan
     public void assertNullObjectReference() {
         Object someObject = __;
-        assertNull(null);
+        assertNull(someObject);
     }
 
     @Koan
     public void assertNotNullObject() {
         // but what when there should not be a null value?
-        assertNotNull(__);
+        assertNotNull(null);
     }
 
     @Koan
     public void assertEqualsUsingExpression() {
-        assertTrue("Hello World!".equals("Hello World!"));
+        assertTrue("Hello World!".equals(__));
     }
 
     @Koan
     public void assertEqualsWithAFewExpressions() {
-        assertEquals("Hello World!", "Hello World!");
+        assertEquals("Hello World!", __);
         assertEquals(1, __);
         assertEquals(2 + 2, __);
         assertEquals(2 * 3, __);
