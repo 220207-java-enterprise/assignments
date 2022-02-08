@@ -16,5 +16,11 @@ public class SumOfArrayII{
 		}
 		
 		System.out.println("Your array is " + Arrays.toString(theArray));
+
+		int sum = 0;
+		for (i = 0; i < theArray.length; i++) {
+			sum = sum + theArray[i];
+		}
+		System.out.println("The sum of the entries is " + sum);
 	}
 }
