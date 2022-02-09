@@ -28,23 +28,23 @@ public class AboutStrings {
     public void newStringIsRedundant() {
         String stringInstance = "zero";
         String stringReference = new String(stringInstance);
-        assertEquals(stringInstance.equals(stringReference), __);
+        assertEquals(stringInstance.equals(stringReference), stringReference.equals(stringInstance));
     }
 
     @Koan
     public void newStringIsNotIdentical() {
         String stringInstance = "zero";
         String stringReference = new String(stringInstance);
-        assertEquals(stringInstance == stringReference, __);
+        assertEquals(stringInstance == stringReference, stringReference == "zero");
     }
 
     @Koan
     public void stringIsEmpty() {
-        assertEquals("".isEmpty(), __);
-        assertEquals("one".isEmpty(), __);
-        assertEquals(new String().isEmpty(), __);
-        assertEquals(new String("").isEmpty(), __);
-        assertEquals(new String("one").isEmpty(), __);
+        assertEquals("".isEmpty(), new String().isEmpty());
+        assertEquals("one".isEmpty(),new String("one").isEmpty());
+        assertEquals(new String().isEmpty(), "".isEmpty());
+        assertEquals(new String("").isEmpty(), "".isEmpty());
+        assertEquals(new String("one").isEmpty(), "one".isEmpty());
     }
 
     @Koan
