@@ -13,12 +13,10 @@ public class SumOfArray2 {
 			Scanner arrayVal = new Scanner(System.in);
 			temp = arrayVal.nextInt();
 			myArr[i] = temp; 
-			if (i == myArr.length){
-				System.out.println(solution);	
-			}
-			else {
 			solution += myArr[i];
-			}
+			if (i == myArr.length-1){
+				System.out.println("The sum of the array is: "+solution);
+			}	
 			
 			
 		}
