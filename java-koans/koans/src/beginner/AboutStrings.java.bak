@@ -116,7 +116,7 @@ public class AboutStrings {
         assertEquals("one".endsWith("one"), true);
         assertEquals("the number is one".endsWith("one"), true);
         assertEquals("the number is two".endsWith("one"), false);
-        assertEquals("the number is One".endsWith("one"), false);
+        assertEquals("the number is One".endsWith("one"), __);
     }
 
     @Koan
