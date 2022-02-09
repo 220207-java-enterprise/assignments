@@ -8,12 +8,17 @@ public class LengthOfString{
 	
 		String theString = stringInput.nextLine();
 
-		System.out.println("Here is your string:");
-		if(theString.length() >= 10) {
+		if(theString.length() > 10) {
 			//start index is inclusive and end index is exclusive
-			System.out.println(theString.substring(0,10));
+			System.out.println("Truncated String to 10 characters: " + 
+                                theString.substring(0,10));
+			int middleLength = theString.length() - 2;
+			int lastCharacterIndex = theString.length() - 1; 
+			System.out.println("Abbreviated String: " + 
+								theString.charAt(0) + middleLength 
+								+ theString.charAt(lastCharacterIndex));
     	} else {
-			System.out.println(theString);
+			System.out.println("The string is: " + theString);
 		}
 	}
 }
