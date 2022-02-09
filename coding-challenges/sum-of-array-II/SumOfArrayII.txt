@@ -1,0 +1,35 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class SumOfArrayII {
+	
+
+	public static void main(String[] args) {
+		ArrayList myArray = new ArrayList();
+		int result = 0;
+		String temp = "0";
+		int number = 0;
+
+		Scanner getInput = new Scanner(System.in);
+
+		System.out.println("Enter integers, one after another.  Enter something that isn't a number to stop.");
+
+		while (!IsNaN(number)) {
+
+			temp = getInput.next();
+			number = temp.parseInt();
+			if (IsNaN(number))
+				break;
+			
+			myArray.push(temp.parseInt());
+		}
+
+
+		for (int i = 0; i < myArray.length; i++) {
+			result += myArray[i];
+		}
+
+		System.out.println("Sum is: " + result);
+	}
+
+}
