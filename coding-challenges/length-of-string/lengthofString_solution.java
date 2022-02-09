@@ -8,8 +8,7 @@ public class LengthOfString{
         System.out.println("Enter a string ");
         
         String userString = s.nextLine();
-
-        if(userString.length() < 5)
+        if(userString.length() < 10)
         {
         System.out.println("Your input was: "+ userString);
             
@@ -17,7 +16,9 @@ public class LengthOfString{
         else 
         {   
             
-            System.out.println("Your first character is " + userString.charAt(0));
+            System.out.println("Your first character is " + userString.charAt(0) +
+            userString.charAt(userString.length()/2) +
+            userString.charAt(userString.length()-1));
             
         }
        
