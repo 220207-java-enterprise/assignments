@@ -57,7 +57,7 @@ public class AboutAssertions {
         // Generally, when using an assertXXX methods, expectation is on the
         // left and it is best practice to use a String for the first arg
         // indication what has failed
-        assertEquals("The answer to 'life the universe and everything' should be 42", 42, __);
+        assertEquals("The answer to 'life the universe and everything' should be 42", 42, 42);
     }
 
     @Koan
@@ -69,7 +69,7 @@ public class AboutAssertions {
         assertEquals(original, same);
         assertEquals(original, different);
         // ...but only one refers to the same instance as the original.
-        assertSame(original, __);
+        assertSame(original, same);
     }
 
     @Koan
@@ -81,6 +81,6 @@ public class AboutAssertions {
         assertEquals(original, same);
         assertEquals(original, different);
         // ...but only one of them refers to a different instance.
-        assertNotSame(original, same);  // We want equal, but _not_ the same.
+        assertNotSame(original, different);  // We want equal, but _not_ the same.
     }
 }
