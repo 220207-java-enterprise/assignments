@@ -12,7 +12,7 @@ public class AboutStrings {
 
     @Koan
     public void implicitStrings() {
-        assertEquals("just a plain ole string".getClass(), __);
+        assertEquals("just a plain ole string".getClass(), "".getClass());
     }
 
     @Koan
@@ -21,21 +21,21 @@ public class AboutStrings {
         // practice - generally it is redundant, and done repetitively can be slow
         String string = new String();
         String empty = "";
-        assertEquals(string.equals(empty), __);
+        assertEquals(string.equals(empty), true);
     }
 
     @Koan
     public void newStringIsRedundant() {
         String stringInstance = "zero";
         String stringReference = new String(stringInstance);
-        assertEquals(stringInstance.equals(stringReference), __);
+        assertEquals(stringInstance.equals(stringReference), true);
     }
 
     @Koan
     public void newStringIsNotIdentical() {
         String stringInstance = "zero";
         String stringReference = new String(stringInstance);
-        assertEquals(stringInstance == stringReference, __);
+        assertEquals(stringInstance == stringReference, false);
     }
 
     @Koan
