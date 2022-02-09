@@ -12,7 +12,7 @@ public class AboutStrings {
 
     @Koan
     public void implicitStrings() {
-        assertEquals("just a plain ole string".getClass(), __);
+        assertEquals("just a plain ole string".getClass(), instanceOf(java.lang.String));
     }
 
     @Koan
