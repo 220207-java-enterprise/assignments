@@ -9,6 +9,6 @@ public class SumOfArray{
 		for (i = 0; i < integerArray.length; i++) {
 			sum = sum + integerArray[i];
 		}
-		System.out.println("The sum of 1, 2, 3, 4, and 5 is " + sum);
+		System.out.println("The sum of 1, 2, 3, 4, and 5 is " + sum + ".");
 	}
 }
