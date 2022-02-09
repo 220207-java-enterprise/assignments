@@ -1,0 +1,15 @@
+import java.util.Scanner
+
+public class LengthOfClass {
+	
+	public static void main(Strings[] args){
+		Scanner user = New Scanner(System.in);
+	
+		if (user.length > 10) {
+			System.out.println("" + user.length +"");
+		}
+		else {
+			System.out.println(user);
+		}
+	}
+}
