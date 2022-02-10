@@ -8,7 +8,9 @@ public class Solution {
                 //substring starting at i
                 String iSubString = s.substring(i);
                 String jSubstring = iSubString.substring(0, iSubString.length() - j);
-                if(j.Substring)
+                if(jSubstring.equals(s)) {
+                    continue;
+                }
                 StringBuilder appendingString = new StringBuilder();
                 while(appendingString.toString().length() < s.length()) {
                     appendingString.append(jSubstring);
