@@ -8,4 +8,5 @@ public class SumOfArray{
             result += arr[i];
         }
         System.out.println(result);
+	}
 }
