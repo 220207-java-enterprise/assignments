@@ -1,17 +1,22 @@
-import java.util.*;
+import java.util.Scanner;
 
-public class LengthOfString {
-	public static void main(String[] args) {
-		String input = "";
-		String abbr = "";
-		Scanner scan = new Scanner(System.in);
-		
-		input = scan.nextLine();
-		
-		if (input.length() > 10) {
-			System.out.println(input.charAt(0) + String.valueOf(input.length() - 2) + input.charAt(input.length() - 1));	
-		} else {
-			System.out.println(input);
-		}
+class LengthOfString{
+
+    public static void main(String[] args){
+
+        Scanner scan = new Scanner(System.in);
+
+        System.out.print("Enter a string: ");
+        String userInput = scan.next();
+
+ 	final int MAX_LENGTH = 10;
+
+        if (userInput.length() > MAX_LENGTH){
+
+	    System.out.println(userInput.charAt(0) + "" + (userInput.length() - 2) + "" + userInput.charAt(userInput.length() - 1));
 	}
+        else{
+	    System.out.println(userInput);
+        }
+    }
 }
