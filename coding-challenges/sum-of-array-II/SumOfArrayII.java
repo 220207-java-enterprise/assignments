@@ -12,7 +12,7 @@ public class SumOfArrayII{
 
 
 		for(i = 0; i < arraysize; i++){
-			System.out.print("Enter array value" + (i + 1) + ": ");
+			System.out.print("Enter array value " + (i + 1) + ": ");
 			input[i] = scan.nextInt();
 			counter = counter + input[i];
 		}
