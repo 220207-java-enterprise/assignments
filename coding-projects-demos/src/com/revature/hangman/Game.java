@@ -26,8 +26,8 @@ public class Game {
             input = scan.nextLine().charAt(0);
 
             if (validation(word, input)) {
-                String updateWord = updateWord(input, hidden, word);
-                hidden = updateWord;
+                hidden = updateWord(input, hidden, word);
+
             } else {
                 life--;
             }
@@ -76,10 +76,8 @@ public class Game {
             }
         }
 
-        hidden = hiddenArray.toString();
-        System.out.println(hiddenArray);
-
-        return hidden;
+        String updatedString = new String(hiddenArray);
+        return updatedString;
     }
 
     /*
