@@ -13,5 +13,5 @@ public class LengthOfString{
         } else {
             System.out.println("Result is: \n"+s.charAt(0)+ (s.length()-2) +s.charAt(s.length()-1));
         }
-	}
+		}
 }
