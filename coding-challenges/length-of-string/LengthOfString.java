@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 /*
 1. Create the class LengthOfString
@@ -26,4 +27,22 @@ public class LengthOfString{
         }
     }
 
+=======
+import java.util.*;
+
+public class LengthOfString {
+	public static void main(String[] args) {
+		String input = "";
+		String abbr = "";
+		Scanner scan = new Scanner(System.in);
+		
+		input = scan.nextLine();
+		
+		if (input.length() > 10) {
+			System.out.println(input.charAt(0) + String.valueOf(input.length() - 2) + input.charAt(input.length() - 1));	
+		} else {
+			System.out.println(input);
+		}
+	}
+>>>>>>> fb6705ceffc2ed69d551887e43a589916e306a18
 }
