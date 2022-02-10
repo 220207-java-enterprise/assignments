@@ -72,7 +72,7 @@ public class AboutLoops {
             }
             s += " - ";
         }
-        assertEquals(s, "(0, 0) (0, 1) (0, 2) - (1, 0) (1, 1) (1, 2) - (2, 0) (2, 1) (2, 2) - ");
+        assertEquals(s, "(0, 0) (0, 1) (0, 2)  - (1, 0) (1, 1) (1, 2)  - (2, 0) (2, 1) (2, 2)  - ");
     }
 
     @Koan
@@ -82,7 +82,7 @@ public class AboutLoops {
         for (int j : is) {
             s += j + " ";
         }
-        assertEquals(s, "1 2 3 4");
+        assertEquals(s, "1 2 3 4 ");
     }
 
     @Koan
@@ -145,7 +145,7 @@ public class AboutLoops {
         }
         // What does continue with a label mean?
         // What gets executed? Where does the program flow continue?
-        assertEquals(count, 72);
+        assertEquals(count, 8);
     }
 
     @Koan
@@ -163,6 +163,6 @@ public class AboutLoops {
         }
         // What does break with a label mean?
         // What gets executed? Where does the program flow continue?
-        assertEquals(count, 12);
+        assertEquals(count, 3);
     }
 }
