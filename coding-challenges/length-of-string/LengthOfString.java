@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import java.util.Scanner;//import scanner
 
 public class LengthOfString {
@@ -32,4 +33,22 @@ public class LengthOfString {
 
 	}
 }
+=======
+import java.util.*;
+
+public class LengthOfString {
+	public static void main(String[] args) {
+		String input = "";
+		String abbr = "";
+		Scanner scan = new Scanner(System.in);
+		
+		input = scan.nextLine();
+		
+		if (input.length() > 10) {
+			System.out.println(input.charAt(0) + String.valueOf(input.length() - 2) + input.charAt(input.length() - 1));	
+		} else {
+			System.out.println(input);
+		}
+	}
+>>>>>>> 6812d90cb163251ff5c668a63d2f5907aa7dbe35
 }
