@@ -40,6 +40,10 @@ public class Game {
                 return;
             };
         }
+
+        if (life == 0) {
+            System.out.println("You lose!");
+        }
     }
 
     // randomly selects a word from the wordsArr
