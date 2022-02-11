@@ -22,7 +22,10 @@ public class Game {
             System.out.println("Word to guess: " + hidden);
             System.out.println("You have " + guesses + " guesses remaining.");
             System.out.print("Your guess: ");
+
             userInput = scan.nextLine().charAt(0);
+            // set user input to lower case
+            userInput = Character.toLowerCase(userInput);
 
             if (validateInput()) updateHidden();
             else {
