@@ -11,6 +11,7 @@ public class Game {
         String hidden = hideWord(word);
         Scanner scan = new Scanner(System.in);
 
+
         while (life >= 0) {
             System.out.println("Welcome to Hangman!");
             System.out.println("Word to guess: " + hidden);

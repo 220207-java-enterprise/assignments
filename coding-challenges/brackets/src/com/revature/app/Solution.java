@@ -1,8 +1,9 @@
 package com.revature.app;
 
 public class Solution {
-    public String brackets(String s) {
+    public static String brackets(String s) {
         /* Write your code here */
-        return "";
+        String output = s.replace(".", "[.]");
+        return output;
     }
 }
