@@ -45,3 +45,4 @@ public class SolutionTest {
         assertEquals("abc", sl.brackets(s));
     }
 }
+
