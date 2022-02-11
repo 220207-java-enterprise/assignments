@@ -34,9 +34,7 @@ public class Game {
 
             if (validation(word, input)) { //if validation is equal to both word and input true   (if validation(word, input) == true)
                 //switch hidden letter with correct guessed letter
-                for (int i = 0; i < word.length(); i++) { //check
-                    hidden[i] = input;
-                    }
+                hidden = updateHiddenWord//create updateHiddenWord method/function
                 System.out.println("Yay!");//print Yay! if validation true?
             } else { //else if user input not correct
                 life--;//decrease life counter by 1 unit every time user guess is incorrect
