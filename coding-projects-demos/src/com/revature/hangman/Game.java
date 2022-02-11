@@ -1,102 +1,99 @@
 package com.revature.hangman;
 
-import com.sun.xml.internal.fastinfoset.util.CharArray;
-
-import java.util.*;
+import java.util.Random;
+import java.util.Scanner;
 
 public class Game {
+    // initialize variables for game
+    int guesses = 6;
+
+    String word = getWord();
+    String hidden = hideWord(word);
+    char userInput = ' ';
+
+    Scanner scan = new Scanner(System.in);
+
+    // starts the hangman game
     public void start() {
         System.out.println("Welcome to Hangman!");
 
-        int life = 6;
-        char input = ' ';
-        String word = getWord();
-        String hidden = hideWord(word);
-
-        char[] letterBank = new char[26];
-        int letterCounter = 0;
-
-        Scanner scan = new Scanner(System.in);
-
-        while (life >= 0) {
+        // while the player has guesses remaining, loop through game logic
+        while(validateLife(guesses)) {
             System.out.println("Word to guess: " + hidden);
-            System.out.println("Life: " + life);
+            System.out.println("You have " + guesses + " guesses remaining.");
+            System.out.print("Your guess: ");
+            userInput = scan.nextLine().charAt(0);
 
-            System.out.print("Guess: ");
-            input = scan.nextLine().charAt(0);
-
-            if (validation(word, input)) {
-                hidden = updateWord(input, hidden, word);
-
-            } else {
-                life--;
+            if (validateInput()) updateHidden();
+            else {
+                guesses--;
             }
+
+            if (guesses == 0) System.out.println("You lose!");
+
+            if (!hidden.contains("*")) {
+                System.out.println("The word was: " + hidden);
+                System.out.println("You won!");
+                return;
+            };
         }
     }
 
+    // randomly selects a word from the wordsArr
     private String getWord() {
-        String[] arr = {"java", "wezley", "bao", "intellij", "revature"};
+        String[] wordsArr = {"java", "wezley", "bao", "intellij", "revature"};
 
         Random rand = new Random();
+        // randomly select a number between 0 and 4
+        int chosenWordIdx = rand.nextInt(5);
 
-        int index = rand.nextInt(5);
-
-        return arr[index];
+        return wordsArr[chosenWordIdx];
     }
 
     private String hideWord(String word) {
         String hidden = "";
 
         for (int i = 0; i < word.length(); i++) {
-            hidden += '*';
+            hidden += "*";
         }
 
         return hidden;
     }
 
-    private Boolean validation(String word, char input) {
-        for (int i = 0; i < word.length(); i++) {
-            if (word.charAt(i) == input) {
-
-
-                return true;
-            }
+    private Boolean validateLife(int guesses) {
+        if (guesses > 0) {
+            return true;
         }
-
         return false;
     }
 
-    private String updateWord(char c, String hidden, String word) {
-        char[] wordArray = word.toCharArray();
-        char[] hiddenArray = hidden.toCharArray();
+    private Boolean validateInput() {
+        boolean inputMatch = false;
 
-        for (int i = 0; i < wordArray.length; i++) {
-            if (c == wordArray[i]) {
-                hiddenArray[i] = c;
+        for (int i = 0; i < word.length(); i++) {
+            char c = word.charAt(i);
+
+            if (c == userInput) {
+                inputMatch = true;
+                break;
             }
         }
 
-        String updatedString = new String(hiddenArray);
-        return updatedString;
+        return inputMatch;
     }
 
-    /*
-    private char[] updateLetterBank(char c, char[] charArr, int letterCounter) {
-        charArr
+    private void updateHidden() {
+        int index;
+        String updatedWord = hidden;
 
+        // loop through the word
+        for (int i = 0; i < word.length(); i++) {
+            // if the user input matches the given character
+            if (word.charAt(i) == userInput) {
+                updatedWord = updatedWord.substring(0, i) + word.charAt(i) + updatedWord.substring(i + 1);
+            }
+        }
 
-        String updatedWord;
-
-        return updatedWord;
+        hidden = updatedWord;
     }
-
-    private int updateCounter(char c, char[] charArr, int letterCounter) {
-        charArr
-
-
-        String updatedWord;
-
-        return updatedWord;
-    }
-    */
 }
