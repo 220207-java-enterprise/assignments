@@ -55,7 +55,7 @@ public class Game {
     }
 
     // function that validates
-    private Boolean isValid(String word, char input){
+    private boolean isValid(String word, char input){
 
         for (int i=0; i<word.length(); i++){
             char c = word.charAt(i);
