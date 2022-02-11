@@ -1,57 +1,49 @@
-package com.revature.hangman;
-
 import java.util.Random;
 import java.util.Scanner;
 
-public class Game {
-    public void start() {
-        int life = 6;
-        char input = ' ';
-        String word = getWord();
-        String hidden = hideWord(word);
-        Scanner scan = new Scanner(System.in);
+class Game{
 
-        while (life >= 0) {
-            System.out.println("Welcome to Hangman!");
-            System.out.println("Word to guess: " + hidden);
-            System.out.println("Life: " + life);
+    private String [] words = {"rat", "ba"}; 
 
-            System.out.print("Guess: ");
-            input = scan.nextLine().charAt(0);
+   
+    private Scanner scan = new Scanner(System.in);
+    private char userCharacter;
+    private Random ran = new Random();
+    private int random = 
+    ran.nextInt(words.length - 1);
+	
+    private String word = words[random];
+    private String hidden = "";
+    // private int life = word.length();
 
-            if (validation(word, input)) {
-                System.out.println("Yay!");
-            }
-        }
+    public void start(){
+
+	int life = word.length();
+	for (int i = 0; i < word.length(); i++){
+	    hidden += "*";
+	}
+
+	while (life != 0){
+	    System.out.println("Life: " + life);
+	    System.out.println("Guess the hidden word: " + hidden);
+	    System.out.print("Enter a letter: ");
+	    userCharacter = scan.next().charAt(0);
+	    if(isValidCharacter(word, userCharacter)){
+		hidden = 	
+		life++;
+	    }
+	life--;
+	}
+ 
     }
 
-    private String getWord() {
-        String[] arr = {"java", "wezley", "bao", "intellij", "revature"};
+    private boolean isValidCharacter(String word, char input){
 
-        Random rand = new Random();
-
-        int index = rand.nextInt(5);
-
-        return arr[index];
+	for (int i = 0; i < word.length(); i++){
+	    if (input == word.charAt(i))
+		return true;
+	    return false;
+	}
     }
 
-    private String hideWord(String word) {
-        String hidden = "";
-
-        for (int i = 0; i < word.length(); i++) {
-            hidden += '*';
-        }
-
-        return hidden;
-    }
-
-    private Boolean validation(String word, char input) {
-        for (int i = 0; i < word.length(); i++) {
-            if (word.charAt(i) == input) {
-                return true;
-            }
-        }
-
-        return false;
-    }
 }
