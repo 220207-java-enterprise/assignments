@@ -1,4 +1,4 @@
-dpackage beginner;
+package beginner;
 
 import com.sandwich.koan.Koan;
 
@@ -27,14 +27,14 @@ public class AboutAssertions {
 
     @Koan
     public void assertNullObjectReference() {
-        Object someObject = new Object();
+        Object someObject = null;
         assertNull(someObject);
     }
 
     @Koan
     public void assertNotNullObject() {
         // but what when there should not be a null value?
-        assertNotNull(null);
+        assertNotNull(true);
     }
 
     @Koan
