@@ -145,7 +145,7 @@ public class AboutLoops {
         }
         // What does continue with a label mean?
         // What gets executed? Where does the program flow continue?
-        assertEquals(count, __);
+        assertEquals(count, 8);
     }
 
     @Koan
@@ -163,6 +163,6 @@ public class AboutLoops {
         }
         // What does break with a label mean?
         // What gets executed? Where does the program flow continue?
-        assertEquals(count, __);
+        assertEquals(count, 3);
     }
 }
