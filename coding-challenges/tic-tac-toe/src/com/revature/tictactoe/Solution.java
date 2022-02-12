@@ -19,7 +19,7 @@ public class Solution {
         else if (board[0][2] == board[1][1] && board[1][1]== board[2][0])
             return  board[0][2];
         else
-            return ' ';
+            return 'T';
     }
 }
 
