@@ -12,8 +12,6 @@ public class Main {
 
         String userInput = scan.nextLine();
 
-        System.out.println(
-            "Your new string is " + new Solution().brackets(userInput)
-        );
+        System.out.println("Your new string is: " + new Solution().brackets(userInput));
     }
 }
