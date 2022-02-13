@@ -80,7 +80,7 @@ class Game {
         }
     }
 
-    public String getRandomWord() {
+    private String getRandomWord() {
 
         String[] words = {"Revature", "Intellij", "Guitara", "Princer",
                             "Magica", "Chairh", "Fouro", "TimeT",
@@ -101,7 +101,7 @@ class Game {
         return hintWords[ranNum];
     }
 
-    public String getHiddenWord(String hiddenWord) {
+    private String getHiddenWord(String hiddenWord) {
         hiddenWord = "";
         for (int i = 0; i < randomWord.length(); i++)
             hiddenWord += "#";
