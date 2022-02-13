@@ -20,7 +20,12 @@ public class Game {
             input = scan.nextLine().charAt(0);
 
             if (validation(word, input)) {
+                hidden = revealLetter(hidden, word, input);
                 System.out.println("Yay!");
+                if (hidden.equals(word)){
+                    winCondition(word);
+                    break;
+                }
             }
         }
     }
@@ -51,7 +56,22 @@ public class Game {
                 return true;
             }
         }
-
         return false;
+    }
+
+    private String revealLetter(String hidden, String word, char input){
+        StringBuilder revealWord = new StringBuilder(hidden);
+        for (int i = 0; i < word.length(); i++){
+            if (word.charAt(i) == input){
+                revealWord.setCharAt(i, input);
+            }
+        }
+        return revealWord.toString();
+    }
+
+    private void winCondition(String word){
+        System.out.println("You guessed the word: " + word);
+        System.out.println("You Win!!!");
+
     }
 }
