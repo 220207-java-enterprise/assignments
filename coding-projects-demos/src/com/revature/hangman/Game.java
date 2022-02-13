@@ -5,6 +5,8 @@ import java.util.Scanner;
 
 class Game {
 
+
+
     private String randomWord = getRandomWord();
     private String hiddenWord = getHiddenWord(randomWord);
     final Scanner scan = new Scanner(System.in);
@@ -34,8 +36,9 @@ class Game {
             switch (userChoice){
                 case 'P':
                 case 'p':
-                    System.out.println("Hints:" + Arrays.toString(hintWords));
-                    System.out.println("Please guess the word: " + hiddenWord);
+                    randomWord = getRandomWord();
+                    hiddenWord = getHiddenWord(randomWord);
+                    sb = new StringBuffer(hiddenWord);
                     playGame();
                     break;
                 case 'Q':
@@ -54,7 +57,11 @@ class Game {
 
         int life = hiddenWord.length();
 
+
         while (life != 0) {
+
+            System.out.println("Hints:" + Arrays.toString(hintWords));
+            System.out.println("Please guess the word: " + hiddenWord);
 
             System.out.println("Remaining Life: " + life);
             System.out.print("Enter a letter to guess:");
