@@ -2,51 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0bc92f19-820b-441e-b74a-a85dc493a23c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../coding-challenges-solutions/brackets/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../coding-challenges-solutions/brackets/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../coding-challenges-solutions/brackets/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../coding-challenges-solutions/brackets/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../coding-challenges-solutions/brackets/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../coding-challenges-solutions/brackets/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../coding-challenges-solutions/brackets/brackets.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../coding-challenges-solutions/brackets/out/production/brackets/com/revature/app/Main.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../coding-challenges-solutions/brackets/out/production/brackets/com/revature/app/Solution.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../coding-challenges-solutions/brackets/out/test/brackets/SolutionTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../coding-challenges-solutions/brackets/src/com/revature/app/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../coding-challenges-solutions/brackets/src/com/revature/app/Solution.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../coding-challenges-solutions/brackets/test/SolutionTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../coding-challenges-solutions/recurring-substring/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../coding-challenges-solutions/recurring-substring/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../coding-challenges-solutions/recurring-substring/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../coding-challenges-solutions/recurring-substring/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../coding-challenges-solutions/recurring-substring/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../coding-challenges-solutions/recurring-substring/out/production/recurring-substring/com/revature/app/Main.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../coding-challenges-solutions/recurring-substring/out/production/recurring-substring/com/revature/app/Solution.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../coding-challenges-solutions/recurring-substring/out/test/recurring-substring/SolutionTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../coding-challenges-solutions/recurring-substring/recurring-substring.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../coding-challenges-solutions/recurring-substring/src/com/revature/app/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../coding-challenges-solutions/recurring-substring/src/com/revature/app/Solution.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../coding-challenges-solutions/recurring-substring/test/SolutionTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../coding-challenges/tic-tac-toe/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../coding-challenges/tic-tac-toe/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../coding-challenges/tic-tac-toe/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../coding-challenges/tic-tac-toe/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../coding-challenges/tic-tac-toe/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../coding-challenges/tic-tac-toe/out/production/tic-tac-toe/com/revature/tictactoe/Main.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../coding-challenges/tic-tac-toe/out/production/tic-tac-toe/com/revature/tictactoe/Solution.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../coding-challenges/tic-tac-toe/out/test/tic-tac-toe/SolutionTest.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../coding-challenges/tic-tac-toe/src/com/revature/tictactoe/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../coding-challenges/tic-tac-toe/src/com/revature/tictactoe/Solution.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../coding-challenges/tic-tac-toe/test/SolutionTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../coding-challenges/tic-tac-toe/tic-tac-toe.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../coding-projects/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../coding-projects/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/HangMan/com/revature/hangman/Game.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/HangMan/com/revature/hangman/Game.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/revature/hangman/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/revature/hangman/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/com/revature/hangman/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/revature/hangman/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +24,20 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
   </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="coding-projects-demos" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -76,5 +48,46 @@
       <updated>1644618791038</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/revature/hangman/Game.java</url>
+          <line>115</line>
+          <option name="timeStamp" value="23" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/revature/hangman/Game.java</url>
+          <line>72</line>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/revature/hangman/Game.java</url>
+          <line>98</line>
+          <option name="timeStamp" value="28" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/com/revature/hangman/Game.java</url>
+          <line>111</line>
+          <properties class="Game" method="isValidCharacter">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="22" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/com/revature/hangman/Game.java</url>
+          <line>83</line>
+          <properties class="Game" method="getRandomWord">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.IllegalArgumentException" package="java.lang" />
+          <option name="timeStamp" value="29" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
