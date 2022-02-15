@@ -49,7 +49,7 @@ public class AboutObjects {
     @Koan
     public void toStringIsTestedForNullWhenInvokedImplicitly() {
         String string = "string";
-        assertEquals(string + null, "stringnull");
+        assertEquals(string + null, "string");
     }
 
     private Class<?>[] getAncestors(Object object) {

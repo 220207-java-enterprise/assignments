@@ -81,6 +81,6 @@ public class AboutAssertions {
         assertEquals(original, same);
         assertEquals(original, different);
         // ...but only one of them refers to a different instance.
-        assertNotSame(original, same);  // We want equal, but _not_ the same.
+        assertNotSame(original, different);  // We want equal, but _not_ the same.
     }
 }

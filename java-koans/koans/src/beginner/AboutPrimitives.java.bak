@@ -189,7 +189,7 @@ public class AboutPrimitives {
 
     @Koan
     public void floatSize() {
-        assertEquals(Float.SIZE, 32);
+        assertEquals(Float.SIZE, __);
     }
 
     private Class<?> getType(int value) {
