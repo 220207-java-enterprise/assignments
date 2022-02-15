@@ -1,0 +1,10 @@
+Attached to this message is your pem key file that you will use to connect to the EC2 instance. 
+
+Download it and use ssh -i <pem-file> <username>@44.197.238.46 to access the instance (your username is the same as the pem file name). 
+
+For example: ssh -i tester.pem tester@44.197.238.46
+
+Once connected you will find a directory named `the-shell-game`, enter it and read the README inside using `cat`. 
+
+What follows are a series of rooms with simple tasks that aim to get the user more comfortable with working on the command line.
+

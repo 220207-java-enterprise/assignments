@@ -44,4 +44,13 @@ public class SolutionTest {
 
         assertEquals("abc", sl.brackets(s));
     }
+
+    public static void main(String [] args) {
+        SolutionTest test = new SolutionTest();
+        test.testBrackets1();
+        test.testBrackets2();
+        test.testBrackets3();
+        test.testBrackets4();
+        test.testBrackets5();
+    }
 }
