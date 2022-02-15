@@ -1,8 +1,10 @@
 import com.revature.tictactoe.Solution;
-import org.testng.Assert;
-import org.testng.annotations.Test;
-
-import static org.testng.Assert.*;
+import org.junit.Assert;
+import org.junit.Test;
+//import org.testng.Assert;
+//import org.testng.annotations.Test;
+//
+//import static org.testng.Assert.*;
 
 public class SolutionTest {
 

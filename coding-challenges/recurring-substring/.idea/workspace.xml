@@ -1,23 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c7b216f6-deb1-4266-b2b6-8faab6671d44" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../brackets/brackets.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../brackets/brackets.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../brackets/out/production/brackets/com/revature/app/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../brackets/out/production/brackets/com/revature/app/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../brackets/out/production/brackets/com/revature/app/Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/../brackets/out/production/brackets/com/revature/app/Solution.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../brackets/out/test/brackets/SolutionTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/../brackets/out/test/brackets/SolutionTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/recurring-substring/com/revature/app/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/recurring-substring/com/revature/app/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/recurring-substring/com/revature/app/Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/recurring-substring/com/revature/app/Solution.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/recurring-substring/SolutionTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/recurring-substring/SolutionTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/recurring-substring.iml" beforeDir="false" afterPath="$PROJECT_DIR$/recurring-substring.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/revature/app/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/revature/app/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/com/revature/app/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/revature/app/Solution.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/SolutionTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/SolutionTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../coding-projects-demos/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../coding-projects-demos/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="c7b216f6-deb1-4266-b2b6-8faab6671d44" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

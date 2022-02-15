@@ -113,9 +113,9 @@ class Game {
      */
     private String getRandomWord() {
 
-        String[] words = {"Revature", "Intellij", "Guitara", "Princer",
-                            "Magica", "Chairh", "Fouro", "TimeT",
-                            "Fixi", "Zoo", "Alzebra", "Physics"};
+        String[] words = {"Revature", "Intellij", "Guitar", "Princer",
+                            "Magic", "Chair", "Four", "Time",
+                            "Fix", "Zoo", "Alzebra", "Physics"};
 
         Random ran = new Random();
         int ranNum = 0;
@@ -155,13 +155,14 @@ class Game {
 
         boolean valid = false;
         for (int i = 0; i < hiddenWord.length(); i++) {
-            if (userVal == randomWord.charAt(i)) {
-                sb.setCharAt(i, userVal);
-                valid = true;
-                continue;
-            }
+            if (userVal != randomWord.charAt(i))
+                break;
+            sb.setCharAt(i, userVal);
+            valid = true;
+            continue;
         }
         return valid;
+        }
     }
 
-}
+
