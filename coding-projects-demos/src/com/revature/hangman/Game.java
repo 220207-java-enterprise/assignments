@@ -11,8 +11,7 @@ public class Game {
         String hidden = hideWord(word);
         Scanner scan = new Scanner(System.in);
 
-
-        while (life >= 0) {
+        while (life > 0) {
             System.out.println("Welcome to Hangman!");
             System.out.println("Word to guess: " + hidden);
             System.out.println("Life: " + life);
@@ -21,8 +20,16 @@ public class Game {
             input = scan.nextLine().charAt(0);
 
             if (validation(word, input)) {
-                System.out.println("Yay!");
+                hidden = updateWord(word, hidden, input);
+
+                System.out.println(hidden);
+            } else {
+                life--;
             }
+        }
+
+        if (life == 0) {
+            System.out.println("You lose!");
         }
     }
 
@@ -54,5 +61,17 @@ public class Game {
         }
 
         return false;
+    }
+
+    private String updateWord(String word, String hidden, char input) {
+        StringBuilder sb = new StringBuilder(hidden);
+
+        for (int i = 0; i < word.length(); i++) {
+            if (word.charAt(i) == input) {
+                sb.setCharAt(i, input);
+            }
+        }
+
+        return sb.toString();
     }
 }
