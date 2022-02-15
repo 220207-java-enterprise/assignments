@@ -148,7 +148,7 @@ public class AboutConditionals {
         // Try different (primitive) types for 'c'
         // Which types do compile?
         // Does boxing work?
-        char c = 'a';
+        Character c = 'a';
         String result = "Basic ";
         switch (c) {
             case 'a':
@@ -157,7 +157,7 @@ public class AboutConditionals {
             default:
                 result += "Nothing";
         }
-        assertEquals(result, __);
+        assertEquals(result, "Basic One");
     }
 
     @Koan
@@ -168,9 +168,9 @@ public class AboutConditionals {
         if (trueCount.count() || falseCount.count()) {
             x = "kthxbai";
         }
-        assertEquals(x, __);
-        assertEquals(trueCount.count, __);
-        assertEquals(falseCount.count, __);
+        assertEquals(x, "kthxbai");
+        assertEquals(trueCount.count, 1);
+        assertEquals(falseCount.count, 0);
     }
     
     @Koan
@@ -181,9 +181,9 @@ public class AboutConditionals {
         if (trueCount.count() | falseCount.count()) {
             x = "kthxbai";
         }
-        assertEquals(x, __);
-        assertEquals(trueCount.count, __);
-        assertEquals(falseCount.count, __);
+        assertEquals(x, "kthxbai");
+        assertEquals(trueCount.count, 1);
+        assertEquals(falseCount.count, 1);
     }
     
     class Counter {
