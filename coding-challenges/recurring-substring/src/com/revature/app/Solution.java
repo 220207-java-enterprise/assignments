@@ -9,16 +9,15 @@ public class Solution {
         System.out.println("Enter a string: ");
         String userInput = scanner.nextLine();
         String s;
-        for (int i = 0; i < userInput.length()/2 ; i++) {//set up loop that goes halfway to substring
-            s = userInput.substring(0, i+1);//creates a substring of user input, and searches for letters from 0 to i, plus 1 since it begins at zero
+        for (int i = 0; i < userInput.length() / 2; i++) {//set up loop that goes halfway to substring
+            s = userInput.substring(0, i + 1);//creates a substring of user input, and searches for letters from 0 to i, plus 1 since it begins at zero
 
-            if (userInput.length() % s.length() !== 0) { //if userInput is equally divisible by s.length(not equal to 0)
+            if (userInput.length() % s.length() != = 0) { //if userInput is equally divisible by s.length(not equal to 0)
                 continue;
             }
 
-            if
 
-            //check if substring is equal to original
-        return false;
+            return false;
+        }
     }
 }

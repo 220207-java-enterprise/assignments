@@ -18,14 +18,16 @@ import java.util.Scanner;
 public class Game {
     public void start() {
         int life = 6;//starting lives
-        char input = ' ';//input from user
+        char input = ' ';//char with space
         String word = getWord();//string word is set to method getWord()
         String hidden = hideWord(word);//hidden is set to hideWord(word)
         Scanner scan = new Scanner(System.in);//scanner system installed
-        String counter = counter();
+//        String guessedLettersBox = guessedLettersBox(word, input);
 
-        while (life > 0) {//while life is greater than or equal to 0
+
+        while (life > 0) {//while life is greater than 0
             System.out.println("Welcome to Hangman!");//print
+//            System.out.println(guessedLettersBox(word, input));
             System.out.println("Word to guess: " + hidden);//print
             System.out.println("Life: " + life);//print + life
 
@@ -34,13 +36,15 @@ public class Game {
 
             if (validation(word, input)) { //if validation is equal to both word and input true   (if validation(word, input) == true)
                 //switch hidden letter with correct guessed letter
-                hidden = updateHiddenWord//create updateHiddenWord method/function
+                //create updateHiddenWord method/function
                 System.out.println("Yay!");//print Yay! if validation true?
+
             } else { //else if user input not correct
                 life--;//decrease life counter by 1 unit every time user guess is incorrect
                 System.out.println("Boo!");//else print Boo! if letter is incorrect
             }
-        } if (life == 0) {
+        }
+        if (life == 0) {
             System.out.println("You lost! Game over!");
         }
     }
@@ -56,13 +60,13 @@ public class Game {
     }
 
     private String hideWord(String word) { //creates String method hideWord
-        String hidden = "";//creates empty String named hidden
+        StringBuilder hidden = new StringBuilder();//creates String hidden using StringBuilder
 
         for (int i = 0; i < word.length(); i++) { //loop through word length
-            hidden += '*'; //replaces word with asteriks
+            hidden.append('*'); //adds asteriks to hidden String using StringBuilder
         }
 
-        return hidden; //return hidden word
+        return hidden.toString(); //return hidden word to a string value
     }
 
     private Boolean validation(String word, char input) { //creates Boolean method validation with parameters (String word, char input)
@@ -72,18 +76,29 @@ public class Game {
                 return true; //return true, "validates" the method 'validate' as true
             }
         }
-        return false;//otherwise return false
+        return false;//otherwise, return false
     }
 
-    private String counter(String word, char input) {
-        String counter = "";
-        for (int i = 0; i < word.length(); i++) {
-            if (word.charAt(i) == input) {
-                counter = counter + input;
+    private String guessedLettersBox(String word, char input) {
+        StringBuilder guessedLetters = new StringBuilder(word);
 
+        for (int i = 0; i < word.length(); i++) {
+            guessedLetters.replace(0, word.length(), ",");
+            if (word.charAt(i) == input) {
+                guessedLetters.setCharAt(i, input);
             }
         }
-        return counter;
+        return guessedLetters.toString();
     }
 
 }
+
+//    private String updateWord(String word, char input) {
+//        StringBuilder lessHidden = new StringBuilder(hidden);
+//        char [] wordChar = word.toCharArray();
+//        char [] hiddenChar = hidden.toCharArray();
+//    }
+//
+
+
+
