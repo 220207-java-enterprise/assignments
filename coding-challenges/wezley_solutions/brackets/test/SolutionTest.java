@@ -10,7 +10,7 @@ public class SolutionTest {
         String s = "abc.abc";
         Solution sl = new Solution();
 
-        assertEquals("abc[.]abc", sl.brackets(s));
+        assertEquals(sl.brackets(s), "abc[.]abc");
     }
 
     @Test
@@ -18,7 +18,7 @@ public class SolutionTest {
         String s = "a.bc.ab.c";
         Solution sl = new Solution();
 
-        assertEquals("a[.]bc[.]ab[.]c", sl.brackets(s));
+        assertEquals(sl.brackets(s), "a[.]bc[.]ab[.]c");
     }
 
     @Test
@@ -26,7 +26,7 @@ public class SolutionTest {
         String s = ".";
         Solution sl = new Solution();
 
-        assertEquals("[.]", sl.brackets(s));
+        assertEquals(sl.brackets(s), "[.]");
     }
 
     @Test
@@ -34,7 +34,7 @@ public class SolutionTest {
         String s = "";
         Solution sl = new Solution();
 
-        assertEquals("", sl.brackets(s));
+        assertEquals(sl.brackets(s), "");
     }
 
     @Test
@@ -42,6 +42,6 @@ public class SolutionTest {
         String s = "abc";
         Solution sl = new Solution();
 
-        assertEquals("abc", sl.brackets(s));
+        assertEquals(sl.brackets(s), "abc");
     }
 }
