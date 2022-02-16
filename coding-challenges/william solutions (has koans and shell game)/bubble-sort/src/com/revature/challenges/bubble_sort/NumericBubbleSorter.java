@@ -18,14 +18,12 @@ public class NumericBubbleSorter implements Sorter<Integer> {
             throw new IllegalArgumentException();
         }
 
-        Integer [] toSort = collection;
-
-        for (int i=0; i<toSort.length; i++) {
-            for (int j=i; j<toSort.length; j++) {
-                if (toSort[i] > toSort[j]) {
-                    int temp = toSort[i];
-                    toSort[i] = toSort[j];
-                    toSort[j] = temp;
+        for (int i=0; i<collection.length; i++) {
+            for (int j=i; j<collection.length; j++) {
+                if (collection[i] > collection[j]) {
+                    int temp = collection[i];
+                    collection[i] = collection[j];
+                    collection[j] = temp;
                 }
             }
         }
