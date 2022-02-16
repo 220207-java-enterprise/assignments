@@ -1,5 +1,4 @@
 package com.revature.challenges.bubble_sort;
-
 public class NumericBubbleSorter implements Sorter<Integer> {
 
     /**
@@ -14,6 +13,20 @@ public class NumericBubbleSorter implements Sorter<Integer> {
     @Override
     public void sort(Integer[] collection) throws IllegalArgumentException {
         // TODO your implementation
-    }
+        if (collection == null)
+            throw new IllegalArgumentException();
+        // if bigger number from 2 elements
+        int temp = 0;
+        for (int i = 0; i < collection.length; i++) {
+            for (int j = i; j < collection.length; j++) {
+                if (collection[i] > collection[j]) {
+                    temp = collection[i];
+                    collection[i] = collection[j];
+                    collection[j] = temp;
 
-}
+                }
+            }
+
+        }
+    }
+    }
