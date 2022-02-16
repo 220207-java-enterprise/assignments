@@ -155,11 +155,12 @@ class Game {
 
         boolean valid = false;
         for (int i = 0; i < hiddenWord.length(); i++) {
-            if (userVal != randomWord.charAt(i))
-                break;
-            sb.setCharAt(i, userVal);
-            valid = true;
-            continue;
+            if (userVal == randomWord.charAt(i)){
+
+                sb.setCharAt(i, userVal);
+                valid = true;
+                continue;
+            }
         }
         return valid;
         }
