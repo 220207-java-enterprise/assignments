@@ -23,7 +23,16 @@ public class ArrayList<T> implements List<T> {
      * @return true
      */
     @Override
-    public boolean add(T element) {
+    public boolean add(T element)
+    {
+        Object[] elementContainer = new Object[currentSize + 1];
+        if(this.currentSize < elementContainer.length)
+        {
+            this.currentSize = this.size() + 1;
+            System.out.println(this.currentSize +" : "+ this.size());
+        }
+        elementContainer[currentSize - 1] = element;
+        System.out.println(this.currentSize +" : "+ this.size() +" : "+ elementContainer.length +" : "+ elementContainer[0]);
         return false;
     }
 
