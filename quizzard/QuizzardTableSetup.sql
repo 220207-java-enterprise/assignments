@@ -59,7 +59,12 @@ create table flashcards (
 	creator_id varchar not null,
 	foreign key (creator_id) references app_users(id),
 	foreign key (category)  references categories(id)
+)
 
+create table study_set_cards (
+	study_set_id varchar,
+	flashcard_id varchar,
+	primary key (study_set_id, flashcard_id)
 
 
 )
