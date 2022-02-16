@@ -60,12 +60,6 @@ Task – Create a query that leverages a system-defined function to return the a
 
 Task – Create a query that leverages a system-defined function to return the most expensive track
 
-### 3.3 User Defined Scalar Functions
-Task – Create a function that returns the average price of invoice-line items in the invoice-line table
-
-### 3.4 User Defined Table Valued Functions
-Task – Create a function that returns all employees who are born after 1968.
-
 ### 4.0 JOINS
 In this section you will be working with combining various tables through the use of joins. You will work with outer, inner, right, left, cross, and self joins.
 
