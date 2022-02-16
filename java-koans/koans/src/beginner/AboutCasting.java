@@ -32,7 +32,7 @@ public class AboutCasting {
         int a = 1;
         int b = Integer.MAX_VALUE;
         long c = a + b; // still overflows int... which is the Integer.MIN_VALUE, the operation occurs prior to assignment to long
-        assertEquals(c, __);
+        assertEquals(c, -2147483648l);
     }
 
     interface Sleepable {

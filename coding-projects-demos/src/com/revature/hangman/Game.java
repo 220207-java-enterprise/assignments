@@ -27,8 +27,16 @@ public class Game {
             hidden = hideWord(word);
         }
 
+<<<<<<< HEAD
+=======
+        while (life > 0) {
+            System.out.println("Welcome to Hangman!");
+            System.out.println("Word to guess: " + hidden);
+            System.out.println("Life: " + life);
+>>>>>>> 8f42dedb9fb210ce7f9e7aa55db28fd0c0a4f5a2
 
 
+<<<<<<< HEAD
         try (Scanner scan = new Scanner(System.in)) {
             while (life >= 0 && end(hidden)) {
                 System.out.println("Turn: " + turn);
@@ -81,6 +89,20 @@ public class Game {
                 }
             }
         return var;
+=======
+            if (validation(word, input)) {
+                hidden = updateWord(word, hidden, input);
+
+                System.out.println(hidden);
+            } else {
+                life--;
+            }
+        }
+
+        if (life == 0) {
+            System.out.println("You lose!");
+        }
+>>>>>>> 8f42dedb9fb210ce7f9e7aa55db28fd0c0a4f5a2
     }
 
     private String getWord() {
@@ -113,6 +135,7 @@ public class Game {
         return false;
     }
 
+<<<<<<< HEAD
 
     // turning **'s back into the letter that you guessed if the letter you guessed is correct.'
 
@@ -138,4 +161,17 @@ public class Game {
     }
 
     // add a funciton that adds each guess to an array of guesssed letters then pass that to unHash to redefine hidden each time. Also for "guessed charachters thing in future.
+=======
+    private String updateWord(String word, String hidden, char input) {
+        StringBuilder sb = new StringBuilder(hidden);
+
+        for (int i = 0; i < word.length(); i++) {
+            if (word.charAt(i) == input) {
+                sb.setCharAt(i, input);
+            }
+        }
+
+        return sb.toString();
+    }
+>>>>>>> 8f42dedb9fb210ce7f9e7aa55db28fd0c0a4f5a2
 }
