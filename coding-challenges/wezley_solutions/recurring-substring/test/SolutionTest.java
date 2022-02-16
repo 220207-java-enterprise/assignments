@@ -9,7 +9,7 @@ public class SolutionTest {
         String s = "aabaab";
         Solution sl = new Solution();
 
-        Assert.assertEquals(true, sl.recurringSubstring(s));
+        Assert.assertTrue(sl.recurringSubstring(s));
     }
 
     @Test
@@ -17,7 +17,7 @@ public class SolutionTest {
         String s = "aabaaba";
         Solution sl = new Solution();
 
-        Assert.assertEquals(false, sl.recurringSubstring(s));
+        Assert.assertFalse(sl.recurringSubstring(s));
     }
 
     @Test
@@ -25,7 +25,7 @@ public class SolutionTest {
         String s = "abcabcabc";
         Solution sl = new Solution();
 
-        Assert.assertEquals(true, sl.recurringSubstring(s));
+        Assert.assertTrue(sl.recurringSubstring(s));
     }
 
     @Test
@@ -33,7 +33,7 @@ public class SolutionTest {
         String s = "a";
         Solution sl = new Solution();
 
-        Assert.assertEquals(false, sl.recurringSubstring(s));
+        Assert.assertFalse(sl.recurringSubstring(s));
     }
 
     @Test
@@ -41,7 +41,7 @@ public class SolutionTest {
         String s = "";
         Solution sl = new Solution();
 
-        Assert.assertEquals(false, sl.recurringSubstring(s));
+        Assert.assertFalse(sl.recurringSubstring(s));
     }
 
 }
