@@ -5,17 +5,26 @@ import java.util.Scanner;
 
 public class Game {
     public void start() {
+<<<<<<< HEAD
         //ask user if they want to play again?
 
+=======
+>>>>>>> main
         int life = 6;
         char input = ' ';
         String word = getWord();
         String hidden = hideWord(word);
+<<<<<<< HEAD
         String guesses = "";
 
         Scanner scan = new Scanner(System.in);
 
         while (life >= 0 && !word.equals(hidden)) {
+=======
+        Scanner scan = new Scanner(System.in);
+
+        while (life > 0) {
+>>>>>>> main
             System.out.println("Welcome to Hangman!");
             System.out.println("Word to guess: " + hidden);
             System.out.println("Life: " + life);
@@ -23,6 +32,7 @@ public class Game {
             System.out.print("Guess: ");
             input = scan.nextLine().charAt(0);
 
+<<<<<<< HEAD
             guesses += input;
             //System.out.println(guesses);
 
@@ -39,6 +49,20 @@ public class Game {
         else
             System.out.println("Sorry you lost...");
 
+=======
+            if (validation(word, input)) {
+                hidden = updateWord(word, hidden, input);
+
+                System.out.println(hidden);
+            } else {
+                life--;
+            }
+        }
+
+        if (life == 0) {
+            System.out.println("You lose!");
+        }
+>>>>>>> main
     }
 
     private String getWord() {
@@ -71,6 +95,7 @@ public class Game {
         return false;
     }
 
+<<<<<<< HEAD
     private String updateHiddenWord(String hiddenWord, String word, char input) {
         String newHidden = "";
         for (int i = 0; i < word.length(); i++) {
@@ -82,5 +107,17 @@ public class Game {
             }
         }
         return newHidden;
+=======
+    private String updateWord(String word, String hidden, char input) {
+        StringBuilder sb = new StringBuilder(hidden);
+
+        for (int i = 0; i < word.length(); i++) {
+            if (word.charAt(i) == input) {
+                sb.setCharAt(i, input);
+            }
+        }
+
+        return sb.toString();
+>>>>>>> main
     }
 }
