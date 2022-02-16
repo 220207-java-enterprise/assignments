@@ -14,6 +14,26 @@ public class NumericBubbleSorter implements Sorter<Integer> {
     @Override
     public void sort(Integer[] collection) throws IllegalArgumentException {
         // TODO your implementation
+
+        Integer temp;
+        for (int i = 0; i < collection.length; i++){
+            for (int j = i + 1; j < collection.length; j++){
+                if(collection[i] < collection[j]) {
+                    temp = collection[j];
+                    collection[j] = collection[i];
+                    collection[i] = temp;
+                }
+            }
+            System.out.print(collection[i] + " ");
+        }
+        System.out.println("\n");
     }
+
+    public void printArray(Integer [] array){
+        for (Integer i : array)
+            System.out.print(i + " ");
+        System.out.println();
+    }
+
 
 }
