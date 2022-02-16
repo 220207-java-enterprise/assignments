@@ -14,7 +14,8 @@ public class ArrayList<T> implements List<T> {
     // The following three lines are provided for your convenience
     private static final int DEFAULT_CAPACITY = 10;
     private Object[] elementContainer = new Object[DEFAULT_CAPACITY];
-    private int currentSize = 0;
+    //private int currentSize = 0;
+    public int currentSize = 0;
 
     /**
      * Appends the specified element to the end of this list.
@@ -24,7 +25,20 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public boolean add(T element) {
-        return false;
+        //if currentSize < 10, then there is a space to store the element.
+        if (currentSize <10){
+            elementContainer[currentSize] = element;
+            currentSize++;
+        }else{ //otherwise, create a new Object[],and increase the size, then update the container
+            Object[] newElementContainer = new Object[++currentSize];
+            for(int i=0; i<elementContainer.length; i++){
+                //remove the items from old container to the new container
+                newElementContainer[i] = elementContainer[i];
+            }
+            newElementContainer[currentSize-1] = element;
+            elementContainer = newElementContainer;
+        }
+        return true;
     }
 
     /**
@@ -37,7 +51,14 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public boolean contains(T element) {
-        return false;
+        boolean containItem = false;
+        for (Object item : elementContainer){
+            if(item == element){
+                containItem = true;
+                break;
+            }
+        }
+        return containItem;
     }
 
     /**
@@ -47,6 +68,9 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public boolean isEmpty() {
+        if(currentSize==0)
+            return true;
+
         return false;
     }
 
