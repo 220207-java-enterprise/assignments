@@ -163,7 +163,33 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public void add(int index, T element) {
+        if (index <0 || index > currentSize)
+            throw (new IndexOutOfBoundsException("Out of Range"));
 
+        //if the capacity is not full;
+        int currentIndex = currentSize;
+        if(currentSize+1 <=10){
+            //0 1 3 4 5 6  --> add 2 in position 2.
+            //0 1 2 3 4 5 6
+            for(int i=currentIndex; i>index; i--){
+                elementContainer[i] = elementContainer[i-1];
+            }
+            elementContainer[index] = element;
+        }else{
+            Object[] newElementContainer = new Object[currentSize+1];
+            //added all elements from the left side
+            for (int i=0; i<index; i++){
+                newElementContainer[i]=elementContainer[i];
+            }
+            //insert the element
+            newElementContainer[index] = element;
+            //added all elements from the right side
+            for(int i=index+1; i<currentSize+1; i++){
+                newElementContainer[i] = elementContainer[i-1];
+            }
+            elementContainer = newElementContainer;
+        }
+        currentSize++;
     }
 
     /**
@@ -176,7 +202,12 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public T set(int index, T element) {
-        return null;
+        if (index <0 || index > currentSize)
+            throw (new IndexOutOfBoundsException("Out of Range"));
+
+        Object item = elementContainer[index];
+        elementContainer[index] = element;
+        return (T)item;
     }
 
     /**
@@ -190,7 +221,34 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public T remove(int index) {
-        return null;
+        if (index <0 || index > currentSize-1)
+            throw (new IndexOutOfBoundsException("Out of Range"));
+
+        //save the remove item
+        Object item = elementContainer[index];
+
+        //if the currentSize <=10; then no worry about the capacity.
+        if (currentSize<=10){
+            //0 1 2 3 4 5 -> remove index 1
+            //0 2 3 4 5
+            for(int i=index; i<currentSize-1; i++){
+                elementContainer[i] = elementContainer[i+1];
+            }
+            //mark the last element as null;
+            elementContainer[currentSize-1] = null;
+        }else{
+            //else, decrease the capacity.
+            Object[] newElementContainer = new Object[currentSize-1];
+            for(int i=0; i<index; i++){
+                newElementContainer[i] = elementContainer[i];
+            }
+            for(int i=index; i<currentSize-1; i++){
+                newElementContainer[i] = elementContainer[i+1];
+            }
+            elementContainer=newElementContainer;
+        }
+        currentSize--;
+        return (T)item;
     }
 
     /**
@@ -205,7 +263,12 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public int indexOf(T element) {
-        return 0;
+
+        for(int i=0; i<currentSize; i++){
+            if(elementContainer[i] == element)
+                return i;
+        }
+        return -1;
     }
 
     /**
@@ -220,7 +283,12 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public int lastIndexOf(T element) {
-        return 0;
+
+        for(int i=currentSize-1; i>0; i--){
+            if(elementContainer[i] == element)
+                return i;
+        }
+        return -1;
     }
 
 }

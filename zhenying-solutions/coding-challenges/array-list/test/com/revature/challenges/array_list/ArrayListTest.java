@@ -33,10 +33,66 @@ public class ArrayListTest {
         System.out.println("CurrentSize: "+ArrayListTest.size());
         int position = 8;
         Object e = ArrayListTest.get(8);
-        System.out.println("In position " +position +": "+ e);
+        System.out.println("In position " +position +": "+ e +"\n");
+
+        checkArrayListAddwithIndex();
+        checkArrayListSetMethod();
+        checkArrayListRemoveIndexMethod();
+        checkArrayListIndexOfMethod();
+        checkArrayListLastIndexOfMethod();
     }
     public static  void  display (){
         System.out.println(Arrays.toString(ArrayListTest.elementContainer) + '\n');
+    }
+
+    public static  void checkArrayListLastIndexOfMethod(){
+        System.out.println("A is in the Last position: "+ ArrayListTest.lastIndexOf('A'));
+        display();
+        System.out.println("5 is in the Last position: "+ ArrayListTest.lastIndexOf(5));
+        display();
+        System.out.println("B is in the Last position: "+ ArrayListTest.lastIndexOf('B'));
+        display();
+    }
+
+    public static  void checkArrayListIndexOfMethod(){
+        System.out.println("A is in the First position: "+ ArrayListTest.indexOf('A'));
+        display();
+        System.out.println("5 is in the First position: "+ ArrayListTest.indexOf(5));
+        display();
+        System.out.println("B is in the First position: "+ ArrayListTest.indexOf('B'));
+        display();
+    }
+
+    public  static  void checkArrayListRemoveIndexMethod(){
+        System.out.println("remove index0-" +ArrayListTest.remove(0));
+        display();
+
+        System.out.println("remove index5-" +ArrayListTest.remove(5));
+        display();
+    }
+
+    public  static  void checkArrayListSetMethod(){
+        System.out.println("set 77 to index0-" +ArrayListTest.set(0,77));
+        display();
+
+        System.out.println("set 35 to index4-" +ArrayListTest.set(4,35));
+        display();
+
+        System.out.println("set 'A' to index10-" +ArrayListTest.set(10,'A'));
+        display();
+    }
+    public static void checkArrayListAddwithIndex(){
+        System.out.println("Add 5 to index 2: ");
+        ArrayListTest.add(2,5);
+        display();
+
+        System.out.println("Add 99 to index 0: ");
+        ArrayListTest.add(0,99);
+        display();
+
+        System.out.println("Add 88 to index 11: ");
+        ArrayListTest.add(11,88);
+        display();
     }
 
     public static void checkArrayListRemove(Object Any){
