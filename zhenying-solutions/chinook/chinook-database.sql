@@ -54,12 +54,19 @@ select * from "Employee" where "HireDate" between '06/01/2003' and '03/01/2004';
 delete from "Customer" where "FirstName" ='Robert' and "LastName" ='Walter' and "CustomerId" = 32; 
 select * from "Customer" where "FirstName" = 'Robert';
 select * from "Invoice" where "CustomerId" = 32;
-/*update "Invoice" 
-set "CustomerId"  = 9999;
-where "CustomerId" = 32;*/
-delete from  "Invoice" where "CustomerId" =32;
-select * from  "InvoiceLine" where "InvoiceId" =50;
-delete from "InvoiceLine" where "InvoiceId" =50;
+
+
+alter table "Invoice" drop constraint "FK_InvoiceCustomerId";
+ALTER TABLE "Invoice" ADD CONSTRAINT "FK_InvoiceCustomerId"
+FOREIGN KEY ("CustomerId") REFERENCES "Customer" ("CustomerId") ON DELETE Cascade ON UPDATE NO ACTION;
+
+ALTER TABLE "InvoiceLine" drop CONSTRAINT "FK_InvoiceLineInvoiceId";
+ALTER TABLE "InvoiceLine" ADD CONSTRAINT "FK_InvoiceLineInvoiceId"
+FOREIGN KEY ("InvoiceId") REFERENCES "Invoice" ("InvoiceId") ON DELETE Cascade ON UPDATE NO ACTION;
+
+
+
+
 
 
 
