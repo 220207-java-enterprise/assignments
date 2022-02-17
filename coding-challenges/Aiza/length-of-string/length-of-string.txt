@@ -1,0 +1,22 @@
+public class LengthOfString {
+
+	public static void main(String[] args) {
+		String k = new String("wonderland");
+		int middle = k.length()-2;
+		int y=k.length()-1;
+		char first = k.charAt(0);
+		char last = k.charAt(y);
+		
+		
+		if (k.length()>=10) {
+			System.out.println(first+""+middle+""+last);
+			
+		}
+		else {
+			System.out.println(k);
+			
+		}
+
+	}
+
+}
