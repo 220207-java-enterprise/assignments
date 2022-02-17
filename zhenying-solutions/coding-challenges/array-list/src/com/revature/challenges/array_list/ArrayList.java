@@ -13,7 +13,7 @@ public class ArrayList<T> implements List<T> {
 
     // The following three lines are provided for your convenience
     private static final int DEFAULT_CAPACITY = 10;
-    private Object[] elementContainer = new Object[DEFAULT_CAPACITY];
+    public Object[] elementContainer = new Object[DEFAULT_CAPACITY];
     //private int currentSize = 0;
     public int currentSize = 0;
 
@@ -85,6 +85,41 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public boolean remove(T element) {
+        //check if the item is existed or not
+        if (contains(element)){
+            //two cases if the item is existed:
+            //case1: if the total items <= 10; Keep DEFAULT_CAPACITY = 10;
+            boolean shift = false;
+            if (currentSize <=10){
+                for (int i=0; i<currentSize-1; i++){
+                    if (shift){ //shift everything to the left
+                        elementContainer[i] = elementContainer[i+1];
+                    }else if (elementContainer[i] == element){
+                        //remove the first item founds
+                        elementContainer[i] = elementContainer[i+1];
+                        shift = true;
+                    }
+                }
+                elementContainer[currentSize-1] = null;
+            }else{
+            //case2: if the total items >10; decreasing the capacity;
+                Object[] newElementContainer = new Object[currentSize-1];
+                for(int i=0; i<currentSize-1; i++){
+                    if (shift){ //added everything from the right
+                        newElementContainer[i] = elementContainer[i+1];
+                    }else if (elementContainer[i] == element){
+                        //don't add the remove item to the new container, added the next one
+                        newElementContainer[i] = elementContainer[i+1];
+                        shift=true;
+                    }else{
+                        newElementContainer[i] = elementContainer[i];
+                    }
+                }
+                elementContainer = newElementContainer;
+            }
+            currentSize--;
+            return true;
+        }
         return false;
     }
 
@@ -95,7 +130,7 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public int size() {
-        return 0;
+        return currentSize;
     }
 
     /**
@@ -107,7 +142,14 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public T get(int index) {
-        return null;
+        //Out of Range
+        if (index <0 || index >= currentSize)
+            throw (new IndexOutOfBoundsException("Out of Range"));
+
+        Object element = elementContainer[index];
+
+
+        return (T) element;
     }
 
     /**
