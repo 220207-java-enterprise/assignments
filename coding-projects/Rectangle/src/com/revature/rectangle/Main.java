@@ -15,10 +15,10 @@ public class Main {
          objects[count] = new Rectangle(array[count],a,b);
          count++;
      }
-     System.out.println(maxArea(objects) + " has the largest area");
-     System.out.println(maxPerimeter(objects) + " has the largest perimeter");   
+     System.out.println(maxArea(objects).name + " has the largest area, which is: "+maxArea(objects).getArea());
+     System.out.println(maxPerimeter(objects).name + " has the largest perimeter, which is: "+maxPerimeter(objects).getPerimeter());   
     }
-    public static String maxArea(Rectangle[] a){
+    public static Rectangle maxArea(Rectangle[] a){
          int max_area = a[0].getArea();
          int count = 0;
          for (int i=0; i<a.length; i++){
@@ -27,9 +27,9 @@ public class Main {
                 count = i;
             }
         }
-        return a[count].name;
+        return a[count];
     }
-    public static String maxPerimeter(Rectangle[] a){
+    public static Rectangle maxPerimeter(Rectangle[] a){
          int max_perimeter = a[0].getPerimeter();
          int count = 0;
          for (int i=0; i<a.length; i++){
@@ -38,6 +38,6 @@ public class Main {
                 count = i;
             }
         }
-        return a[count].name;
+        return a[count];
     }
 }
