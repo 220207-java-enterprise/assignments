@@ -7,7 +7,7 @@ them to be of type string and int. Also include the following in your class:</p>
 
 * Constructor with three arguments to set the name, length and width of the rectangle
 object.
-* Get methods for the name, length and the width.
+* Getter and setter methods for the name, length and the width.
 * Get area and get perimeter functions.
 
 **Comparator class for comparing rectangles by area**
@@ -24,7 +24,7 @@ return a boolean value.</p>
 
 **Main Class**
 
-<p>This will contain the main function as well as findMax template function. It will:</p>
+<p>This will contain the main function as well as findMax function. It will:</p>
 
 * It will create ten rectangle objects and add them to a list. You can either create
 rectangles with random length and width or ask user for the length and width of
