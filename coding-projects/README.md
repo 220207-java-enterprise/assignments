@@ -3,11 +3,11 @@
 **Rectangle Class**
 
 <p>Define a Rectangle class with three variables: name, length and width. You may declare
-them to be of type int. Also include the following in your class:</p>
+them to be of type string and int. Also include the following in your class:</p>
 
 * Constructor with three arguments to set the name, length and width of the rectangle
 object.
-* Get methods for the length and the width.
+* Get methods for the name, length and the width.
 * Get area and get perimeter functions.
 
 **Comparator class for comparing rectangles by area**
