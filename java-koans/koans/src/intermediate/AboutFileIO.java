@@ -92,7 +92,7 @@ public class AboutFileIO {
         StringBuffer sb = new StringBuffer();
         // Add the loop to go through the file line by line and add the line
         // to the StringBuffer
-        assertEquals(sb.toString(), "");
+        assertEquals(sb.toString(), "q");
     }
 }
 
