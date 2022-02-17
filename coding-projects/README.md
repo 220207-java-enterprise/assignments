@@ -2,8 +2,6 @@
 
 **Rectangle Class**
 
-<br>
-
 <p>Define a Rectangle class with two variables: length and width. You may declare
 them to be of type int. Also include the following in your class:</p>
 
