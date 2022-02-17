@@ -49,9 +49,9 @@ public class AboutArithmeticOperators {
     public void timesAndDivInPlace() {
         int i = 1;
         i *= 2;
-        assertEquals(i, __);
+        assertEquals(i, 2);
         i /= 2;
-        assertEquals(i, __);
+        assertEquals(i, 1);
     }
 
 }

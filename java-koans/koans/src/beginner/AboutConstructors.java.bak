@@ -51,7 +51,7 @@ public class AboutConstructors {
 
     @Koan
     public void complexConstructorOrder() {
-        assertEquals(new Bb().someString, "aBoog");
+        assertEquals(new Bb().someString, "aBoos");
     }
 
 }

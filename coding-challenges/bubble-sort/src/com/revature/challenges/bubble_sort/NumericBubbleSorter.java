@@ -47,7 +47,7 @@ public class NumericBubbleSorter implements Sorter<Integer> {
                 int num2 = arr[b];
 
 
-                for (int x = 0; x < 1; x++) {
+
 //            while (d = false) {
                     boolean bawl = false;
                     while (!bawl) {
@@ -76,7 +76,7 @@ public class NumericBubbleSorter implements Sorter<Integer> {
                             }
                         }
                     }
-                }
+
             }
         }
 //        System.out.println("Ends with " + Arrays.toString(arr));
