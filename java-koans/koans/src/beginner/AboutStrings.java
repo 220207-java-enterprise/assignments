@@ -12,7 +12,7 @@ public class AboutStrings {
 
     @Koan
     public void implicitStrings() {
-        assertEquals("just a plain ole string".getClass(), __);
+        assertEquals("just a plain ole string".getClass(), class.getClass());
     }
 
     @Koan
@@ -21,7 +21,7 @@ public class AboutStrings {
         // practice - generally it is redundant, and done repetitively can be slow
         String string = new String();
         String empty = "";
-        assertEquals(string.equals(empty), __);
+        assertEquals(string.equals(empty), "true");
     }
 
     @Koan
