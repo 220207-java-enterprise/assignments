@@ -1,6 +1,7 @@
 package com.revature.app;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import java.util.Scanner;
 
 public class Solution {
@@ -21,10 +22,15 @@ public class Solution {
             return false;
         }
 =======
+=======
+>>>>>>> 8f42dedb9fb210ce7f9e7aa55db28fd0c0a4f5a2
 public class Solution {
     public boolean recurringSubstring(String s) {
         /* Write your code here */
         return false;
+<<<<<<< HEAD
+>>>>>>> 8f42dedb9fb210ce7f9e7aa55db28fd0c0a4f5a2
+=======
 >>>>>>> 8f42dedb9fb210ce7f9e7aa55db28fd0c0a4f5a2
     }
 }

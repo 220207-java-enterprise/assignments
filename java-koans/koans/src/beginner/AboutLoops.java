@@ -58,9 +58,9 @@ public class AboutLoops {
     public void basicForLoopWithTwoVariables1() {
         String s = "";
         for (int i = 0, j = 10; i < 5 && j > 5; i++, j--) {
-            s += i + " " + j + " ";
+            s += i + " " + j + " ";//s = i + s + "" + j + s
         }
-        assertEquals(s, __);
+        assertEquals(s, "0 10 1 9 2 8 3 7 4 6 ");
     }
 
     @Koan
@@ -72,7 +72,7 @@ public class AboutLoops {
             }
             s += " - ";
         }
-        assertEquals(s, __);
+        assertEquals(s, "(0, 0) (0, 1) (0, 2)  - (1, 0) (1, 1) (1, 2)  - (2, 0) (2, 1) (2, 2)  - ");
     }
 
     @Koan
@@ -80,9 +80,9 @@ public class AboutLoops {
         int[] is = {1, 2, 3, 4};
         String s = "";
         for (int j : is) {
-            s += j + " ";
+            s += j + " ";//s = s + j + " ";
         }
-        assertEquals(s, __);
+        assertEquals(s, "1 2 3 4 ");
     }
 
     @Koan
@@ -91,7 +91,7 @@ public class AboutLoops {
         while (result < 3) {
             result++;
         }
-        assertEquals(result, __);
+        assertEquals(result, 3);//why is it 3?
     }
 
     @Koan
@@ -100,7 +100,7 @@ public class AboutLoops {
         do {
             result++;
         } while (false);
-        assertEquals(result, __);
+        assertEquals(result, 1);//only 1 because do loop starts before while loop
     }
 
     @Koan
@@ -113,7 +113,7 @@ public class AboutLoops {
             }
             count++;
         }
-        assertEquals(count, __);
+        assertEquals(count, 1);
     }
 
     @Koan
@@ -127,7 +127,7 @@ public class AboutLoops {
                 count++;
             }
         }
-        assertEquals(count, __);
+        assertEquals(count, 2);//why does this equal 2? my logic was if "Dog.equals(current)" then continue with the if statement and not the else statement
     }
 
     @Koan

@@ -1,6 +1,7 @@
 package com.revature.app;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 import java.util.Scanner;
 
 public class Main {
@@ -25,6 +26,11 @@ public class Main {
         }
 
 
+=======
+public class Main {
+    public static void main(String[] args) {
+        /* Use Main to enter in values into your Solution class */
+>>>>>>> 8f42dedb9fb210ce7f9e7aa55db28fd0c0a4f5a2
 =======
 public class Main {
     public static void main(String[] args) {
