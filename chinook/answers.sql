@@ -132,7 +132,7 @@ select * from "MediaType" mt;
 --Task – Create an inner join that joins customers and orders and specifies the name of the customer and the invoiceId.
 select * from "Customer" 
 inner join "Invoice" 
-on "Customer"."CustomerId" = "Invoice"."InvoiceId";
+on "Customer"."CustomerId" = "Invoice"."CustomerId";
 
 select concat("Customer"."FirstName", ' ', "Customer"."LastName") as customer_name, "Invoice"."InvoiceId"
 from "Customer"

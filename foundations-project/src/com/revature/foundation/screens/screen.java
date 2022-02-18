@@ -1,2 +1,5 @@
-package com.revature.foundation.screens;public class screen {
+package com.revature.foundation.screens;
+
+public abstract class screen {
+    
 }
