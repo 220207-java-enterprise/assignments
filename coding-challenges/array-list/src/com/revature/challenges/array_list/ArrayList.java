@@ -1,5 +1,7 @@
 package com.revature.challenges.array_list;
 
+import java.util.Arrays;
+
 /**
  * Resizable-array implementation of the List interface. Permits all element values,
  * including null. Each ArrayList instance has a capacity. The capacity is the size
@@ -12,7 +14,7 @@ package com.revature.challenges.array_list;
 public class ArrayList<T> implements List<T> {
 
     // The following three lines are provided for your convenience
-    private static final int DEFAULT_CAPACITY = 10;
+    private static final int DEFAULT_CAPACITY = 0;
     private Object[] elementContainer = new Object[DEFAULT_CAPACITY];
     private int currentSize = 0;
 
@@ -25,15 +27,10 @@ public class ArrayList<T> implements List<T> {
     @Override
     public boolean add(T element)
     {
-        Object[] elementContainer = new Object[currentSize + 1];
-        if(this.currentSize < elementContainer.length)
-        {
-            this.currentSize = this.size() + 1;
-            System.out.println(this.currentSize +" : "+ this.size());
-        }
+        this.currentSize = DEFAULT_CAPACITY + this.currentSize + 1;
+        elementContainer = Arrays.copyOf(elementContainer, currentSize);
         elementContainer[currentSize - 1] = element;
-        System.out.println(this.currentSize +" : "+ this.size() +" : "+ elementContainer.length +" : "+ elementContainer[0]);
-        return false;
+        return true;
     }
 
     /**
@@ -46,6 +43,12 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public boolean contains(T element) {
+        for (Object o : elementContainer) {
+            if (o == null)
+                continue;
+            if (o.equals(element))
+                return true;
+        }
         return false;
     }
 
@@ -56,7 +59,11 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public boolean isEmpty() {
-        return false;
+        for (Object o : elementContainer) {
+            if (o != null)
+                return false;
+        }
+        return true;
     }
 
     /**
@@ -70,7 +77,21 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public boolean remove(T element) {
-        return false;
+        boolean flag = false;
+        for (int i = 0; i < currentSize; i++) {
+            if (element.equals(elementContainer[i])) {
+                flag = true;
+                if (i != currentSize - 1) {
+                    elementContainer[i] = elementContainer[i+1];
+                } else {
+                    elementContainer[i] = null;
+                }
+                currentSize--;
+            }
+        }
+        Object[] tmp = Arrays.copyOf(elementContainer, currentSize);
+        elementContainer = tmp;
+        return flag;
     }
 
     /**
@@ -80,7 +101,7 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public int size() {
-        return 0;
+        return currentSize;
     }
 
     /**
@@ -91,8 +112,9 @@ public class ArrayList<T> implements List<T> {
      * @throws IndexOutOfBoundsException if the index is out of range (index < 0 || index >= size())
      */
     @Override
+    @SuppressWarnings("unchecked")
     public T get(int index) {
-        return null;
+            return (T) elementContainer[index];
     }
 
     /**
@@ -106,7 +128,13 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public void add(int index, T element) {
-
+        this.currentSize++;
+        elementContainer = Arrays.copyOf(elementContainer, currentSize);
+        for (int i = currentSize - 1; i > index; i--)
+        {
+            elementContainer[i] = elementContainer[i-1];
+        }
+            elementContainer[index] = element;
     }
 
     /**
@@ -119,7 +147,9 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public T set(int index, T element) {
-        return null;
+        T tmp = (T) elementContainer[index];
+        elementContainer[index] = element;
+        return tmp;
     }
 
     /**
@@ -133,7 +163,16 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public T remove(int index) {
-        return null;
+        Object tmp = new Object();
+        tmp = elementContainer[index];
+        for (int i = index; i < currentSize - 1; i++)
+        {
+            elementContainer[i] = elementContainer[i+1];
+        }
+        this.currentSize--;
+        elementContainer = Arrays.copyOf(elementContainer, currentSize);
+
+        return (T)tmp;
     }
 
     /**
@@ -148,7 +187,13 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public int indexOf(T element) {
-        return 0;
+        int counter = 0;
+        for(Object o : elementContainer) {
+            if (o == element)
+                return counter;
+            counter++;
+        }
+        return -1;
     }
 
     /**
@@ -163,7 +208,18 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public int lastIndexOf(T element) {
-        return 0;
+        //System.out.println(elementContainer.length);
+        for(int counter = elementContainer.length - 1; counter > 0; counter-- ){
+            if (elementContainer[counter].equals(element))
+                return counter;
+        }
+        return -1;
     }
 
+    @Override
+    public String toString() {
+        return "ArrayList{" +
+                "elementContainer=" + Arrays.toString(elementContainer) +
+                '}';
+    }
 }
