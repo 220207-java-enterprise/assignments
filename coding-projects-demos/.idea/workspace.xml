@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="92f5bac2-ff5e-479b-a173-70a01ec85ec4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../coding-challenges-solutions/.idea/shelf/Uncommitted_changes_before_Update_at_2_9_22,_12_40_PM_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../coding-challenges-solutions/.idea/shelf/Uncommitted_changes_before_Update_at_2_9_22__12_40_PM__Changes_.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../coding-challenges-solutions/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../coding-challenges-solutions/bubble-sort/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../coding-challenges-solutions/bubble-sort/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../coding-challenges-solutions/bubble-sort/bubble-sort.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../coding-challenges-solutions/bubble-sort/src/com/revature/challenges/bubble_sort/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../coding-challenges-solutions/bubble-sort/src/com/revature/challenges/bubble_sort/NumericBubbleSorter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../coding-challenges-solutions/bubble-sort/src/com/revature/challenges/bubble_sort/Sorter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../coding-challenges-solutions/bubble-sort/test/com/revature/challenges/bubble_sort/NumericBubbleSorterTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../coding-challenges-solutions/bubble-sort/test/com/revature/challenges/test_utils/AssertionException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../coding-challenges-solutions/bubble-sort/test/com/revature/challenges/test_utils/BeforeEach.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../coding-challenges-solutions/bubble-sort/test/com/revature/challenges/test_utils/Describe.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../coding-challenges-solutions/bubble-sort/test/com/revature/challenges/test_utils/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../coding-challenges-solutions/bubble-sort/test/com/revature/challenges/test_utils/TestRunner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../coding-challenges-solutions/tic-tac-toe/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../coding-challenges-solutions/tic-tac-toe/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../coding-challenges-solutions/tic-tac-toe/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../coding-challenges-solutions/tic-tac-toe/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../coding-challenges-solutions/tic-tac-toe/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../coding-challenges-solutions/tic-tac-toe/out/production/tic-tac-toe/com/revature/tictactoe/Main.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../coding-challenges-solutions/tic-tac-toe/out/production/tic-tac-toe/com/revature/tictactoe/Solution.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../coding-challenges-solutions/tic-tac-toe/out/test/tic-tac-toe/SolutionTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../coding-challenges-solutions/tic-tac-toe/src/com/revature/tictactoe/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../coding-challenges-solutions/tic-tac-toe/src/com/revature/tictactoe/Solution.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../coding-challenges-solutions/tic-tac-toe/test/SolutionTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../coding-challenges-solutions/tic-tac-toe/tic-tac-toe.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HangMan.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/HangMan/com/revature/hangman/Game.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/HangMan/com/revature/hangman/Main.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/revature/hangman/Game.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/com/revature/hangman/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../coding-projects/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../chinook/chinook-sql-workbook.md" beforeDir="false" afterPath="$PROJECT_DIR$/../chinook/chinook-sql-workbook.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding-challenges-solutions/length-of-string/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../coding-challenges-solutions/length-of-string/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding-challenges-solutions/sum-of-array-II/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../coding-challenges-solutions/sum-of-array-II/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding-challenges-solutions/sum-of-array/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../coding-challenges-solutions/sum-of-array/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding-challenges/brackets/out/production/brackets/com/revature/app/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../coding-challenges/brackets/out/production/brackets/com/revature/app/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding-challenges/brackets/out/production/brackets/com/revature/app/Solution.class" beforeDir="false" afterPath="$PROJECT_DIR$/../coding-challenges/brackets/out/production/brackets/com/revature/app/Solution.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding-challenges/brackets/src/com/revature/app/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../coding-challenges/brackets/src/com/revature/app/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding-challenges/brackets/src/com/revature/app/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/../coding-challenges/brackets/src/com/revature/app/Solution.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding-challenges/recurring-substring/out/production/recurring-substring/com/revature/app/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../coding-challenges/recurring-substring/out/production/recurring-substring/com/revature/app/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding-challenges/recurring-substring/src/com/revature/app/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../coding-challenges/recurring-substring/src/com/revature/app/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../coding-challenges/recurring-substring/src/com/revature/app/Solution.java" beforeDir="false" afterPath="$PROJECT_DIR$/../coding-challenges/recurring-substring/src/com/revature/app/Solution.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="25Hx4yQNmi4Y0ZKCRvqJL1U2ERa" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../coding-challenges/brackets" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="92f5bac2-ff5e-479b-a173-70a01ec85ec4" name="Changes" comment="" />
+      <created>1645197626001</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1645197626001</updated>
+    </task>
+    <servers />
+  </component>
+</project>
