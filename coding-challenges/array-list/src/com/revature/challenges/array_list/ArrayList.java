@@ -114,7 +114,8 @@ public class ArrayList<T> implements List<T> {
     @Override
     @SuppressWarnings("unchecked")
     public T get(int index) {
-            return (T) elementContainer[index];
+
+        return (T) elementContainer[index];
     }
 
     /**
