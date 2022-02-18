@@ -58,7 +58,11 @@ Task – Create a query that leverages a system-defined function to return the l
 ### 3.2 System Defined Aggregate Functions
 Task – Create a query that leverages a system-defined function to return the average total of all invoices
 
+<<<<<<< HEAD
 Task – Create a query that leverages a system-defined function to return the most expensive track
+=======
+Task – Create a query that leverages a system-defined function to return the most expensive trackf
+>>>>>>> 44524affc9630136b5f1cad3a5985056f8d3eb92
 
 ### 4.0 JOINS
 In this section you will be working with combining various tables through the use of joins. You will work with outer, inner, right, left, cross, and self joins.
