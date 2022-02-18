@@ -13,18 +13,25 @@ public class ArrayList<T> implements List<T> {
 
     // The following three lines are provided for your convenience
     private static final int DEFAULT_CAPACITY = 10;
-    private Object[] elementContainer = new Object[DEFAULT_CAPACITY];
     private int currentSize = 0;
+    private Object[] elementContainer = new Object[currentSize];
 
-    /**
-     * Appends the specified element to the end of this list.
-     *
-     * @param element element to be appended to this list
-     * @return true
-     */
+    //**
+     //* Appends the specified element to the end of this list.//
+     //* @param element element to be appended to this list
+     //* @return true
+     //*/
     @Override
     public boolean add(T element) {
-        return false;
+        Object[] tempContainer = new Object[currentSize];
+        tempContainer = elementContainer.clone();
+        currentSize += 1;
+        elementContainer = new Object[currentSize];
+        for (int i = 0; i < tempContainer.length; i++){
+            elementContainer[i] = tempContainer[i];
+        }
+        elementContainer[elementContainer.length-1] = element;
+        return true;
     }
 
     /**
@@ -37,6 +44,11 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public boolean contains(T element) {
+        for (int i = 0; i<elementContainer.length; i++){
+            if (element.equals(elementContainer[i])){
+                return true;
+            }
+        }
         return false;
     }
 
@@ -47,6 +59,9 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public boolean isEmpty() {
+        if (elementContainer.length == 0){
+            return true;
+        }
         return false;
     }
 
@@ -61,7 +76,25 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public boolean remove(T element) {
-        return false;
+        Object[] tempContainer = new Object[currentSize];
+        tempContainer = elementContainer.clone();
+        currentSize -= 1;
+        elementContainer = new Object[currentSize];
+        int count = 0;
+        for (int i =0; i<tempContainer.length; i++){
+            if (count < 1){
+                if (tempContainer[i] != element){
+                    elementContainer[i] = tempContainer[i];
+                }
+                else{
+                    count++;
+                }
+            }
+            else{
+                elementContainer[i] = tempContainer[i];
+            }
+        }
+        return true;
     }
 
     /**
@@ -71,7 +104,7 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public int size() {
-        return 0;
+        return elementContainer.length;
     }
 
     /**
@@ -83,7 +116,8 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public T get(int index) {
-        return null;
+        return (T)elementContainer[index];
+        //return null;
     }
 
     /**
