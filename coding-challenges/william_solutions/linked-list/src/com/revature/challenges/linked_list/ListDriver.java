@@ -7,6 +7,10 @@ public class ListDriver {
         LinkedList<String> myList = new LinkedList<>();
 
         // TODO test your implementations below using the myList reference
-
+        System.out.println("ran successfully");
+        myList.add("this one");
+        myList.add("this too");
+        myList.add("and this thirdly");
+        System.out.println(myList.toString());
     }
 }

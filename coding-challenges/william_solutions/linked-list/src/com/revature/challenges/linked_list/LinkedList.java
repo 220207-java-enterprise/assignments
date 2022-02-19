@@ -20,6 +20,23 @@ public class LinkedList<T> implements List<T> {
      */
     @Override
     public boolean add(T data) {
+
+        System.out.println("start add");
+        if (this.head == null) {
+            this.head = new Node<>(data);
+            System.out.println("first if");
+        }
+        else if (this.head.nextNode == null) {
+            this.tail = new Node<>(data);
+            this.head.nextNode = this.tail;
+            System.out.println("2nd if");
+        }
+        else {
+            this.tail.nextNode = new Node<>(data);
+            this.tail = this.tail.nextNode;
+            System.out.println("last if");
+        }
+        this.size++;
         return false;
     }
 
@@ -67,7 +84,22 @@ public class LinkedList<T> implements List<T> {
      */
     @Override
     public int size() {
-        return 0;
+
+        /*int size = 0;
+        if (this.head == null) {
+            return size; //when it's 0
+        }
+        else {
+            Node<T> runner = head;
+            size++;
+            while(runner.nextNode != null) {
+                runner = runner.nextNode;
+                size++;
+            }
+
+        }
+        return size;*/
+        return this.size;
     }
 
     /**
