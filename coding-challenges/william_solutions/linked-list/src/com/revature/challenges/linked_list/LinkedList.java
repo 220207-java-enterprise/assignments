@@ -90,39 +90,43 @@ public class LinkedList<T> implements List<T> {
             //System.out.println(runner.data);
             //System.out.println(data);
 
+            //if data is found in the last node do this
+            //this currently works
+            if (runner.data == data && runner.nextNode == null) {
+                System.out.println("last node conditional");
+                System.out.println(previousRunner.data);
+                System.out.println(runner.data);
+                previousRunner.nextNode = null;
+                System.out.println(previousRunner.nextNode);
+                size--;
+                return true;
+            }
             //if data is found and it is not in the first node
-            if (runner.data == data && previousRunner.nextNode != runner.nextNode) {
-                System.out.println("first if in remove");
-
+            else if (runner.data == data && previousRunner.nextNode != runner.nextNode) {
+                System.out.println("not first or last node conditional");
+                previousRunner.nextNode = runner.nextNode;
                 size--;
                 return true;
             }
             //if data is found in the first node do this
             //currently works!!
             else if (runner.data == data && i == 0) {
-                System.out.println("second if in remove");
+                System.out.println("first node conditional");
                 System.out.println("head: " + head.data);
                 head = head.nextNode;
                 System.out.println("new head: " + head.data);
                 size--;
                 return true;
             }
-            //if data is found in the last node do this
-            else if (runner.data == data && runner.nextNode == null) {
-                System.out.println("third if in remove");
-                System.out.println(previousRunner.data);
-                System.out.println(runner.data);
-                size--;
-                return true;
-            }
+
             else {
                 System.out.println("last else in remove");
-                System.out.println(runner.data == tail.data);
+                //System.out.println(runner.data == tail.data);
                 runner = runner.nextNode;
                 if (i != 0)
                     previousRunner = previousRunner.nextNode;
             }
-            //System.out.println(i);
+            System.out.println(i);
         }
 
         return false;
@@ -134,24 +138,7 @@ public class LinkedList<T> implements List<T> {
      * @return the number of elements in this list
      */
     @Override
-    public int size() {
-
-        /*int size = 0;
-        if (this.head == null) {
-            return size; //when it's 0
-        }
-        else {
-            Node<T> runner = head;
-            size++;
-            while(runner.nextNode != null) {
-                runner = runner.nextNode;
-                size++;
-            }
-
-        }
-        return size;*/
-        return this.size;
-    }
+    public int size() { return this.size; }
 
     /**
      * Returns the element at the specified position in this list.
@@ -162,6 +149,25 @@ public class LinkedList<T> implements List<T> {
      */
     @Override
     public T get(int index) {
+
+        try {
+            if (index < 0 || index > this.size) {
+                throw new IndexOutOfBoundsException();
+            }
+            else if (index == 0){
+                return this.head.data;
+            }
+            Node<T> runner = this.head;
+            for (int i = 0; i < this.size; i++) {
+                if (i == index) {
+                    return runner.data;
+                }
+                runner = runner.nextNode;
+            }
+        }
+        catch (IndexOutOfBoundsException e){
+            System.out.println("Index " + index + " is out of bounds!");
+        }
         return null;
     }
 
@@ -177,6 +183,35 @@ public class LinkedList<T> implements List<T> {
     @Override
     public void add(int index, T element) {
 
+        try {
+            if (index < 0 || index > size()) {
+                throw new IndexOutOfBoundsException();
+            }
+            Node<T> runner = head;
+            Node<T> previousRunner = head;
+            Node<T> insertThis = new Node<>(element);
+
+            for (int i=0; i<this.size; i++) {
+                //if we are at the correct index and the index
+                // is not at the first node, do this
+                if (index != 0 && i == index) {
+                    previousRunner.nextNode = insertThis;
+                    insertThis.nextNode = runner;
+                    size++;
+                    return;
+                }
+                if (i == 0) {
+                    runner = runner.nextNode;
+                }
+                else {
+                    previousRunner = previousRunner.nextNode;
+                    runner = runner.nextNode;
+                }
+            }
+        }
+        catch (IndexOutOfBoundsException e){
+            System.out.println("Index was out of bounds");
+        }
     }
 
     /**
@@ -189,6 +224,16 @@ public class LinkedList<T> implements List<T> {
      */
     @Override
     public T set(int index, T element) {
+        System.out.println(element);
+
+        Node<T> runner = this.head;
+        for (int i = 0; i < this.size; i++) {
+            if (i == index) {
+                runner.data = element;
+                return element;
+            }
+            runner = runner.nextNode;
+        }
         return null;
     }
 
@@ -218,6 +263,14 @@ public class LinkedList<T> implements List<T> {
      */
     @Override
     public int indexOf(T element) {
+
+        Node<T> runner = this.head;
+        for (int i=0; i<this.size; i++) {
+            if (runner.data == element) {
+                return i;
+            }
+            runner = runner.nextNode;
+        }
         return -1;
     }
 
