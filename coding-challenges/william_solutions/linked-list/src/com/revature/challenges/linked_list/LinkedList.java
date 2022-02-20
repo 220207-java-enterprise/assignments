@@ -21,20 +21,20 @@ public class LinkedList<T> implements List<T> {
     @Override
     public boolean add(T data) {
 
-        System.out.println("start add");
+        //System.out.println("start add");
         if (this.head == null) {
             this.head = new Node<>(data);
-            System.out.println("first if");
+            //System.out.println("first if");
         }
         else if (this.head.nextNode == null) {
             this.tail = new Node<>(data);
             this.head.nextNode = this.tail;
-            System.out.println("2nd if");
+            //System.out.println("2nd if");
         }
         else {
             this.tail.nextNode = new Node<>(data);
             this.tail = this.tail.nextNode;
-            System.out.println("last if");
+            //System.out.println("last if");
         }
         this.size++;
         return false;
@@ -50,6 +50,14 @@ public class LinkedList<T> implements List<T> {
      */
     @Override
     public boolean contains(T data) {
+
+        Node<T> runner = head;
+        for (int i = 0; i < this.size; i++) {
+            if (runner.data == data) {
+                return true;
+            }
+            runner = runner.nextNode;
+        }
         return false;
     }
 
@@ -74,6 +82,49 @@ public class LinkedList<T> implements List<T> {
      */
     @Override
     public boolean remove(T data) {
+
+
+        Node<T> runner = head;
+        Node<T> previousRunner = head;
+        for (int i = 0; i < this.size; i++) {
+            //System.out.println(runner.data);
+            //System.out.println(data);
+
+            //if data is found and it is not in the first node
+            if (runner.data == data && previousRunner.nextNode != runner.nextNode) {
+                System.out.println("first if in remove");
+
+                size--;
+                return true;
+            }
+            //if data is found in the first node do this
+            //currently works!!
+            else if (runner.data == data && i == 0) {
+                System.out.println("second if in remove");
+                System.out.println("head: " + head.data);
+                head = head.nextNode;
+                System.out.println("new head: " + head.data);
+                size--;
+                return true;
+            }
+            //if data is found in the last node do this
+            else if (runner.data == data && runner.nextNode == null) {
+                System.out.println("third if in remove");
+                System.out.println(previousRunner.data);
+                System.out.println(runner.data);
+                size--;
+                return true;
+            }
+            else {
+                System.out.println("last else in remove");
+                System.out.println(runner.data == tail.data);
+                runner = runner.nextNode;
+                if (i != 0)
+                    previousRunner = previousRunner.nextNode;
+            }
+            //System.out.println(i);
+        }
+
         return false;
     }
 
@@ -208,6 +259,7 @@ public class LinkedList<T> implements List<T> {
 
         strBldr.append("]");
 
+        //System.out.println(tail.nextNode==null);
         return strBldr.toString();
     }
 
