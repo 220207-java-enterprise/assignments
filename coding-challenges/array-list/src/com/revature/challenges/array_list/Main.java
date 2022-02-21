@@ -9,7 +9,9 @@ public class Main{
         System.out.println(arr.isEmpty());
         System.out.println(arr.contains(34));
         System.out.println(arr.get(0));
-        System.out.println(arr.remove(45));
+        arr.add(56);
+        arr.add(67);
+        arr.remove(45);
         System.out.println(arr.size());
     }
 }

@@ -82,17 +82,16 @@ public class ArrayList<T> implements List<T> {
         elementContainer = new Object[currentSize];
         int count = 0;
         for (int i =0; i<tempContainer.length; i++){
-            if (count < 1){
-                if (tempContainer[i] != element){
-                    elementContainer[i] = tempContainer[i];
-                }
-                else{
-                    count++;
-                }
-            }
-            else{
+            if (!(tempContainer[i].equals(element))){
                 elementContainer[i] = tempContainer[i];
             }
+            else{
+                break;
+            }
+            count +=1;
+        }
+        for (int j = count+1; j<tempContainer.length; j++){
+            elementContainer[j-1] = tempContainer[j];
         }
         return true;
     }
