@@ -1,5 +1,7 @@
 package com.revature.challenges.array_list;
 
+import java.util.Arrays;
+
 /**
  * Resizable-array implementation of the List interface. Permits all element values,
  * including null. Each ArrayList instance has a capacity. The capacity is the size
@@ -12,9 +14,12 @@ package com.revature.challenges.array_list;
 public class ArrayList<T> implements List<T> {
 
     // The following three lines are provided for your convenience
+    private int pointer = 0;
+
     private static final int DEFAULT_CAPACITY = 10;
-    private Object[] elementContainer = new Object[DEFAULT_CAPACITY];
+    private final int index = 0;
     private int currentSize = 0;
+    private Object[] elementContainer = new Object[currentSize];
 
     /**
      * Appends the specified element to the end of this list.
@@ -24,7 +29,18 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public boolean add(T element) {
-        return false;
+        Object[] tempContainer = new Object[currentSize];
+
+        System.arraycopy(elementContainer, 0, tempContainer, 0, elementContainer.length);
+
+        currentSize += 1;
+        elementContainer = new Object[currentSize];
+
+        System.arraycopy(tempContainer, 0, elementContainer, 0, tempContainer.length);
+
+        elementContainer[elementContainer.length - 1] = element;
+
+        return true;
     }
 
     /**
@@ -37,6 +53,12 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public boolean contains(T element) {
+        for (Object t : elementContainer) {
+            if (t.equals(element)) {
+                return true;
+            }
+        }
+
         return false;
     }
 
@@ -71,7 +93,15 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public int size() {
-        return 0;
+        int count = 0;
+
+        for (Object o : elementContainer) {
+            if ( o != null) {
+                count++;
+            }
+        }
+
+        return count;
     }
 
     /**
@@ -83,7 +113,7 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public T get(int index) {
-        return null;
+        return (T) elementContainer[index];
     }
 
     /**
@@ -110,7 +140,9 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public T set(int index, T element) {
-        return null;
+        T previous = (T) elementContainer[index];
+        elementContainer[index] = element;
+        return previous;
     }
 
     /**
@@ -124,7 +156,24 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public T remove(int index) {
-        return null;
+        Object[] tempContainer = new Object[currentSize];
+
+        System.arraycopy(elementContainer, 0, tempContainer, 0, elementContainer.length);
+
+        currentSize -= 1;
+        elementContainer = new Object[currentSize];
+
+        int j = 0;
+        int k = 0;
+        while (j < tempContainer.length) {
+            if (j != index) {
+                elementContainer[k] = tempContainer[j];
+                k++;
+            }
+            j++;
+        }
+
+        return (T) elementContainer;
     }
 
     /**
@@ -157,4 +206,10 @@ public class ArrayList<T> implements List<T> {
         return 0;
     }
 
+    @Override
+    public String toString() {
+        return "ArrayList: " +
+                "elementContainer=" + Arrays.toString(elementContainer) +
+                '}';
+    }
 }
