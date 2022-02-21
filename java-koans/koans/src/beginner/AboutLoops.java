@@ -135,17 +135,17 @@ public class AboutLoops {
         int count = 0;
         outerLabel:
         for (int i = 0; i < 6; i++) {
-            for (int j = 0; j < 6; j++) {
+            for (int j = 0; j < 6; j++) {//nested loop will reset once int j is re-instantiated within the for loop
                 count++;
                 if (count > 2) {
                     continue outerLabel;
                 }
             }
-            count += 10;
+            count += 10;//will never reach this since outerLabel will continue iterating through for loop until i<6 is false
         }
         // What does continue with a label mean?
         // What gets executed? Where does the program flow continue?
-        assertEquals(count, __);
+        assertEquals(count, 8);
     }
 
     @Koan
@@ -156,13 +156,13 @@ public class AboutLoops {
             for (int j = 0; j < 4; j++) {
                 count++;
                 if (count > 2) {
-                    break outerLabel;
+                    break outerLabel;//will break once count>2 is true
                 }
             }
-            count += 10;
+            count += 10;//will never reach since outerLabel will break
         }
         // What does break with a label mean?
         // What gets executed? Where does the program flow continue?
-        assertEquals(count, __);
+        assertEquals(count, 3);
     }
 }

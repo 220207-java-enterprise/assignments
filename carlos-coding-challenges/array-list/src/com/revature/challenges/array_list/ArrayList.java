@@ -13,18 +13,22 @@ public class ArrayList<T> implements List<T> {
 
     // The following three lines are provided for your convenience
     private static final int DEFAULT_CAPACITY = 10;
-    private Object[] elementContainer = new Object[DEFAULT_CAPACITY];
     private int currentSize = 0;
+    private Object[] elementContainer = new Object[DEFAULT_CAPACITY];
 
-    /**
-     * Appends the specified element to the end of this list.
-     *
-     * @param element element to be appended to this list
-     * @return true
-     */
+
+
+//     * Appends the specified element to the end of this list.
+
+//     * @param element element to be appended to this list
+//     * @return true
+
     @Override
     public boolean add(T element) {
-        return false;
+        elementContainer[currentSize] = element;//replaces elementContainer array with parameter element which refers to the integer we input in main method
+        currentSize++;//increase current size to increase index of array
+        System.out.println(element);
+        return true;
     }
 
     /**
@@ -37,6 +41,16 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public boolean contains(T element) {
+        elementContainer[currentSize] = element;
+        boolean legit = false;
+
+        for (int i = 0; i < currentSize; i++) {
+            if (element == elementContainer[i]){
+                return legit;
+            }
+        }
+
+
         return false;
     }
 
@@ -47,6 +61,7 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public boolean isEmpty() {
+
         return false;
     }
 
@@ -71,7 +86,8 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public int size() {
-        return 0;
+
+        return currentSize;
     }
 
     /**
