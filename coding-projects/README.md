@@ -4,7 +4,7 @@
 
 <br>
 
-<p>Define a Rectangle class with two variables: length and width. You may declare
+<p>Define a Rectangle class with three variables: name, length and width. You may declare
 them to be of type int. Also include the following in your class:</p>
 
 * Constructor with three arguments to set the name, length and width of the rectangle
