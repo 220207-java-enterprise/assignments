@@ -24,7 +24,11 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public boolean add(T element) {
-        return false;
+
+            elementContainer.add(element);
+
+
+            return true;
     }
 
     /**
@@ -37,6 +41,10 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public boolean contains(T element) {
+            if (elementContainer.get(currentsize)== true) {
+                return true;
+            }
+
         return false;
     }
 
@@ -47,6 +55,15 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public boolean isEmpty() {
+        int j = 0;
+        for(int i=0;i<elementContainer.size();i++) {
+            if (elementContainer.get(i)==null){
+                j++;
+                if(j==elementContainer.size()) {
+                    return true;
+                }
+            }
+        }
         return false;
     }
 
@@ -61,6 +78,12 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public boolean remove(T element) {
+        for(int i=0;i<elementCOntainer.size();i++) {
+            if (element == elementContainer.get(i)) {
+                elementContainer.remove(i);
+                return true;
+            }
+        }
         return false;
     }
 
@@ -71,6 +94,13 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public int size() {
+        if(elementContainer.size()!=0) {
+            for (int i = 1; i <= elementContainer.size(); i++) {
+                if (i == elementContainer.size()) {
+                    return i;
+                }
+            }
+        }
         return 0;
     }
 
@@ -83,6 +113,12 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public T get(int index) {
+        if(index < 0 || index >= size()){
+            throw new IndexOutOfBoundsException();
+        }
+        if(elementContainer.get(index)!=null) {
+            return elementContainer.get(index);
+        }
         return null;
     }
 
@@ -97,6 +133,13 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public void add(int index, T element) {
+        object[] obj2 = elementContainer[(elementContainer.size()/2)+elementContainer.size()];
+        for(int i=0;(elementContainer.size()-i)>index; i++){
+
+            obj2.add(elementContainer.get(i));
+
+        }
+        obj2.set(index, element);
 
     }
 
@@ -110,6 +153,7 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public T set(int index, T element) {
+        elementContainer.set(index, element);
         return null;
     }
 
@@ -124,6 +168,7 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public T remove(int index) {
+        elementContainer.remove(index);
         return null;
     }
 
@@ -139,7 +184,12 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public int indexOf(T element) {
-        return 0;
+        for(int i=0; i<elementContainer.size(); i++){
+            if(elementContainer.get(i)==element){
+                return i;
+            }
+        }
+        return -1;
     }
 
     /**
@@ -154,7 +204,16 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public int lastIndexOf(T element) {
-        return 0;
+        int x=0;
+        for(int i=0; i<elementContainer.size();i++) {
+            if (elementContainer.get(i) == element) {
+                x = i;
+            }
+            else {
+                return -1;
+            }
+        }
+        return x;
     }
 
 }
