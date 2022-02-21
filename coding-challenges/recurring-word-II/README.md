@@ -2,7 +2,7 @@
 
 **Prompt**
 
-<p> Given a <b>String</b>, find the most reoccurring word</p>
+<p> Given a <b>String</b>, find the most recurring word</p>
 
 **Input**
 
