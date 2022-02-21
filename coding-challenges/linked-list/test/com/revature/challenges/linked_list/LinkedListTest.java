@@ -30,7 +30,7 @@ public class LinkedListTest {
             throw new RuntimeException("Test failed! Expected return value to be true!");
         }
 
-        if (sut.size != expectedSize) {
+        if (sut.size() != expectedSize) {
             throw new RuntimeException("Test failed! Expected size of list to be one!");
         }
 
@@ -58,7 +58,7 @@ public class LinkedListTest {
             throw new RuntimeException("Test failed! Expected return value to be true!");
         }
 
-        if (sut.size != expectedSize) {
+        if (sut.size() != expectedSize) {
             throw new RuntimeException("Test failed! Expected size of list to be one!");
         }
 

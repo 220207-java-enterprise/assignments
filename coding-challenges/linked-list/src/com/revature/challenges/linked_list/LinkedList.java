@@ -8,9 +8,10 @@ package com.revature.challenges.linked_list;
  */
 public class LinkedList<T> implements List<T> {
 
-    private int size;
+    private int size = 0;
     private Node<T> head;
     private Node<T> tail;
+
 
     /**
      * Appends the specified element to the end of this list.
@@ -20,7 +21,23 @@ public class LinkedList<T> implements List<T> {
      */
     @Override
     public boolean add(T data) {
-        return false;
+        size++;
+
+        if (head == null){
+            head = new Node<>(data);
+            System.out.println(head.data);
+            return true;
+        }
+        tail = head;
+        for(int i = 0; i < size - 1; i++)
+        {
+            if(tail.nextNode == null){
+                tail.nextNode = new Node<>(data);
+                return true;
+            }
+            tail = tail.nextNode;
+        }
+        return true;
     }
 
     /**
@@ -33,6 +50,16 @@ public class LinkedList<T> implements List<T> {
      */
     @Override
     public boolean contains(T data) {
+        if(head == null)
+            return false;
+        tail = head;
+        for(int i = 0; i < size; i++)
+        {
+            if (tail.data == data) {
+                return true;
+            }
+            tail = tail.nextNode;
+        }
         return false;
     }
 
@@ -43,7 +70,9 @@ public class LinkedList<T> implements List<T> {
      */
     @Override
     public boolean isEmpty() {
-        return size == 0;
+        if(head == null)
+            return true;
+        return false;
     }
 
     /**
@@ -57,6 +86,24 @@ public class LinkedList<T> implements List<T> {
      */
     @Override
     public boolean remove(T data) {
+        if(head == null)
+            return false;
+        if(head.data.equals(data))
+        {
+            head = head.nextNode;
+            size--;
+            return true;
+        }
+        tail = head;
+        for(int i = 0; i < size; i++)
+        {
+            if (tail.nextNode.data.equals(data)) {
+                tail.nextNode = tail.nextNode.nextNode;
+                size--;
+                return true;
+            }
+            tail = tail.nextNode;
+        }
         return false;
     }
 
@@ -67,7 +114,7 @@ public class LinkedList<T> implements List<T> {
      */
     @Override
     public int size() {
-        return 0;
+        return size;
     }
 
     /**
@@ -79,7 +126,14 @@ public class LinkedList<T> implements List<T> {
      */
     @Override
     public T get(int index) {
-        return null;
+        if(index > size)
+            return (T) "Failed: Specified index > size of linked list";
+        tail = head;
+        for(int i = 1; i < index; i++)
+        {
+            tail = tail.nextNode;
+        }
+        return (T) tail.data;
     }
 
     /**
@@ -93,7 +147,33 @@ public class LinkedList<T> implements List<T> {
      */
     @Override
     public void add(int index, T element) {
+        Node <T> tmp;
+        if(index > size) {
+            return;
+        }
+        if (head == null){
+            head = new Node<>(element);
+        }
+        size++;
+        tail = head;
+        tmp = tail.nextNode;
+        if(index == 1) {
+            head = new Node<>(element);
+            head.nextNode = tail;
+            return;
+        }
+        for(int i = 1; i < index; i++)
+        {
+            tmp = tail;
+            tail = tail.nextNode;
+        }
 
+        Node<T> tmp2 = new Node<>(element);
+        //System.out.println("Created tmp2: " + tmp2.data + " Tail: " + tail.data + " Tmp: " + tmp.data + " Head: " + head.nextNode.data); //tmp.nextNode.data);
+        tmp2.nextNode = tail;
+
+        tmp.nextNode = tmp2;
+        //System.out.println(head.data + " " + head.nextNode.data + " " +head.nextNode.nextNode.data);
     }
 
     /**
@@ -106,7 +186,24 @@ public class LinkedList<T> implements List<T> {
      */
     @Override
     public T set(int index, T element) {
-        return null;
+        Node <T> tmp;
+        tail = head;
+        tmp = tail.nextNode;
+        if(index == 1) {
+            head = new Node<>(element);
+            head.nextNode = tmp;
+            return (T) tail.data;
+        }
+        for(int i = 1; i < index; i++)
+        {
+            tmp = tail;
+            tail = tail.nextNode;
+        }
+
+        Node<T> tmp2 = new Node<>(element);
+        tmp2.nextNode = tail.nextNode;
+        tmp.nextNode = tmp2;
+        return (T) tail.data;
     }
 
     /**
@@ -120,7 +217,23 @@ public class LinkedList<T> implements List<T> {
      */
     @Override
     public T remove(int index) {
-        return null;
+        if (index < 0 || index > size)
+            return (T) "Failed: index out of bounds";
+        size--;
+        Node <T> tmp;
+        tail = head;
+        tmp = tail.nextNode;
+        if(index == 1) {
+            head = head.nextNode;
+            return (T) tail.data;
+        }
+        for(int i = 1; i < index; i++)
+        {
+            tmp = tail;
+            tail = tail.nextNode;
+        }
+        tmp.nextNode = tail.nextNode;
+        return (T) tail.data;
     }
 
     /**
@@ -135,6 +248,15 @@ public class LinkedList<T> implements List<T> {
      */
     @Override
     public int indexOf(T element) {
+        tail = head;
+        for( int i = 1; i <= size; i++)
+        {
+            if (tail.data.equals(element))
+            {
+                return i;
+            }
+            tail = tail.nextNode;
+        }
         return -1;
     }
 
@@ -150,7 +272,17 @@ public class LinkedList<T> implements List<T> {
      */
     @Override
     public int lastIndexOf(T element) {
-        return -1;
+        int tmp = -1;
+        tail = head;
+        for( int i = 1; i <= size; i++)
+        {
+            if (tail.data.equals(element))
+            {
+                tmp = i;
+            }
+            tail = tail.nextNode;
+        }
+        return tmp;
     }
 
 
