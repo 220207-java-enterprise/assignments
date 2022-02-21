@@ -1,0 +1,7 @@
+public class SumOfArrary {
+	public static void main(Strings[] args){
+		int[] myIntArray = {1,2,3,4,5};
+		System.out.println(myIntArray);
+	}
+
+}

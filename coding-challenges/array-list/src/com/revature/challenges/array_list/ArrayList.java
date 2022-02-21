@@ -1,5 +1,7 @@
 package com.revature.challenges.array_list;
 
+import java.util.Arrays;
+
 /**
  * Resizable-array implementation of the List interface. Permits all element values,
  * including null. Each ArrayList instance has a capacity. The capacity is the size
@@ -24,7 +26,26 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public boolean add(T element) {
-        return false;
+        if (currentSize < DEFAULT_CAPACITY){
+            elementContainer[currentSize] = element;
+            currentSize++;
+
+            System.out.println(Arrays.toString(elementContainer));
+
+            return true;
+        }
+        else {
+            Object[] updatedContainer = new Object[++currentSize];
+            for (int i = 0; i < elementContainer.length; i++) {
+                updatedContainer[i] = elementContainer[i];
+
+            }
+            updatedContainer[currentSize -1] = element;
+            elementContainer = updatedContainer;
+            System.out.println(Arrays.toString(elementContainer));
+            return true;
+        }
+
     }
 
     /**
@@ -37,6 +58,14 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public boolean contains(T element) {
+        for (int i = 0; i < elementContainer.length; i++) {
+            if (element == null && elementContainer[i] == null) {
+                return true;
+            }
+            else if (element == elementContainer[i]){
+                return true;
+            }
+        }
         return false;
     }
 
@@ -46,8 +75,14 @@ public class ArrayList<T> implements List<T> {
      * @return true if this list contains no elements
      */
     @Override
+    //Does not have at least one non null value
     public boolean isEmpty() {
-        return false;
+        if (currentSize == 0){
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     /**
@@ -61,7 +96,16 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public boolean remove(T element) {
-        return false;
+            Object[] updatedContainer = new Object[currentSize];
+            for (int i = 0; i < elementContainer.length; i++) {
+                updatedContainer[i] = elementContainer[i];
+
+            }
+            updatedContainer[currentSize -1] = element;
+            elementContainer = updatedContainer;
+            System.out.println(Arrays.toString(elementContainer));
+            return true;
+
     }
 
     /**

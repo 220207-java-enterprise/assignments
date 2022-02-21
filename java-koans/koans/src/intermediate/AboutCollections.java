@@ -21,9 +21,9 @@ public class AboutCollections {
         list.add("Chicken");
         list.add("Dog");
         list.add("Chicken");
-        assertEquals(list.get(0), __);
-        assertEquals(list.get(1), __);
-        assertEquals(list.get(2), __);
+        assertEquals(list.get(0), "Chicken");
+        assertEquals(list.get(1),"Dog");
+        assertEquals(list.get(2), "Chicken");
     }
 
     @Koan
@@ -33,12 +33,12 @@ public class AboutCollections {
         // PriorityQueue: simple queue implementation
         queue.add("Cat");
         queue.add("Dog");
-        assertEquals(queue.peek(), __);
-        assertEquals(queue.size(), __);
-        assertEquals(queue.poll(), __);
-        assertEquals(queue.size(), __);
-        assertEquals(queue.poll(), __);
-        assertEquals(queue.isEmpty(), __);
+        assertEquals(queue.peek(), "Cat");
+        assertEquals(queue.size(), 2);
+        assertEquals(queue.poll(), "Cat");
+        assertEquals(queue.size(), 1);
+        assertEquals(queue.poll(), "Dog");
+        assertEquals(queue.isEmpty(), true);
     }
 
     @Koan
@@ -47,10 +47,10 @@ public class AboutCollections {
         set.add("Dog");
         set.add("Cat");
         set.add("Dog");
-        assertEquals(set.size(), __);
-        assertEquals(set.contains("Dog"), __);
-        assertEquals(set.contains("Cat"), __);
-        assertEquals(set.contains("Chicken"), __);
+        assertEquals(set.size(), 2);
+        assertEquals(set.contains("Dog"), true);
+        assertEquals(set.contains("Cat"), true);
+        assertEquals(set.contains("Chicken"), false);
     }
 
     @Koan
