@@ -9,7 +9,6 @@ package com.revature.challenges.array_list;
  * @param <T>
  */
 public interface List<T> extends Collection<T> {
-
     /**
      * Returns the element at the specified position in this list.
      *

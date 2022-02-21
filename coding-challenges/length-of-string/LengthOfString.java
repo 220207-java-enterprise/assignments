@@ -2,7 +2,7 @@ import java.util.Scanner;
 public class LengthOfString {
 
     public static void main(String[] args) {
-        String userInput = "";
+        String userInput;
         Scanner inputConsole = new Scanner(System.in);
         System.out.print("Please type your string: ");
         userInput = inputConsole.next();

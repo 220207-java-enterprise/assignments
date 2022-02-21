@@ -1,5 +1,6 @@
 package com.revature.challenges.array_list;
 
+
 /**
  * Resizable-array implementation of the List interface. Permits all element values,
  * including null. Each ArrayList instance has a capacity. The capacity is the size
@@ -10,11 +11,12 @@ package com.revature.challenges.array_list;
  * @param <T> the type of elements maintained by this list
  */
 public class ArrayList<T> implements List<T> {
-
     // The following three lines are provided for your convenience
     private static final int DEFAULT_CAPACITY = 10;
     private Object[] elementContainer = new Object[DEFAULT_CAPACITY];
     private int currentSize = 0;
+
+
 
     /**
      * Appends the specified element to the end of this list.
@@ -22,9 +24,14 @@ public class ArrayList<T> implements List<T> {
      * @param element element to be appended to this list
      * @return true
      */
+    //ArrayList<Integer> myArr = new ArrayList<>(); //initializing here creates infinite loop?
+    //Where do I initialize so that ArrayList class can see it(scope)?
     @Override
     public boolean add(T element) {
-        return false;
+        System.out.println(myArr);
+        elementContainer[currentSize] = element;
+        currentSize++;
+        return true;
     }
 
     /**
@@ -37,9 +44,9 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public boolean contains(T element) {
-        return false;
-    }
-
+            if (myArr.contains(33));
+            return false;
+        }
     /**
      * Returns true if this list contains no elements.
      *
@@ -47,8 +54,10 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public boolean isEmpty() {
+        if(myArr.isEmpty());
         return false;
     }
+
 
     /**
      * Removes the first occurrence of the specified element from this list, if it is present.
@@ -61,6 +70,7 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public boolean remove(T element) {
+        myArr.remove(5);
         return false;
     }
 
@@ -71,6 +81,7 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public int size() {
+        size();
         return 0;
     }
 
@@ -83,6 +94,7 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public T get(int index) {
+        myArr.indexOf(5);
         return null;
     }
 
@@ -97,6 +109,7 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public void add(int index, T element) {
+        myArr.add(5, 33);
 
     }
 
@@ -124,6 +137,7 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public T remove(int index) {
+        myArr.remove(0);
         return null;
     }
 
@@ -139,6 +153,7 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public int indexOf(T element) {
+        myArr.indexOf(0);
         return 0;
     }
 
