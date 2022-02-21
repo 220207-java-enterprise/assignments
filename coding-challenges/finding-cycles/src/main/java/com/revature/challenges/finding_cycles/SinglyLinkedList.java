@@ -1,5 +1,7 @@
 package com.revature.challenges.finding_cycles;
 
+import java.util.ArrayList;
+
 public class SinglyLinkedList<T> {
 
     protected Node<T> head;
@@ -16,7 +18,21 @@ public class SinglyLinkedList<T> {
      * @return true if a cycle is present within this list, otherwise false
      */
     public boolean containsCycle() {
-        // TODO your implementation goes here
+        ArrayList<Node <T>> myList = new ArrayList<>();
+        Node<T> tail = head;
+
+        if(head == null)
+            return false;
+
+        while(tail.nextNode != null)
+        {
+            if(myList.contains(tail))
+                return true;
+            myList.add(tail);
+            tail = tail.nextNode;
+        }
+
+        System.out.println(myList);
         return false;
     }
 

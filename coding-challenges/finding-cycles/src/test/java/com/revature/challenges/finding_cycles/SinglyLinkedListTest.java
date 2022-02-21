@@ -30,6 +30,10 @@ public class SinglyLinkedListTest {
         node5.nextNode = node6;
         node6.nextNode = testHead;
 
+        System.out.println(node1);
+        System.out.println(node2);
+        System.out.println(node1);
+
         // Arrange: Node instantiation
         sut = new SinglyLinkedList<>(testHead);
 
