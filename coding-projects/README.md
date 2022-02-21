@@ -1,8 +1,8 @@
-# Project: Rectangle
+# Project: com.Revature.challenges.Rectangle
 
-**Rectangle Class**
+**com.Revature.challenges.Rectangle Class**
 
-<p>Define a Rectangle class with three variables: name, length and width. You may declare
+<p>Define a com.Revature.challenges.Rectangle class with three variables: name, length and width. You may declare
 them to be of type string and int. Also include the following in your class:</p>
 
 * Constructor with three arguments to set the name, length and width of the rectangle
