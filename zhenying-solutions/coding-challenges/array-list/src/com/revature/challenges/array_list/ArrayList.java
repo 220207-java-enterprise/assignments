@@ -24,17 +24,17 @@ public class ArrayList<T> implements List<T> {
      * @return true
      */
     @Override
+    //add 'A'
     public boolean add(T element) {
         //if currentSize < 10, then there is a space to store the element.
         if (currentSize <10){
             elementContainer[currentSize] = element;
+            //['A', null,null, null,null, null,null, null,null, null]
             currentSize++;
         }else{ //otherwise, create a new Object[],and increase the size, then update the container
             Object[] newElementContainer = new Object[++currentSize];
-            for(int i=0; i<elementContainer.length; i++){
-                //remove the items from old container to the new container
-                newElementContainer[i] = elementContainer[i];
-            }
+            //remove the items from old container to the new container
+            System.arraycopy(elementContainer, 0, newElementContainer, 0, elementContainer.length);
             newElementContainer[currentSize-1] = element;
             elementContainer = newElementContainer;
         }
@@ -68,10 +68,7 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public boolean isEmpty() {
-        if(currentSize==0)
-            return true;
-
-        return false;
+        return currentSize == 0;
     }
 
     /**
@@ -141,6 +138,7 @@ public class ArrayList<T> implements List<T> {
      * @throws IndexOutOfBoundsException if the index is out of range (index < 0 || index >= size())
      */
     @Override
+    @SuppressWarnings("unchecked")
     public T get(int index) {
         //Out of Range
         if (index <0 || index >= currentSize)
@@ -171,22 +169,17 @@ public class ArrayList<T> implements List<T> {
         if(currentSize+1 <=10){
             //0 1 3 4 5 6  --> add 2 in position 2.
             //0 1 2 3 4 5 6
-            for(int i=currentIndex; i>index; i--){
-                elementContainer[i] = elementContainer[i-1];
-            }
+            System.arraycopy(elementContainer, index, elementContainer, index + 1, currentIndex - index);
             elementContainer[index] = element;
         }else{
             Object[] newElementContainer = new Object[currentSize+1];
             //added all elements from the left side
-            for (int i=0; i<index; i++){
-                newElementContainer[i]=elementContainer[i];
-            }
+            System.arraycopy(elementContainer, 0, newElementContainer, 0, index);
             //insert the element
             newElementContainer[index] = element;
             //added all elements from the right side
-            for(int i=index+1; i<currentSize+1; i++){
-                newElementContainer[i] = elementContainer[i-1];
-            }
+            if (currentSize + 1 - (index + 1) >= 0)
+                System.arraycopy(elementContainer, index + 1 - 1, newElementContainer, index + 1, currentSize + 1 - (index + 1));
             elementContainer = newElementContainer;
         }
         currentSize++;
@@ -231,20 +224,16 @@ public class ArrayList<T> implements List<T> {
         if (currentSize<=10){
             //0 1 2 3 4 5 -> remove index 1
             //0 2 3 4 5
-            for(int i=index; i<currentSize-1; i++){
-                elementContainer[i] = elementContainer[i+1];
-            }
+            if (currentSize - 1 - index >= 0)
+                System.arraycopy(elementContainer, index + 1, elementContainer, index, currentSize - 1 - index);
             //mark the last element as null;
             elementContainer[currentSize-1] = null;
         }else{
             //else, decrease the capacity.
             Object[] newElementContainer = new Object[currentSize-1];
-            for(int i=0; i<index; i++){
-                newElementContainer[i] = elementContainer[i];
-            }
-            for(int i=index; i<currentSize-1; i++){
-                newElementContainer[i] = elementContainer[i+1];
-            }
+            System.arraycopy(elementContainer, 0, newElementContainer, 0, index);
+            if (currentSize - 1 - index >= 0)
+                System.arraycopy(elementContainer, index + 1, newElementContainer, index, currentSize - 1 - index);
             elementContainer=newElementContainer;
         }
         currentSize--;
