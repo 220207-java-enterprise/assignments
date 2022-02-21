@@ -4,5 +4,6 @@
 out/
 target/
 bin/
+.idea/
 
 /.idea/
