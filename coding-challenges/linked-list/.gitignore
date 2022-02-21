@@ -2,4 +2,5 @@
 out/
 *.class
 *.jar
-/bin/
+bin/
+target/
