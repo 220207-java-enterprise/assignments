@@ -2,7 +2,7 @@
 
 **Prompt**
 
-<p> Given a <b>String</b>, find the most reoccurring character </p>
+<p> Given a <b>String</b>, find the first most recurring character </p>
 
 **Input**
 
