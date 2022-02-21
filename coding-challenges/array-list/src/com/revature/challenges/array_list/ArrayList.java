@@ -14,9 +14,17 @@ import java.util.Arrays;
 public class ArrayList<T> implements List<T> {
 
     // The following three lines are provided for your convenience
+<<<<<<< HEAD
     private static final int DEFAULT_CAPACITY = 0;
     private Object[] elementContainer = new Object[DEFAULT_CAPACITY];
+=======
+    private int pointer = 0;
+
+    private static final int DEFAULT_CAPACITY = 10;
+    private final int index = 0;
+>>>>>>> c876194e82f2e919b43ca0a511126bfd5fa77116
     private int currentSize = 0;
+    private Object[] elementContainer = new Object[currentSize];
 
     /**
      * Appends the specified element to the end of this list.
@@ -25,11 +33,26 @@ public class ArrayList<T> implements List<T> {
      * @return true
      */
     @Override
+<<<<<<< HEAD
     public boolean add(T element)
     {
         this.currentSize = DEFAULT_CAPACITY + this.currentSize + 1;
         elementContainer = Arrays.copyOf(elementContainer, currentSize);
         elementContainer[currentSize - 1] = element;
+=======
+    public boolean add(T element) {
+        Object[] tempContainer = new Object[currentSize];
+
+        System.arraycopy(elementContainer, 0, tempContainer, 0, elementContainer.length);
+
+        currentSize += 1;
+        elementContainer = new Object[currentSize];
+
+        System.arraycopy(tempContainer, 0, elementContainer, 0, tempContainer.length);
+
+        elementContainer[elementContainer.length - 1] = element;
+
+>>>>>>> c876194e82f2e919b43ca0a511126bfd5fa77116
         return true;
     }
 
@@ -43,12 +66,21 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public boolean contains(T element) {
+<<<<<<< HEAD
         for (Object o : elementContainer) {
             if (o == null)
                 continue;
             if (o.equals(element))
                 return true;
         }
+=======
+        for (Object t : elementContainer) {
+            if (t.equals(element)) {
+                return true;
+            }
+        }
+
+>>>>>>> c876194e82f2e919b43ca0a511126bfd5fa77116
         return false;
     }
 
@@ -101,7 +133,19 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public int size() {
+<<<<<<< HEAD
         return currentSize;
+=======
+        int count = 0;
+
+        for (Object o : elementContainer) {
+            if ( o != null) {
+                count++;
+            }
+        }
+
+        return count;
+>>>>>>> c876194e82f2e919b43ca0a511126bfd5fa77116
     }
 
     /**
@@ -114,7 +158,10 @@ public class ArrayList<T> implements List<T> {
     @Override
     @SuppressWarnings("unchecked")
     public T get(int index) {
+<<<<<<< HEAD
 
+=======
+>>>>>>> c876194e82f2e919b43ca0a511126bfd5fa77116
         return (T) elementContainer[index];
     }
 
@@ -148,9 +195,15 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public T set(int index, T element) {
+<<<<<<< HEAD
         T tmp = (T) elementContainer[index];
         elementContainer[index] = element;
         return tmp;
+=======
+        T previous = (T) elementContainer[index];
+        elementContainer[index] = element;
+        return previous;
+>>>>>>> c876194e82f2e919b43ca0a511126bfd5fa77116
     }
 
     /**
@@ -164,6 +217,7 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public T remove(int index) {
+<<<<<<< HEAD
         Object tmp = new Object();
         tmp = elementContainer[index];
         for (int i = index; i < currentSize - 1; i++)
@@ -174,6 +228,26 @@ public class ArrayList<T> implements List<T> {
         elementContainer = Arrays.copyOf(elementContainer, currentSize);
 
         return (T)tmp;
+=======
+        Object[] tempContainer = new Object[currentSize];
+
+        System.arraycopy(elementContainer, 0, tempContainer, 0, elementContainer.length);
+
+        currentSize -= 1;
+        elementContainer = new Object[currentSize];
+
+        int j = 0;
+        int k = 0;
+        while (j < tempContainer.length) {
+            if (j != index) {
+                elementContainer[k] = tempContainer[j];
+                k++;
+            }
+            j++;
+        }
+
+        return (T) elementContainer;
+>>>>>>> c876194e82f2e919b43ca0a511126bfd5fa77116
     }
 
     /**
@@ -219,7 +293,11 @@ public class ArrayList<T> implements List<T> {
 
     @Override
     public String toString() {
+<<<<<<< HEAD
         return "ArrayList{" +
+=======
+        return "ArrayList: " +
+>>>>>>> c876194e82f2e919b43ca0a511126bfd5fa77116
                 "elementContainer=" + Arrays.toString(elementContainer) +
                 '}';
     }
