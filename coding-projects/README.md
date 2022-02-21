@@ -3,6 +3,7 @@
 **com.Revature.challenges.Rectangle Class**
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <p>Define a com.Revature.challenges.Rectangle class with three variables: name, length and width. You may declare
 =======
 <<<<<<< HEAD
@@ -11,10 +12,11 @@
 <p>Define a Rectangle class with three variables: name, length and width. You may declare
 them to be of type int. Also include the following in your class:</p>
 =======
+=======
+>>>>>>> 4372f2c884de97313160a90ebd71e1fc84379524
 <p>Define a Rectangle class with three variables: name, length and width. You may declare
 >>>>>>> c876194e82f2e919b43ca0a511126bfd5fa77116
 them to be of type string and int. Also include the following in your class:</p>
->>>>>>> 44524affc9630136b5f1cad3a5985056f8d3eb92
 
 * Constructor with three arguments to set the name, length and width of the rectangle
 object.
