@@ -1,5 +1,6 @@
 package com.revature.challenges.array_list;
 
+<<<<<<< HEAD:pawan_coding-challenge-solutions/array-list/src/com/revature/challenges/array_list/Main.java
 public class Main {
     public static void main(String[] args){
         List<String> names = new ArrayList<>();
@@ -37,5 +38,19 @@ public class Main {
 
 //        System.out.println("\n" + names.lastIndexOf("two"));
 
+=======
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+        List<Integer> list = new ArrayList<>();
+
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        list.add(4);
+        
+        System.out.println(list);
+>>>>>>> 7003f927bd4c1c02b60113caf08c39d4b1693093:coding-challenges/array-list/src/com/revature/challenges/array_list/Main.java
     }
 }

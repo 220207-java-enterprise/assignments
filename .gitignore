@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Compiled class file
 **.class
 **.iml
@@ -24,3 +25,15 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+=======
+*.jar
+*.iml
+*.class
+*.DS_Store
+out/
+target/
+bin/
+.idea/
+
+/.idea/
+>>>>>>> 7003f927bd4c1c02b60113caf08c39d4b1693093

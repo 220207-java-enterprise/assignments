@@ -1,5 +1,7 @@
 package com.revature.challenges.array_list;
 
+import java.util.Arrays;
+
 /**
  * Resizable-array implementation of the List interface. Permits all element values,
  * including null. Each ArrayList instance has a capacity. The capacity is the size
@@ -12,10 +14,18 @@ package com.revature.challenges.array_list;
 public class ArrayList<T> implements List<T> {
 
     // The following three lines are provided for your convenience
+<<<<<<< HEAD:pawan_coding-challenge-solutions/array-list/src/com/revature/challenges/array_list/ArrayList.java
 //    private static final int DEFAULT_CAPACITY = 10;
     public int DEFAULT_CAPACITY = 10;
     private Object[] elementContainer = new Object[DEFAULT_CAPACITY];
+=======
+    private int pointer = 0;
+
+    private static final int DEFAULT_CAPACITY = 10;
+    private final int index = 0;
+>>>>>>> 7003f927bd4c1c02b60113caf08c39d4b1693093:coding-challenges/array-list/src/com/revature/challenges/array_list/ArrayList.java
     private int currentSize = 0;
+    private Object[] elementContainer = new Object[currentSize];
 
     /**
      * Appends the specified element to the end of this list.
@@ -25,9 +35,24 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public boolean add(T element) {
+<<<<<<< HEAD:pawan_coding-challenge-solutions/array-list/src/com/revature/challenges/array_list/ArrayList.java
        if(size() <= DEFAULT_CAPACITY)
            elementContainer[currentSize++] = element;
            return true;
+=======
+        Object[] tempContainer = new Object[currentSize];
+
+        System.arraycopy(elementContainer, 0, tempContainer, 0, elementContainer.length);
+
+        currentSize += 1;
+        elementContainer = new Object[currentSize];
+
+        System.arraycopy(tempContainer, 0, elementContainer, 0, tempContainer.length);
+
+        elementContainer[elementContainer.length - 1] = element;
+
+        return true;
+>>>>>>> 7003f927bd4c1c02b60113caf08c39d4b1693093:coding-challenges/array-list/src/com/revature/challenges/array_list/ArrayList.java
     }
 
     /**
@@ -40,6 +65,7 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public boolean contains(T element) {
+<<<<<<< HEAD:pawan_coding-challenge-solutions/array-list/src/com/revature/challenges/array_list/ArrayList.java
 
         for(int i = 0; i < size(); i++){
             if (elementContainer[i] == null && element == null)
@@ -47,6 +73,14 @@ public class ArrayList<T> implements List<T> {
             if (elementContainer[i].equals(element))
                 return true;
         }
+=======
+        for (Object t : elementContainer) {
+            if (t.equals(element)) {
+                return true;
+            }
+        }
+
+>>>>>>> 7003f927bd4c1c02b60113caf08c39d4b1693093:coding-challenges/array-list/src/com/revature/challenges/array_list/ArrayList.java
         return false;
     }
 
@@ -87,7 +121,19 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public int size() {
+<<<<<<< HEAD:pawan_coding-challenge-solutions/array-list/src/com/revature/challenges/array_list/ArrayList.java
         return currentSize;
+=======
+        int count = 0;
+
+        for (Object o : elementContainer) {
+            if ( o != null) {
+                count++;
+            }
+        }
+
+        return count;
+>>>>>>> 7003f927bd4c1c02b60113caf08c39d4b1693093:coding-challenges/array-list/src/com/revature/challenges/array_list/ArrayList.java
     }
 
     /**
@@ -99,9 +145,13 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public T get(int index) {
+<<<<<<< HEAD:pawan_coding-challenge-solutions/array-list/src/com/revature/challenges/array_list/ArrayList.java
         if (index < 0 || index >= size())
             throw new IndexOutOfBoundsException();
         return (T)elementContainer[index];
+=======
+        return (T) elementContainer[index];
+>>>>>>> 7003f927bd4c1c02b60113caf08c39d4b1693093:coding-challenges/array-list/src/com/revature/challenges/array_list/ArrayList.java
     }
 
     /**
@@ -128,7 +178,9 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public T set(int index, T element) {
-        return null;
+        T previous = (T) elementContainer[index];
+        elementContainer[index] = element;
+        return previous;
     }
 
     /**
@@ -142,6 +194,7 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public T remove(int index) {
+<<<<<<< HEAD:pawan_coding-challenge-solutions/array-list/src/com/revature/challenges/array_list/ArrayList.java
 
         if(index < 0 || index >= size())
             throw new IndexOutOfBoundsException("Index out of bound");
@@ -154,6 +207,26 @@ public class ArrayList<T> implements List<T> {
         elementContainer[size() -1 ] = null;
         currentSize--;
         return (T) removeElement;
+=======
+        Object[] tempContainer = new Object[currentSize];
+
+        System.arraycopy(elementContainer, 0, tempContainer, 0, elementContainer.length);
+
+        currentSize -= 1;
+        elementContainer = new Object[currentSize];
+
+        int j = 0;
+        int k = 0;
+        while (j < tempContainer.length) {
+            if (j != index) {
+                elementContainer[k] = tempContainer[j];
+                k++;
+            }
+            j++;
+        }
+
+        return (T) elementContainer;
+>>>>>>> 7003f927bd4c1c02b60113caf08c39d4b1693093:coding-challenges/array-list/src/com/revature/challenges/array_list/ArrayList.java
     }
 
     /**
@@ -204,4 +277,10 @@ public class ArrayList<T> implements List<T> {
         return DEFAULT_CAPACITY;
     }
 
+    @Override
+    public String toString() {
+        return "ArrayList: " +
+                "elementContainer=" + Arrays.toString(elementContainer) +
+                '}';
+    }
 }
