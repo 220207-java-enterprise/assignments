@@ -99,8 +99,13 @@ public class ArrayList<T> implements List<T> {
         if (index == -1) {
             return false;
         }
+        //lol just use the version that uses and index after finding the index
+        //the version given in the code down below near the bottom of the file
+        remove(index);
 
-        this.currentSize--;
+        
+        //keep this block comment just in case, doesn't fully work
+        /*this.currentSize--;
         Object[] tempContainer = new Object[this.currentSize];
 
         for (int i=0; i<this.currentSize; i++) {
@@ -117,7 +122,7 @@ public class ArrayList<T> implements List<T> {
             }
         }
         this.elementContainer = new Object[this.currentSize];
-        this.elementContainer = tempContainer;
+        this.elementContainer = tempContainer;*/
         return true;
     }
 
