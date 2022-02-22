@@ -1,5 +1,7 @@
 package com.revature.challenges.array_list;
 
+import java.util.Arrays;
+
 /**
  * Resizable-array implementation of the List interface. Permits all element values,
  * including null. Each ArrayList instance has a capacity. The capacity is the size
@@ -12,10 +14,9 @@ package com.revature.challenges.array_list;
 public class ArrayList<T> implements List<T> {
 
     // The following three lines are provided for your convenience
-    private static final int DEFAULT_CAPACITY = 10;
+    private static int DEFAULT_CAPACITY = 10;
     private Object[] elementContainer = new Object[DEFAULT_CAPACITY];
     private int currentSize = 0;
-
     /**
      * Appends the specified element to the end of this list.
      *
@@ -23,7 +24,15 @@ public class ArrayList<T> implements List<T> {
      * @return true
      */
     @Override
-    public boolean add(T element) {
+    public boolean add(T element){
+        if (currentSize < DEFAULT_CAPACITY) {
+            elementContainer[currentSize] = element;
+            System.out.println(Arrays.toString(elementContainer));
+            currentSize++;
+            return true;
+        } else if(element==null){
+            System.out.println("Cannot add null item to the array.");
+        }
         return false;
     }
 
@@ -35,11 +44,21 @@ public class ArrayList<T> implements List<T> {
      * @param element element whose presence in this list is to be tested
      * @return true if this list contains the specified element
      */
-    @Override
+    @Override //input -> element output -> boolean
     public boolean contains(T element) {
+        // return true if element is inside elementContainer
+        if (currentSize==0){
+            return false;
+        }
+        for (int i = 0; i < elementContainer.length; i++) {
+            if (elementContainer[i].equals(element)) {
+                System.out.println(element + " is inside the ArrayList");
+                return true;
+            }
+        }
+        System.out.println(element + " is not inside the ArrayList");
         return false;
     }
-
     /**
      * Returns true if this list contains no elements.
      *
@@ -47,7 +66,7 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public boolean isEmpty() {
-        return false;
+        return currentSize==0;
     }
 
     /**
@@ -61,6 +80,21 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public boolean remove(T element) {
+        System.out.println("Running remove()...");
+        for (int i = 0; i < elementContainer.length; i++){
+            if (element.equals(elementContainer[i])) {
+                int j=0;
+                while(j < currentSize){
+                    System.out.println(elementContainer[j]);
+                    T temp = (T) elementContainer[j+1];
+                    elementContainer[j]=temp;
+                    j++;
+                }
+                System.out.println("After removing: "+Arrays.toString(elementContainer));
+                currentSize--;
+                return true;
+            }
+        }
         return false;
     }
 
@@ -71,7 +105,7 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public int size() {
-        return 0;
+        return currentSize;
     }
 
     /**
@@ -82,8 +116,12 @@ public class ArrayList<T> implements List<T> {
      * @throws IndexOutOfBoundsException if the index is out of range (index < 0 || index >= size())
      */
     @Override
+    @SuppressWarnings("unchecked")
     public T get(int index) {
-        return null;
+        if (index > DEFAULT_CAPACITY || index < 0){
+            throw new IndexOutOfBoundsException("Index out of bounds");
+        }
+        return (T) elementContainer[index];
     }
 
     /**

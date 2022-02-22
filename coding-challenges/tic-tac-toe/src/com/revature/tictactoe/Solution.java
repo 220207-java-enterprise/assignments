@@ -1,37 +1,90 @@
 package com.revature.tictactoe;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
 public class Solution {
     public char validateWin(char[][] board) {
+        if (xHorizontal(board) == true) {
+            return 'X';
+        } else if (xVertical(board) == true) {
+            return 'X';
+        }else if(xDiagonal(board) == true) {
+            return 'X';
+        }else if (oHorizontal(board) == true){
+            return 'O';
+        } else if (oVertical(board) == true){
+            return 'O';
+        } else if(oDiagonal(board) == true){
+            return 'O';
+        }
+        else {
+            return 'T';
+        }
+    }
 
-        for (int i=0; i<board.length; i++){
-            for (int j=0; j<board[i].length; j++){
-                if (board[i][j] == board[i][j+1] && board[i][j+1] == board[i][j+2]) {
-                    System.out.println(board[i][j] + " WINS!");
-                    return board[i][j];
-                }
-                if (board[i][j] == board[i+2][j+1] && board[i][j+1] == board[i][j+2]) {
-                    System.out.println(board[i][j] + " WINS!");
-                    return board[i][j];
-                }
-                if (board[i][j] == board[i][j+1] && board[i][j+1] == board[i][j+2]) {
-                    System.out.println(board[i][j] + " WINS!");
-                    return board[i][j];
-                }
-            }
+    private Boolean xHorizontal(char[][] board) {
+        if (board[0][0] == 'X' && board[0][1] == 'X' && board[0][2] == 'X') {
+            return true;
+        } else if (board[1][0] == 'X' && board[1][1] == 'X' && board[1][2] == 'X') {
+            return true;
+        } else if (board[2][0] == 'X' && board[2][1] == 'X' && board[2][2] == 'X') {
+            return true;
         }
 
-        if (board[0][0] == board[0][1] && board[0][1] == board[0][2]) {
-            System.out.println(board[0][0] + " WINS!");
-            return board[0][0];
-        } else if (board[0][0] == board[1][0] && board[1][0] == board[2][0]) {
-            System.out.println(board[0][0] + " WINS!");
-            return board[0][0];
-        } else if (board[0][0]==board[1][1] && board[1][1]==board[2][2]){
-            System.out.println(board[0][0] + " WINS!");
+        return false;
+    }
+
+    private Boolean xVertical(char[][] board) {
+        if (board[0][0] == 'X' && board[1][0] == 'X' && board[2][0] == 'X') {
+            return true;
+        } else if (board[0][1] == 'X' && board[1][1] == 'X' && board[2][1] == 'X') {
+            return true;
+        } else if (board[0][2] == 'X' && board[1][2] == 'X' && board[2][2] == 'X') {
+            return true;
         }
 
-        System.out.println("It's a tie!");
-        return 'T';
+        return false;
+    }
 
+    private Boolean oHorizontal(char[][] board) {
+        if (board[0][0] == 'O' && board[0][1] == 'O' && board[0][2] == 'O') {
+            return true;
+        } else if (board[1][0] == 'O' && board[1][1] == 'O' && board[1][2] == 'O') {
+            return true;
+        } else if (board[2][0] == 'O' && board[2][1] == 'O' && board[2][2] == 'O') {
+            return true;
+        }
+
+        return false;
+    }
+
+    private Boolean oVertical(char[][] board) {
+        if (board[0][0] == 'O' && board[1][0] == 'O' && board[2][0] == 'O') {
+            return true;
+        } else if (board[0][1] == 'O' && board[1][1] == 'O' && board[2][1] == 'O') {
+            return true;
+        } else if (board[0][2] == 'O' && board[1][2] == 'O' && board[2][2] == 'O') {
+            return true;
+        }
+
+        return false;
+    }
+
+    private Boolean oDiagonal(char[][] board){
+        if (board[0][0] == 'O' && board[1][1] == 'O' && board[0][0] == board[2][2]){
+            return true;
+        } else if (board[2][0] == 'O' && board[1][1] == 'O' && board[0][0] == board[0][2]){
+            return true;
+        }
+        return false;
+    }
+
+    private Boolean xDiagonal(char[][] board){
+        if (board[0][0] == 'X' && board[1][1] == 'X' && board[0][0] == board[2][2]){
+            return true;
+        } else if (board[2][0] == 'X' && board[1][1] == 'X' && board[0][0] == board[0][2]){
+            return true;
+        }
+        return false;
     }
 }
