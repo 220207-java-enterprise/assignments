@@ -18,7 +18,7 @@ delete from "Customer" where "CustomerId" > 59;
 
 SELECT * from "Employee";
 select "LastName", "FirstName" from "Employee" where "LastName" = 'King';
-select * from "Employee" where "FirstName" = 'Andrew' and  "ReportsTo" = NULL; -- not working
+select * from "Employee" where "FirstName" = 'Andrew' and  "ReportsTo" is null; 
 
 
 
@@ -37,7 +37,7 @@ select * from "Employee" where "FirstName" = 'Andrew' and  "ReportsTo" = NULL; -
 
 
 select * from "Album" order by "AlbumId" desc;
-select "FirstName" from "Customer" order by "FirstName";\
+select "FirstName" from "Customer" order by "FirstName";
 
 
 
@@ -158,6 +158,17 @@ select * from "Employee" where "HireDate" between '2003/06/01' and '2004/03/01';
  
 
 
+alter table "Invoice"
+drop constraint "FK_InvoiceCustomerId";
+
+alter table "Invoice"
+add constraint "FK_InvoiceCustomerId";
+foreign key ("CustomerId")
+references "Customer"("CustomerId")
+on delete cascade;
+
+delete from "Customer"
+where "FirstName" = 'Robert' and "LastName" = 'Walter';
 
 --delete from "InvoiceLine" where "InvoiceId"  = 50 and "InvoiceLineId" = 61;
 --delete from "Invoice" where "CustomerId" = 32;
@@ -277,7 +288,7 @@ cross join "Album" order by "Name";
 
 
 
-select * from "Employee" e join "Employee" e1 on  e."EmployeeId"= e1."ReportsTo";
+select * from "Employee" e join "Employee" e1 on  e."EmployeeId" e1."ReportsTo";
 
 
 
