@@ -1,31 +1,34 @@
 package com.revature.challenges.array_list;
 
+import java.util.Arrays;
+
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello World");
 
-        ArrayList<Integer> arrList = new ArrayList<>();
-        System.out.println(arrList);
-        arrList.add(10);
-        arrList.add(9);
-        arrList.add(8);
-        arrList.add(7);
-        arrList.add(6);
-        arrList.add(5);
-        arrList.add(4);
-        arrList.add(3);
-        arrList.add(2);
-        arrList.add(1);
-        arrList.add(0);
+        ArrayList<String> soccerPlayers = new ArrayList<>();
+        soccerPlayers.add("ronaldinho");
+        soccerPlayers.add("aubameyang");
+        soccerPlayers.add("messi");
+        soccerPlayers.add("cristiano");
+        soccerPlayers.add("beckham");
+        soccerPlayers.add("saka");
+        
+        System.out.println();
+        soccerPlayers.contains("federer");
+        soccerPlayers.isEmpty();
+        soccerPlayers.size();
 
-        arrList.contains(11);
+        soccerPlayers.set(3, "ronaldinho");
 
-        System.out.println(arrList.isEmpty());
+        soccerPlayers.get(1);
 
-        //arrList.remove(new Integer(10));
+        soccerPlayers.lastIndexOf("ronaldinho");
 
-        System.out.println("Size of the ArrayList= "+arrList.size());
-        System.out.println("Element at index 9= " + arrList.get(9));
+        soccerPlayers.lastIndexOf("tendulkar");
+
+        soccerPlayers.indexOf("saka");
+
+        System.out.println("\n"+soccerPlayers.toString());
 
     }
 }

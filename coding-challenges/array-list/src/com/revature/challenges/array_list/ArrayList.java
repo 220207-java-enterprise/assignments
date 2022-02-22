@@ -13,10 +13,13 @@ import java.util.Arrays;
  */
 public class ArrayList<T> implements List<T> {
 
-    // The following three lines are provided for your convenience
-    private static int DEFAULT_CAPACITY = 10;
-    private Object[] elementContainer = new Object[DEFAULT_CAPACITY];
+    private int pointer = 0;
+
+    private static final int DEFAULT_CAPACITY = 10;
+    private final int index = 0;
     private int currentSize = 0;
+    private Object[] elementContainer = new Object[currentSize];
+
     /**
      * Appends the specified element to the end of this list.
      *
@@ -25,16 +28,37 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public boolean add(T element){
-        if (currentSize < DEFAULT_CAPACITY) {
-            elementContainer[currentSize] = element;
-            System.out.println(Arrays.toString(elementContainer));
-            currentSize++;
-            return true;
-        } else if(element==null){
-            System.out.println("Cannot add null item to the array.");
-        }
-        return false;
+
+        Object[] tempContainer = new Object[currentSize];
+
+        /*
+        1. make a copy of the element container and store into tempContainer
+        Params
+        src – the source array.
+        srcPos – starting position in the source array.
+        dest – the destination array.
+        destPos – starting position in the destination data.
+        length – the number of array elements to be copied.
+        */
+        System.arraycopy(elementContainer, 0, tempContainer, 0, elementContainer.length);
+
+        // 2. Increment currentSize
+        currentSize += 1;
+
+        // 3. Re-instantiate elementContainer using that can hold the new currentSize value
+        elementContainer = new Object[currentSize];
+
+        // 4. Send all tempContainer elements back to elementContainer. Now elementContainer can hold one extra item
+        System.arraycopy(tempContainer, 0, elementContainer, 0, tempContainer.length);
+
+        // 5. Add the new element at the last index of elementContainer
+        elementContainer[elementContainer.length - 1] = element;
+
+        System.out.println("Adding "+element+" to soccerPlayers");
+        return true;
+
     }
+
 
     /**
      * Returns true if this list contains the specified element. More formally,
@@ -52,11 +76,11 @@ public class ArrayList<T> implements List<T> {
         }
         for (int i = 0; i < elementContainer.length; i++) {
             if (elementContainer[i].equals(element)) {
-                System.out.println(element + " is inside the ArrayList");
+                System.out.println(element + " is a soccerPlayer");
                 return true;
             }
         }
-        System.out.println(element + " is not inside the ArrayList");
+        System.out.println(element + " is not a soccerPlayer");
         return false;
     }
     /**
@@ -66,6 +90,11 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public boolean isEmpty() {
+        if (currentSize==0){
+            System.out.println("soccerPlayers is an empty array");
+        } else {
+            System.out.println("soccerPlayers is not an empty array");
+        }
         return currentSize==0;
     }
 
@@ -105,6 +134,7 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public int size() {
+        System.out.println("There are "+currentSize+" players in soccerPlayers");
         return currentSize;
     }
 
@@ -118,8 +148,10 @@ public class ArrayList<T> implements List<T> {
     @Override
     @SuppressWarnings("unchecked")
     public T get(int index) {
-        if (index > DEFAULT_CAPACITY || index < 0){
-            throw new IndexOutOfBoundsException("Index out of bounds");
+        try {
+            System.out.println("soccerPlayer at index " + index + " is " + elementContainer[index].toString());
+        } catch (ArrayIndexOutOfBoundsException e){
+            e.printStackTrace();
         }
         return (T) elementContainer[index];
     }
@@ -148,7 +180,12 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public T set(int index, T element) {
-        return null;
+        // get item that will be replaced
+        T previous = (T) elementContainer[index];
+        // update previous with the new item
+        elementContainer[index] = element;
+        // return replaced item
+        return previous;
     }
 
     /**
@@ -177,7 +214,17 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public int indexOf(T element) {
-        return 0;
+        // start cursor from the front
+        pointer = 0;
+        while (pointer < elementContainer.length){
+            if (elementContainer[pointer].equals(element)){
+                System.out.println(element +" first occurs in this index position: "+pointer);
+                return pointer;
+            }
+            pointer++;
+        }
+        System.out.println(element + " is not in the array");
+        return -1;
     }
 
     /**
@@ -192,7 +239,23 @@ public class ArrayList<T> implements List<T> {
      */
     @Override
     public int lastIndexOf(T element) {
-        return 0;
+        // start cursor from the back
+        pointer = elementContainer.length-1;
+        while (pointer >= 0){
+            if (elementContainer[pointer].equals(element)){
+                System.out.println(element +" last occurs in this index position: "+pointer);
+                return pointer;
+            }
+            pointer--;
+        }
+        System.out.println(element + " is not in the array");
+        return -1;
     }
 
+    @Override
+    public String toString() {
+        return "ArrayList: " +
+                "elementContainer=" + Arrays.toString(elementContainer) +
+                '}';
+    }
 }
