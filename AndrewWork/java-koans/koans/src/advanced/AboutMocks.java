@@ -40,7 +40,14 @@ public class AboutMocks {
         // HINT: pass a safe Collaborator implementation to constructor
         // new ClassUnderTest(new Collaborator(){... it should not be the
         // objective of this test to test that collaborator, so replace it
-        new ClassUnderTest().doSomething();
+        // makes a new Collaborator to test with doBusinessStuff without failure.
+        Collaborator test = new Collaborator() {
+            @java.lang.Override
+            public void doBusinessStuff() {
+
+            }
+        };
+        new ClassUnderTest(test).doSomething();
     }
 
 }
