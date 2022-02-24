@@ -2,7 +2,7 @@ package com.revature.foundation;
 
 import java.util.UUID;
 
-public class Login {
+public class UserDetail {
 
         private String ID;
         private String username;
@@ -12,7 +12,7 @@ public class Login {
         private String surName;
 
 
-        Login(String ID, String givenName, String surName, String email, String username, String password){
+        UserDetail(String ID, String givenName, String surName, String email, String username, String password){
 
         }
 
@@ -47,8 +47,6 @@ public class Login {
         public String getSurName() {
                 return surName;
         }
-
-
 
         public String getGivenName() {
                 return givenName;
