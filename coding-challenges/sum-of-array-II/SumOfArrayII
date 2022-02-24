@@ -1,6 +1,8 @@
 public class SumOfArrayII {
 
 	public static void main(String[] args) {
+		int sum = 0
+
 		Scanner s = new Scanner(System.in)
 	
 		int length = s.nextInt();
@@ -9,10 +11,8 @@ public class SumOfArrayII {
 	System.out.println("Please enter the array elements");
 	
 	for int i = 0; i < length; i++) {
-	input[i] = s.nextInt();
+	sum = sum + input[i];
 	}
-	
-	int total = sumOfElements(input);
 
 	System.out.println("Sum of the integers in your array: " + sum)
 
