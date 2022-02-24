@@ -1,4 +1,4 @@
-package com.revature.foundation.service;
+package com.revature.foundation;
 
 public class UserService {
 

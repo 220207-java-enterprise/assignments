@@ -1,11 +1,11 @@
-drop table if exists er_reimbursments;
+drop table if exists er_reimbursements;
 drop table if exists ers_users;
 drop table if exists ers_reimbursement_status;
 drop table if exists ers_reimbursement_type;
 drop table if exists ers_user_roles;
 
 
-create table er_reimbursments (
+create table er_reimbursements (
 
 	reim_id		varchar,
 	amount		 int,
@@ -24,14 +24,14 @@ create table er_reimbursments (
 
 
 -- TODO - work in progress
---alter table er_reimbursments
+--alter table er_reimbursements
 --add constraint f_K_author_id foreign key (author_id)
 --references ers_users (user_id),
 --add constraint f_K_resolver_id foreign key (resolver_id)
 --references ers_users (user_id);
 --
 --alter table ers_reimbursement_status
---add constraint f_K_status_id foreign key (staus_id)
+--add constraint f_K_status_id foreign key (status_id)
 --references ers_users (user_id),
 --add constraint f_K_resolver_id foreign key (resolver_id)
 --references ers_users (user_id);

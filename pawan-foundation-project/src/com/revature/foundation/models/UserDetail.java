@@ -1,5 +1,6 @@
-package com.revature.foundation;
+package com.revature.foundation.models;
 
+import java.util.Objects;
 import java.util.UUID;
 
 public class UserDetail {
@@ -62,6 +63,19 @@ public class UserDetail {
 
         public void setEmail(String email) {
                 this.email = email;
+        }
+
+        @Override
+        public boolean equals(Object o) {
+                if (this == o) return true;
+                if (o == null || getClass() != o.getClass()) return false;
+                UserDetail that = (UserDetail) o;
+                return ID.equals(that.ID) && username.equals(that.username) && password.equals(that.password) && email.equals(that.email) && givenName.equals(that.givenName) && surName.equals(that.surName);
+        }
+
+        @Override
+        public int hashCode() {
+                return Objects.hash(ID, username, password, email, givenName, surName);
         }
 
         @Override
