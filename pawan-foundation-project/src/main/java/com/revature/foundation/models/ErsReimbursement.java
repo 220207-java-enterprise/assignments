@@ -3,7 +3,7 @@ package com.revature.foundation.models;
 import java.util.Objects;
 import java.util.UUID;
 
-public class ErsUser {
+public class ErsReimbursement {
 
     String reimbId;               // PK type varchar
     int amount;                 // not null type int (limit 6 digit with 2 decimal points)
@@ -18,12 +18,12 @@ public class ErsUser {
     String typeId;              // Fk not null varchar
 
 
-    public ErsUser(){
+    public ErsReimbursement(){
 
     }
 
-    public ErsUser (int amount, String sumitted, String resolved,
-                   String description, String receipt){
+    public ErsReimbursement(int amount, String sumitted, String resolved,
+                            String description, String receipt){
         setAmount(amount);
         setSubmitted(sumitted);
         setResolved(resolved);
@@ -99,7 +99,7 @@ public class ErsUser {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        ErsUser erUser = (ErsUser) o;
+        ErsReimbursement erUser = (ErsReimbursement) o;
         return amount == erUser.amount && Objects.equals(reimbId, erUser.reimbId) && Objects.equals(submitted, erUser.submitted) && Objects.equals(resolved, erUser.resolved) && Objects.equals(description, erUser.description) && Objects.equals(receipt, erUser.receipt) && Objects.equals(paymentId, erUser.paymentId) && Objects.equals(authorId, erUser.authorId) && Objects.equals(resolverId, erUser.resolverId) && Objects.equals(statusId, erUser.statusId) && Objects.equals(typeId, erUser.typeId);
     }
 
