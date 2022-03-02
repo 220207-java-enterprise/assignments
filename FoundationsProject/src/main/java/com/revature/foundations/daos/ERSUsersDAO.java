@@ -131,7 +131,7 @@ public class ERSUsersDAO implements CrudDAO<ERSUsers> {
         try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
 
             PreparedStatement pstmt = conn.prepareStatement(rootSelect + "WHERE USER_ID = ?");
-            pstmt.setString(1, USER_ID);
+            pstmt.setString(1, user_id);
 
             ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {

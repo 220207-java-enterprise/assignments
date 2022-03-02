@@ -1,5 +1,4 @@
 package com.revature.foundations.services;
 
-public class ERSReimbursementTypesService {
-
+public class TokenService {
 }
