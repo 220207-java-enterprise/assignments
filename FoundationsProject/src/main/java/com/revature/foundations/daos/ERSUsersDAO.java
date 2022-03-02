@@ -3,55 +3,52 @@ package com.revature.foundations.daos;
 import com.revature.foundations.models.ERSUsers;
 import com.revature.foundations.util.ConnectionFactory;
 
+import javax.management.relation.Role;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ERSUsersDAO implements CrudDAO<ERSUsers> {
 
-    @Override
-    public void save(ERSUsers newObj) {
+    private final String rootSelect = "SELECT " +
+            "au.id, au.first_name, au.last_name, au.email, au.username, au.password, au.role, ur.role_name " +
+            "FROM app_users au " +
+            "JOIN user_roles ur " +
+            "ON au.role = ur.id ";
 
-    }
+    public ERSUsers findUserByUsername(String username) {
 
-    @Override
-    public void update(ERSUsers updatedObj) {
-
-    }
-
-        public ERSUsers findUserByUsername(String username) {
-
-            ERSUsers user = null;
-
-            try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
-
-                PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM app_users WHERE username = ?");
-                pstmt.setString(1, username);
-
-                ResultSet rs = pstmt.executeQuery();
-                if (rs.next()) {
-                    user = new AppUser();
-                    user.setId(rs.getString("id"));
-                    user.setFirstName(rs.getString("first_name"));
-                    user.setLastName(rs.getString("last_name"));
-                    user.setEmail(rs.getString("email"));
-                    user.setUsername(rs.getString("username"));
-                    user.setPassword(rs.getString("password"));
-                    // TODO fix AppUser to include role
-                }
-
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
-
-            return user;
-        }
-
-    public AppUser findUserByEmail(String email) {
-
-        AppUser user = null;
+        ERSUsers user = null;
 
         try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
 
-            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM app_users WHERE email = ?");
+            PreparedStatement pstmt = conn.prepareStatement(rootSelect + "WHERE username = ?");
+            pstmt.setString(1, username);
+
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                user = new ERSUsers();
+                user.setUser_id(rs.getString("id"));
+                user.setEmail(rs.getString("email"));
+                user.setUsername(rs.getString("username"));
+                user.setPassword(rs.getString("password"));
+                user.setRole_id(new Role(rs.getString("role");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return user;
+    }
+
+    public ERSUsers findUserByEmail(String email) {
+
+        ERSUsers user = null;
+
+        try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
+
+            PreparedStatement pstmt = conn.prepareStatement(rootSelect + "WHERE email = ?");
             pstmt.setString(1, email);
 
             ResultSet rs = pstmt.executeQuery();
@@ -63,11 +60,11 @@ public class ERSUsersDAO implements CrudDAO<ERSUsers> {
                 user.setEmail(rs.getString("email"));
                 user.setUsername(rs.getString("username"));
                 user.setPassword(rs.getString("password"));
-                // TODO fix AppUser to include role
+                user.setRole(new UserRole(rs.getString("role"), rs.getString("role_name")));
             }
 
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new DataSourceException(e);
         }
 
         return user;
@@ -76,13 +73,11 @@ public class ERSUsersDAO implements CrudDAO<ERSUsers> {
 
     public AppUser findUserByUsernameAndPassword(String username, String password) {
 
-        System.out.println("findUserByUsernameAndPassword was invoked!!!!!");
-
         AppUser authUser = null;
 
         try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
 
-            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM app_users WHERE username = ? AND password = ?");
+            PreparedStatement pstmt = conn.prepareStatement(rootSelect + "WHERE username = ? AND password = ?");
             pstmt.setString(1, username);
             pstmt.setString(2, password);
 
@@ -95,7 +90,7 @@ public class ERSUsersDAO implements CrudDAO<ERSUsers> {
                 authUser.setEmail(rs.getString("email"));
                 authUser.setUsername(rs.getString("username"));
                 authUser.setPassword(rs.getString("password"));
-                // TODO fix AppUser to include role
+                authUser.setRole(new UserRole(rs.getString("role"), rs.getString("role_name")));
             }
 
         } catch (SQLException e) {
@@ -118,7 +113,7 @@ public class ERSUsersDAO implements CrudDAO<ERSUsers> {
             pstmt.setString(4, newUser.getEmail());
             pstmt.setString(5, newUser.getUsername());
             pstmt.setString(6, newUser.getPassword());
-            pstmt.setString(7, "7c3521f5-ff75-4e8a-9913-01d15ee4dc97"); // TODO fix with Role enum
+            pstmt.setString(7, newUser.getRole().getId());
 
             int rowsInserted = pstmt.executeUpdate();
             if (rowsInserted != 1) {
@@ -140,7 +135,7 @@ public class ERSUsersDAO implements CrudDAO<ERSUsers> {
 
         try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
 
-            PreparedStatement pstmt = conn.prepareStatement("SELECT * FROM app_users WHERE id = ?");
+            PreparedStatement pstmt = conn.prepareStatement(rootSelect + "WHERE id = ?");
             pstmt.setString(1, id);
 
             ResultSet rs = pstmt.executeQuery();
@@ -152,7 +147,7 @@ public class ERSUsersDAO implements CrudDAO<ERSUsers> {
                 user.setEmail(rs.getString("email"));
                 user.setUsername(rs.getString("username"));
                 user.setPassword(rs.getString("password"));
-                // TODO fix AppUser to include role
+                user.setRole(new UserRole(rs.getString("role"), rs.getString("role_name")));
             }
 
         } catch (SQLException e) {
@@ -163,21 +158,15 @@ public class ERSUsersDAO implements CrudDAO<ERSUsers> {
 
     }
 
-    @Override // TODO this should probably return a dynamically size
-    public AppUser[] getAll() {
+    @Override
+    public List<AppUser> getAll() {
 
-        AppUser[] users;
+        List<AppUser> users = new ArrayList<>();
 
         try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
 
-            Statement getRecordCount = conn.createStatement();
-            ResultSet countResult = getRecordCount.executeQuery("SELECT COUNT(*) FROM app_users");
-            countResult.next();
-            int userCount = countResult.getInt("count");
-            users = new AppUser[userCount];
-
-            ResultSet rs = conn.createStatement().executeQuery("SELECT * FROM app_users");
-            for (int i = 0; i <= userCount; i++, rs.next()) {
+            ResultSet rs = conn.createStatement().executeQuery(rootSelect);
+            while (rs.next()) {
                 AppUser user = new AppUser();
                 user.setId(rs.getString("id"));
                 user.setFirstName(rs.getString("first_name"));
@@ -185,10 +174,9 @@ public class ERSUsersDAO implements CrudDAO<ERSUsers> {
                 user.setEmail(rs.getString("email"));
                 user.setUsername(rs.getString("username"));
                 user.setPassword(rs.getString("password"));
-                // TODO include role
-                users[i] = user;
+                user.setRole(new UserRole(rs.getString("role"), rs.getString("role_name")));
+                users.add(user);
             }
-
         } catch (SQLException e) {
             throw new DataSourceException(e);
         }
@@ -249,5 +237,4 @@ public class ERSUsersDAO implements CrudDAO<ERSUsers> {
             throw new DataSourceException(e);
         }
     }
-
 }

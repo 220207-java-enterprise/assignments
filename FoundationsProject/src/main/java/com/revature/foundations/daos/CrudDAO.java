@@ -1,14 +1,13 @@
 package com.revature.foundations.daos;
 
+import java.util.List;
+
 public interface CrudDAO<T> {
 
-    T[] getAll();
-
+    void save(T newObject);
     T getById(String id);
-
-    void save(T newObj);
-
-    void update(T updatedObj);
-
+    List<T> getAll();
+    void update(T updatedObject);
     void deleteById(String id);
+
 }
