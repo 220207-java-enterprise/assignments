@@ -10,12 +10,13 @@ public class ERSUsers {
     private String surname;
     private Boolean is_active;
     private String role_id;
+    private ERSUserRoles role;
 
     public ERSUsers() {
         super();
     }
 
-    public ERSUsers(String username, String email, String password, String given_name, String surname, Boolean is_active, String role_id) {
+    public ERSUsers(String username, String email, String password, String given_name, String surname, Boolean is_active, String role_id, ERSUserRoles role) {
         this.username = username;
         this.email = email;
         this.password = password;
@@ -23,9 +24,10 @@ public class ERSUsers {
         this.surname = surname;
         this.is_active = is_active;
         this.role_id = role_id;
+        this.role = role;
     }
 
-    public ERSUsers(String user_id, String username, String email, String password, String given_name, String surname, Boolean is_active, String role_id) {
+    public ERSUsers(String user_id, String username, String email, String password, String given_name, String surname, Boolean is_active, String role_id, ERSUserRoles role) {
         this.user_id = user_id;
         this.username = username;
         this.email = email;
@@ -34,6 +36,7 @@ public class ERSUsers {
         this.surname = surname;
         this.is_active = is_active;
         this.role_id = role_id;
+        this.role = role;
     }
 
     public String getUser_id() {
@@ -100,6 +103,13 @@ public class ERSUsers {
         this.role_id = role_id;
     }
 
+    public ERSUserRoles getRole() {
+        return role;
+    }
+
+    public void setRole(ERSUserRoles role) {
+        this.role = role;
+    }
     @Override
     public String toString() {
         return "ERSUsers{" +
@@ -111,6 +121,7 @@ public class ERSUsers {
                 ", surname='" + surname + '\'' +
                 ", is_active=" + is_active +
                 ", role_id='" + role_id + '\'' +
+                ", role=" + role +
                 '}';
     }
 }
