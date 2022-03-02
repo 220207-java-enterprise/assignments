@@ -7,6 +7,8 @@ import com.revature.foundations.util.exceptions.DataSourceException;
 import com.revature.foundations.util.exceptions.ResourcePersistenceException;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ERSUsersDAO implements CrudDAO<ERSUsers> {
 
@@ -32,7 +34,7 @@ public class ERSUsersDAO implements CrudDAO<ERSUsers> {
                 user.setEmail(rs.getString("EMAIL"));
                 user.setUsername(rs.getString("USERNAME"));
                 user.setPassword(rs.getString("PASSWORD"));
-                user.setRole(new ERSUserRoles(rs.getString("ROLE"), rs.getString("ROLE_NAME")));
+                user.setRole(new ERSUserRoles(rs.getString("ROLE"), rs.getString("ROLE_ID")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -57,7 +59,7 @@ public class ERSUsersDAO implements CrudDAO<ERSUsers> {
                 user.setEmail(rs.getString("EMAIL"));
                 user.setUsername(rs.getString("USERNAME"));
                 user.setPassword(rs.getString("PASSWORD"));
-                user.setRole(new ERSUserRoles(rs.getString("ROLE"), rs.getString("ROLE_NAME")));
+                user.setRole(new ERSUserRoles(rs.getString("ROLE"), rs.getString("ROLE_ID")));
             }
 
         } catch (SQLException e) {
@@ -85,7 +87,7 @@ public class ERSUsersDAO implements CrudDAO<ERSUsers> {
                     authUser.setEmail(rs.getString("EMAIL"));
                     authUser.setUsername(rs.getString("USERNAME"));
                     authUser.setPassword(rs.getString("PASSWORD"));
-                    authUser.setRole(new ERSUserRoles(rs.getString("ROLE"), rs.getString("ROLE_NAME")));
+                    authUser.setRole(new ERSUserRoles(rs.getString("ROLE"), rs.getString("ROLE_ID")));
                 }
 
             } catch (SQLException e) {
@@ -121,7 +123,106 @@ public class ERSUsersDAO implements CrudDAO<ERSUsers> {
         }
     }
 
+    @Override
+    public ERSUsers getById(String user_id) {
 
+        ERSUsers user = null;
 
+        try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
+
+            PreparedStatement pstmt = conn.prepareStatement(rootSelect + "WHERE USER_ID = ?");
+            pstmt.setString(1, USER_ID);
+
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                user = new ERSUsers();
+                user.setUser_id(rs.getString("USER_ID"));
+                user.setEmail(rs.getString("EMAIL"));
+                user.setUsername(rs.getString("USERNAME"));
+                user.setPassword(rs.getString("PASSWORD"));
+                user.setRole(new ERSUserRoles(rs.getString("ROLE"), rs.getString("ROLE_ID")));
+            }
+
+        } catch (SQLException e) {
+            throw new DataSourceException(e);
+        }
+
+        return user;
+
+    }
+
+    @Override
+    public List<ERSUsers> getAll() {
+
+        List<ERSUsers> users = new ArrayList<>();
+
+        try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
+
+            ResultSet rs = conn.createStatement().executeQuery(rootSelect);
+            while (rs.next()) {
+                ERSUsers user = new ERSUsers();
+                user.setUser_id(rs.getString("USER_ID"));
+                user.setEmail(rs.getString("EMAIL"));
+                user.setUsername(rs.getString("USERNAME"));
+                user.setPassword(rs.getString("PASSWORD"));
+                user.setRole(new ERSUserRoles(rs.getString("ROLE"), rs.getString("ROLE_ID")));
+                users.add(user);
+            }
+        } catch (SQLException e) {
+            throw new DataSourceException(e);
+        }
+
+        return users;
+    }
+
+    @Override
+    public void update(ERSUsers updatedUser) {
+        try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
+
+            conn.setAutoCommit(false);
+            PreparedStatement pstmt = conn.prepareStatement("UPDATE ERS_USERS " +
+                    "SET EMAIL = ?, " +
+                    "USERNAME = ?, " +
+                    "PASSWORD = ? " +
+                    "WHERE USER_ID = ?");
+            pstmt.setString(3, updatedUser.getEmail());
+            pstmt.setString(4, updatedUser.getUsername());
+            pstmt.setString(5, updatedUser.getPassword());
+            pstmt.setString(6, updatedUser.getUser_id());
+
+            // TODO allow role to be updated as well
+
+            int rowsInserted = pstmt.executeUpdate();
+            if (rowsInserted != 1) {
+                throw new ResourcePersistenceException("Failed to update user data within datasource.");
+            }
+
+            conn.commit();
+
+        } catch (SQLException e) {
+            throw new DataSourceException(e);
+        }
+    }
+
+    @Override
+    public void deleteById(String user_id) {
+        try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
+
+            conn.setAutoCommit(false);
+            PreparedStatement pstmt = conn.prepareStatement("DELETE FROM app_users WHERE id = ?");
+            pstmt.setString(1, user_id);
+
+            int rowsInserted = pstmt.executeUpdate();
+            if (rowsInserted != 1) {
+                conn.rollback();
+                throw new ResourcePersistenceException("Failed to delete user from data source");
+            }
+
+            conn.commit();
+
+        } catch (SQLException e) {
+            throw new DataSourceException(e);
+        }
+    }
 
     }
