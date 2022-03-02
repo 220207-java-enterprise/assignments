@@ -3,6 +3,7 @@ package com.revature.foundations.daos;
 import com.revature.foundations.models.ERSUserRoles;
 import com.revature.foundations.models.ERSUsers;
 import com.revature.foundations.util.ConnectionFactory;
+import com.revature.foundations.util.exceptions.DataSourceException;
 
 import javax.management.relation.Role;
 import java.sql.*;
@@ -35,7 +36,6 @@ public class ERSUsersDAO implements CrudDAO<ERSUsers> {
                 user.setPassword(rs.getString("password"));
                 user.setRole(new ERSUserRoles(rs.getString("role"), rs.getString("role_name")));
             }
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -54,14 +54,12 @@ public class ERSUsersDAO implements CrudDAO<ERSUsers> {
 
             ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
-                user = new AppUser();
-                user.setId(rs.getString("id"));
-                user.setFirstName(rs.getString("first_name"));
-                user.setLastName(rs.getString("last_name"));
+                user = new ERSUsers();
+                user.setUser_id(rs.getString("id"));
                 user.setEmail(rs.getString("email"));
                 user.setUsername(rs.getString("username"));
                 user.setPassword(rs.getString("password"));
-                user.setRole(new UserRole(rs.getString("role"), rs.getString("role_name")));
+                user.setRole(new ERSUserRoles(rs.getString("role"), rs.getString("role_name")));
             }
 
         } catch (SQLException e) {
@@ -70,12 +68,7 @@ public class ERSUsersDAO implements CrudDAO<ERSUsers> {
 
         return user;
 
+
+
     }
-
-    public AppUser findUserByUsernameAndPassword(String username, String password) {
-
-        AppUser authUser = null;
-
-
-
 }
