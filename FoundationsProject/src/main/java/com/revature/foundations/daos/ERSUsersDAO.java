@@ -5,10 +5,7 @@ import com.revature.foundations.models.ERSUsers;
 import com.revature.foundations.util.ConnectionFactory;
 import com.revature.foundations.util.exceptions.DataSourceException;
 
-import javax.management.relation.Role;
 import java.sql.*;
-import java.util.ArrayList;
-import java.util.List;
 
 public class ERSUsersDAO implements CrudDAO<ERSUsers> {
 
@@ -43,7 +40,7 @@ public class ERSUsersDAO implements CrudDAO<ERSUsers> {
         return user;
     }
 
-    public ERSUsers findUserByEmail(String email) {
+    public ERSUsers findUserByEmail(String email, Object String) {
 
         ERSUsers user = null;
 
@@ -68,7 +65,36 @@ public class ERSUsersDAO implements CrudDAO<ERSUsers> {
 
         return user;
 
+    }
+
+        public ERSUsers findUserByUsernameAndPassword(String email, String password) {
+
+            ERSUsers authUser = null;
+
+            try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
+
+                PreparedStatement pstmt = conn.prepareStatement(rootSelect + "WHERE username = ? AND password = ?");
+                pstmt.setString(1, email);
+                pstmt.setString(2, password);
+
+                ResultSet rs = pstmt.executeQuery();
+                if (rs.next()) {
+                    authUser = new ERSUsers();
+                    authUser.setUser_id(rs.getString("id"));
+                    authUser.setEmail(rs.getString("email"));
+                    authUser.setUsername(rs.getString("username"));
+                    authUser.setPassword(rs.getString("password"));
+                    authUser.setRole(new ERSUserRoles(rs.getString("role"), rs.getString("role_name")));
+                }
+
+            } catch (SQLException e) {
+                throw new DataSourceException(e);
+            }
+
+            return authUser;
+        }
+
+
 
 
     }
-}
