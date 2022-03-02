@@ -4,16 +4,17 @@ import com.revature.foundations.models.ERSUserRoles;
 import com.revature.foundations.models.ERSUsers;
 import com.revature.foundations.util.ConnectionFactory;
 import com.revature.foundations.util.exceptions.DataSourceException;
+import com.revature.foundations.util.exceptions.ResourcePersistenceException;
 
 import java.sql.*;
 
 public class ERSUsersDAO implements CrudDAO<ERSUsers> {
 
     private final String rootSelect = "SELECT " +
-            "au.id, au.first_name, au.last_name, au.email, au.username, au.password, au.role, ur.role_name " +
-            "FROM app_users au " +
-            "JOIN user_roles ur " +
-            "ON au.role = ur.id ";
+            "au.USER_ID, au.EMAIL, au.USERNAME, au.PASSWORD, au.ROLE_ID, ur.ROLE " +
+            "FROM ERS_USERS au " +
+            "JOIN ERS_USER_ROLES ur " +
+            "ON au.ROLE_ID = ur.ROLE_ID ";
 
     public ERSUsers findUserByUsername(String username) {
 
@@ -21,17 +22,17 @@ public class ERSUsersDAO implements CrudDAO<ERSUsers> {
 
         try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
 
-            PreparedStatement pstmt = conn.prepareStatement(rootSelect + "WHERE username = ?");
+            PreparedStatement pstmt = conn.prepareStatement(rootSelect + "WHERE USERNAME = ?");
             pstmt.setString(1, username);
 
             ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
                 user = new ERSUsers();
-                user.setUser_id(rs.getString("id"));
-                user.setEmail(rs.getString("email"));
-                user.setUsername(rs.getString("username"));
-                user.setPassword(rs.getString("password"));
-                user.setRole(new ERSUserRoles(rs.getString("role"), rs.getString("role_name")));
+                user.setUser_id(rs.getString("USER_ID"));
+                user.setEmail(rs.getString("EMAIL"));
+                user.setUsername(rs.getString("USERNAME"));
+                user.setPassword(rs.getString("PASSWORD"));
+                user.setRole(new ERSUserRoles(rs.getString("ROLE"), rs.getString("ROLE_NAME")));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -46,17 +47,17 @@ public class ERSUsersDAO implements CrudDAO<ERSUsers> {
 
         try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
 
-            PreparedStatement pstmt = conn.prepareStatement(rootSelect + "WHERE email = ?");
+            PreparedStatement pstmt = conn.prepareStatement(rootSelect + "WHERE EMAIL = ?");
             pstmt.setString(1, email);
 
             ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
                 user = new ERSUsers();
-                user.setUser_id(rs.getString("id"));
-                user.setEmail(rs.getString("email"));
-                user.setUsername(rs.getString("username"));
-                user.setPassword(rs.getString("password"));
-                user.setRole(new ERSUserRoles(rs.getString("role"), rs.getString("role_name")));
+                user.setUser_id(rs.getString("USER_ID"));
+                user.setEmail(rs.getString("EMAIL"));
+                user.setUsername(rs.getString("USERNAME"));
+                user.setPassword(rs.getString("PASSWORD"));
+                user.setRole(new ERSUserRoles(rs.getString("ROLE"), rs.getString("ROLE_NAME")));
             }
 
         } catch (SQLException e) {
@@ -73,18 +74,18 @@ public class ERSUsersDAO implements CrudDAO<ERSUsers> {
 
             try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
 
-                PreparedStatement pstmt = conn.prepareStatement(rootSelect + "WHERE username = ? AND password = ?");
+                PreparedStatement pstmt = conn.prepareStatement(rootSelect + "WHERE USERNAME = ? AND PASSWORD = ?");
                 pstmt.setString(1, email);
                 pstmt.setString(2, password);
 
                 ResultSet rs = pstmt.executeQuery();
                 if (rs.next()) {
                     authUser = new ERSUsers();
-                    authUser.setUser_id(rs.getString("id"));
-                    authUser.setEmail(rs.getString("email"));
-                    authUser.setUsername(rs.getString("username"));
-                    authUser.setPassword(rs.getString("password"));
-                    authUser.setRole(new ERSUserRoles(rs.getString("role"), rs.getString("role_name")));
+                    authUser.setUser_id(rs.getString("USER_ID"));
+                    authUser.setEmail(rs.getString("EMAIL"));
+                    authUser.setUsername(rs.getString("USERNAME"));
+                    authUser.setPassword(rs.getString("PASSWORD"));
+                    authUser.setRole(new ERSUserRoles(rs.getString("ROLE"), rs.getString("ROLE_NAME")));
                 }
 
             } catch (SQLException e) {
@@ -93,6 +94,32 @@ public class ERSUsersDAO implements CrudDAO<ERSUsers> {
 
             return authUser;
         }
+
+    @Override
+    public void save(ERSUsers newUser) {
+
+        try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
+
+            conn.setAutoCommit(false);
+            PreparedStatement pstmt = conn.prepareStatement("INSERT INTO ERS_USERS VALUES (?, ?, ?, ?, ?, ?, ?)");
+            pstmt.setString(1, newUser.getUser_id());
+            pstmt.setString(4, newUser.getEmail());
+            pstmt.setString(5, newUser.getUsername());
+            pstmt.setString(6, newUser.getPassword());
+            pstmt.setString(7, newUser.getRole().getRole_id());
+
+            int rowsInserted = pstmt.executeUpdate();
+            if (rowsInserted != 1) {
+                conn.rollback();
+                throw new ResourcePersistenceException("Failed to persist user to data source");
+            }
+
+            conn.commit();
+
+        } catch (SQLException e) {
+            throw new DataSourceException(e);
+        }
+    }
 
 
 
