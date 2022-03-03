@@ -4,6 +4,7 @@ import com.revature.foundations.daos.ERSUsersDAO;
 import com.revature.foundations.dtos.requests.LoginRequest;
 import com.revature.foundations.dtos.requests.NewUserRequest;
 import com.revature.foundations.models.ERSUsers;
+import com.revature.foundations.util.exceptions.AuthenticationException;
 import com.revature.foundations.util.exceptions.InvalidRequestException;
 import com.revature.foundations.util.exceptions.ResourceConflictException;
 
