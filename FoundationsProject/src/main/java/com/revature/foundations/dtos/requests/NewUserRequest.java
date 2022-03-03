@@ -86,6 +86,13 @@ public class NewUserRequest {
         this.role = role;
     }
 
+    public ERSUsers extractUser() {
+        String user_id = UUID.randomUUID().toString();
+        String role_id = UUID.randomUUID().toString();
+        ERSUserRoles aRole = new ERSUserRoles(role_id, this.role);
+        return new ERSUsers(user_id, username, email, password, given_name, surname, false, aRole);
+    }
+
     @Override
     public String toString() {
         return "NewUserRequest{" +
