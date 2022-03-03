@@ -1,9 +1,11 @@
 package com.revature.foundations.services;
 
 import com.revature.foundations.daos.ERSUsersDAO;
+import com.revature.foundations.dtos.requests.LoginRequest;
 import com.revature.foundations.dtos.requests.NewUserRequest;
 import com.revature.foundations.models.ERSUsers;
 import com.revature.foundations.util.exceptions.InvalidRequestException;
+import com.revature.foundations.util.exceptions.ResourceConflictException;
 
 import java.util.List;
 import java.util.UUID;
@@ -45,14 +47,14 @@ public class ERSUsersService {
 
         // TODO encrypt provided password before storing in the database
 
-        newUser.setId(UUID.randomUUID().toString());
+        newUser.setUser_id(UUID.randomUUID().toString());
         newUser.setRole(new UserRole("7c3521f5-ff75-4e8a-9913-01d15ee4dc97", "BASIC_USER")); // All newly registered users start as BASIC_USER
         userDAO.save(newUser);
 
         return newUser;
     }
 
-    public AppUser login(LoginRequest loginRequest) {
+    public ERSUsers login(LoginRequest loginRequest) {
 
         String username = loginRequest.getUsername();
         String password = loginRequest.getPassword();
@@ -63,7 +65,7 @@ public class ERSUsersService {
 
         // TODO encrypt provided password (assumes password encryption is in place) to see if it matches what is in the DB
 
-        AppUser authUser = userDAO.findUserByUsernameAndPassword(username, password);
+        ERSUsers authUser = userDAO.findUserByUsernameAndPassword(username, password);
 
         if (authUser == null) {
             throw new AuthenticationException();
