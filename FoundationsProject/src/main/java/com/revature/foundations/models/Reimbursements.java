@@ -1,6 +1,6 @@
 package com.revature.foundations.models;
 
-public class ERSReimbursements {
+public class Reimbursements {
     private String reimb_id;
     private String amount;
     private String submitted;
@@ -13,11 +13,11 @@ public class ERSReimbursements {
     private String status_id;
     private String type_id;
 
-    public ERSReimbursements() {
+    public Reimbursements() {
         super();
     }
 
-    public ERSReimbursements(String reimb_id, String amount, String submitted, String resolved, String description, String receipt, String payment_id, String author_id, String resolver_id, String status_id, String type_id) {
+    public Reimbursements(String reimb_id, String amount, String submitted, String resolved, String description, String receipt, String payment_id, String author_id, String resolver_id, String status_id, String type_id) {
         this.reimb_id = reimb_id;
         this.amount = amount;
         this.submitted = submitted;

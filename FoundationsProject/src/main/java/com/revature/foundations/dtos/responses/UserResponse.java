@@ -1,8 +1,8 @@
 package com.revature.foundations.dtos.responses;
 
-import com.revature.foundations.models.ERSUsers;
+import com.revature.foundations.models.Users;
 
-public class ERSUserResponse {
+public class UserResponse {
 
     private String user_id;
     private String username;
@@ -13,9 +13,9 @@ public class ERSUserResponse {
     private Boolean is_active;
     private String role;
 
-    public ERSUserResponse() {super();}
+    public UserResponse() {super();}
 
-    public ERSUserResponse(ERSUsers user) {
+    public UserResponse(Users user) {
         this.user_id = user.getUser_id();
         this.username = user.getUsername();
         this.email = user.getEmail();

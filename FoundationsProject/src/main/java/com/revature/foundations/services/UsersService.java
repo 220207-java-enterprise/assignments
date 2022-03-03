@@ -1,11 +1,11 @@
 package com.revature.foundations.services;
 
-import com.revature.foundations.daos.ERSUsersDAO;
+import com.revature.foundations.daos.UsersDAO;
 import com.revature.foundations.dtos.requests.LoginRequest;
 import com.revature.foundations.dtos.requests.NewUserRequest;
-import com.revature.foundations.dtos.responses.ERSUserResponse;
-import com.revature.foundations.models.ERSUserRoles;
-import com.revature.foundations.models.ERSUsers;
+import com.revature.foundations.dtos.responses.UserResponse;
+import com.revature.foundations.models.UserRoles;
+import com.revature.foundations.models.Users;
 import com.revature.foundations.util.exceptions.AuthenticationException;
 import com.revature.foundations.util.exceptions.InvalidRequestException;
 import com.revature.foundations.util.exceptions.ResourceConflictException;
@@ -15,25 +15,25 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-public class ERSUsersService {
+public class UsersService {
 
-    private ERSUsersDAO userDAO;
+    private UsersDAO userDAO;
 
-    public ERSUsersService(ERSUsersDAO userDAO) {
+    public UsersService(UsersDAO userDAO) {
         this.userDAO = userDAO;
     }
 
-    public List<ERSUsersDAO> getAllUsers() {
+    public List<UserResponse> getAllUsers() {
 
-        return ERSUsersDAO.getAll()
+        return userDAO.getAll()
                 .stream()
-                .map(ERSUserResponse::new) // intermediate operation
+                .map(UserResponse::new) // intermediate operation
                 .collect(Collectors.toList());
     }
 
-    public ERSUsers register(NewUserRequest newUserRequest) {
+    public Users register(NewUserRequest newUserRequest) {
 
-        ERSUsers newUser = newUserRequest.extractUser();
+        Users newUser = newUserRequest.extractUser();
 
         if (!isUserValid(newUser)) {
             throw new InvalidRequestException("Bad registration details given.");
@@ -52,13 +52,13 @@ public class ERSUsersService {
         // TODO encrypt provided password before storing in the database
 
         newUser.setUser_id(UUID.randomUUID().toString());
-        newUser.setRole(new ERSUserRoles("7c3521f5-ff75-4e8a-9913-01d15ee4dc97", "BASIC_USER"));
+        newUser.setRole(new UserRoles("7c3521f5-ff75-4e8a-9913-01d15ee4dc69", "Employee"));
         userDAO.save(newUser);
 
         return newUser;
     }
 
-    public ERSUsers login(LoginRequest loginRequest) {
+    public Users login(LoginRequest loginRequest) {
 
         String username = loginRequest.getUsername();
         String password = loginRequest.getPassword();
@@ -69,7 +69,7 @@ public class ERSUsersService {
 
         // TODO encrypt provided password (assumes password encryption is in place) to see if it matches what is in the DB
 
-        ERSUsers authUser = userDAO.findUserByUsernameAndPassword(username, password);
+        Users authUser = userDAO.findUserByUsernameAndPassword(username, password);
 
         if (authUser == null) {
             throw new AuthenticationException();
@@ -79,7 +79,7 @@ public class ERSUsersService {
 
     }
 
-    public boolean isUserValid(ERSUsers appUser) {
+    public boolean isUserValid(Users appUser) {
 
         // First name and last name are not just empty strings or filled with whitespace
         if (appUser.getGiven_name().trim().equals("") || appUser.getSurname().trim().equals("")) {
@@ -101,7 +101,7 @@ public class ERSUsersService {
         validRoles.add("Finance Manager");
         validRoles.add("Admin");
         validRoles.add("Employee");
-        if(!(validRoles.contains(ERSUsers.getRole().getRole_id()))) {
+        if(!(validRoles.contains(userDAO.getRole().getRole_id()))) {
             return false;
         }
 

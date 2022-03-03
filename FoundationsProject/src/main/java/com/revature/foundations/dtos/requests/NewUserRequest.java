@@ -1,7 +1,6 @@
 package com.revature.foundations.dtos.requests;
 
-import com.revature.foundations.models.ERSUserRoles;
-import com.revature.foundations.models.ERSUsers;
+import com.revature.foundations.models.Users;
 
 import java.util.UUID;
 
@@ -12,8 +11,6 @@ public class NewUserRequest {
     private String password;
     private String given_name;
     private String surname;
-    private boolean is_Active;
-    private String role;
 
     public NewUserRequest() {
         super();
@@ -26,8 +23,6 @@ public class NewUserRequest {
         this.password = password;
         this.given_name = given_name;
         this.surname = surname;
-        this.is_Active = extractUser().getIs_active();
-        this.role = role;
     }
 
     public String getUsername() {
@@ -70,27 +65,10 @@ public class NewUserRequest {
         this.surname = surname;
     }
 
-    public boolean isIs_Active() {
-        return is_Active;
-    }
 
-    public void setIs_Active(boolean is_Active) {
-        this.is_Active = is_Active;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-    public ERSUsers extractUser() {
+    public Users extractUser() {
         String user_id = UUID.randomUUID().toString();
-        String role_id = UUID.randomUUID().toString();
-        ERSUserRoles aRole = new ERSUserRoles(role_id, this.role);
-        return new ERSUsers(user_id, username, email, password, given_name, surname, false, aRole);
+        return new Users(user_id, username, email, password, given_name, surname);
     }
 
     @Override
@@ -101,8 +79,6 @@ public class NewUserRequest {
                 ", password='" + password + '\'' +
                 ", given_name='" + given_name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", is_Active=" + is_Active +
-                ", role='" + role + '\'' +
                 '}';
     }
 }

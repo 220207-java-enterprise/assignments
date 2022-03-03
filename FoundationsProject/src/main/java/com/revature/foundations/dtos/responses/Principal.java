@@ -1,6 +1,6 @@
 package com.revature.foundations.dtos.responses;
 
-import com.revature.foundations.models.ERSUsers;
+import com.revature.foundations.models.Users;
 
 public class Principal {
 
@@ -12,7 +12,7 @@ public class Principal {
         super();
     }
 
-    public Principal(ERSUsers user) {
+    public Principal(Users user) {
         this.user_id = user.getUser_id();
         this.username = user.getUsername();
         this.role = user.getRole().getRole_id();

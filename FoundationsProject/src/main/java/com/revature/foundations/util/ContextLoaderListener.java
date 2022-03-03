@@ -1,9 +1,10 @@
 package com.revature.foundations.util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.revature.foundations.daos.ERSUsersDAO;
-import com.revature.foundations.services.ERSUsersService;
+import com.revature.foundations.daos.UsersDAO;
+import com.revature.foundations.services.UsersService;
 import com.revature.foundations.services.TokenService;
+import com.revature.foundations.servlets.TestServlet;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -17,26 +18,31 @@ public class ContextLoaderListener implements ServletContextListener {
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        logger.debug("Initializing Quizzard web application");
+        logger.debug("Initializing Foundations web application");
 
         ObjectMapper mapper = new ObjectMapper();
         JwtConfig jwtConfig = new JwtConfig();
         TokenService tokenService = new TokenService(jwtConfig);
 
-        ERSUsersDAO userDAO = new ERSUsersDAO();
-        ERSUsersService userService = new ERSUsersService(userDAO);
-        UserServlet userServlet = new UserServlet(tokenService, userService, mapper);
-        AuthServlet authServlet = new AuthServlet(tokenService, userService, mapper);
-
-        // Programmatic Servlet Registration
+        TestServlet testServlet = new TestServlet();
         ServletContext context = sce.getServletContext();
-        context.addServlet("UserServlet", userServlet).addMapping("/users/*");
-        context.addServlet("AuthServlet", authServlet).addMapping("/auth");
+        context.addServlet("TestServlet", testServlet).addMapping("/test");
+
+//        UsersDAO userDAO = new UsersDAO();
+//        UsersService userService = new UsersService(userDAO);
+//        UserServlet userServlet = new UserServlet(tokenService, userService, mapper);
+//        AuthServlet authServlet = new AuthServlet(tokenService, userService, mapper);
+//
+//        // TODO implement missing servlets (also, you'll probably need a ReimbursementServlet)
+//        // Programmatic Servlet Registration
+//        ServletContext context = sce.getServletContext();
+//        context.addServlet("UserServlet", userServlet).addMapping("/users/*");
+//        context.addServlet("AuthServlet", authServlet).addMapping("/auth");
 
     }
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
-        logger.debug("Shutting down Quizzard web application");
+        logger.debug("Shutting down Foundations web application");
     }
 }

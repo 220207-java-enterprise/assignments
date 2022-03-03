@@ -1,18 +1,18 @@
 package com.revature.foundations.models;
 
-public class ERSReimbursementStatuses {
+public class ReimbursementStatuses {
     private String status_id;
     private String status;
 
-    public ERSReimbursementStatuses() {
+    public ReimbursementStatuses() {
         super();
     }
 
-    public ERSReimbursementStatuses(String status) {
+    public ReimbursementStatuses(String status) {
         this.status = status;
     }
 
-    public ERSReimbursementStatuses(String status_id, String status) {
+    public ReimbursementStatuses(String status_id, String status) {
         this.status_id = status_id;
         this.status = status;
     }

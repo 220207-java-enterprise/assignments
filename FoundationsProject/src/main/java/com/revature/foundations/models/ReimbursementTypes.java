@@ -1,18 +1,18 @@
 package com.revature.foundations.models;
 
-public class ERSReimbursementTypes {
+public class ReimbursementTypes {
     private String type_id;
     private String type;
 
-    public ERSReimbursementTypes() {
+    public ReimbursementTypes() {
         super();
     }
 
-    public ERSReimbursementTypes(String type) {
+    public ReimbursementTypes(String type) {
         this.type = type;
     }
 
-    public ERSReimbursementTypes(String type_id, String type) {
+    public ReimbursementTypes(String type_id, String type) {
         this.type_id = type_id;
         this.type = type;
     }

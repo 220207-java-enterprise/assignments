@@ -1,6 +1,6 @@
 package com.revature.foundations.models;
 
-public class ERSUsers {
+public class Users {
 
     private String user_id;
     private String username;
@@ -10,24 +10,22 @@ public class ERSUsers {
     private String surname;
     private Boolean is_active;
     private String role_id;
-    private ERSUserRoles role;
+    private UserRoles role;
 
-    public ERSUsers() {
+    public Users() {
         super();
     }
 
-    public ERSUsers(String username, String email, String password, String given_name, String surname, Boolean is_active, String role_id, ERSUserRoles role) {
+    public Users(String user_id, String username, String email, String password, String given_name, String surname) {
+        this.user_id = user_id;
         this.username = username;
         this.email = email;
         this.password = password;
         this.given_name = given_name;
         this.surname = surname;
-        this.is_active = is_active;
-        this.role_id = role_id;
-        this.role = role;
     }
 
-    public ERSUsers(String user_id, String username, String email, String password, String given_name, String surname, Boolean is_active, String role_id, ERSUserRoles role) {
+    public Users(String user_id, String username, String email, String password, String given_name, String surname, Boolean is_active, String role_id, UserRoles role) {
         this.user_id = user_id;
         this.username = username;
         this.email = email;
@@ -103,11 +101,11 @@ public class ERSUsers {
         this.role_id = role_id;
     }
 
-    public ERSUserRoles getRole() {
+    public UserRoles getRole() {
         return role;
     }
 
-    public void setRole(ERSUserRoles role) {
+    public void setRole(UserRoles role) {
         this.role = role;
     }
     @Override

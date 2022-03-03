@@ -2,7 +2,7 @@ package com.revature.foundations.daos;
 
 import java.util.List;
 
-public class ERSReimbursementsDAO<Reimbursement> implements CrudDAO<Reimbursement> {
+public class ReimbursementsDAO<Reimbursement> implements CrudDAO<Reimbursement> {
 
     @Override
     public void save(Reimbursement newObject) {

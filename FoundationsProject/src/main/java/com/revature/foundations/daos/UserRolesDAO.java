@@ -2,7 +2,7 @@ package com.revature.foundations.daos;
 
 import java.util.List;
 
-public class ERSUserRolesDAO<UserRole> implements CrudDAO<UserRole> {
+public class UserRolesDAO<UserRole> implements CrudDAO<UserRole> {
 
     @Override
     public void save(UserRole newObject) {

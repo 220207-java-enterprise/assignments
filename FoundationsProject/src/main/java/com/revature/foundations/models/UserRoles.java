@@ -1,18 +1,18 @@
 package com.revature.foundations.models;
 
-public class ERSUserRoles {
+public class UserRoles {
     private String role_id;
     private String role;
 
-    public ERSUserRoles() {
+    public UserRoles() {
         super();
     }
 
-    public ERSUserRoles(String role) {
+    public UserRoles(String role) {
         this.role = role;
     }
 
-    public ERSUserRoles(String role_id, String role) {
+    public UserRoles(String role_id, String role) {
         this.role_id = role_id;
         this.role = role;
     }
