@@ -1,6 +1,9 @@
 package com.revature.foundations.util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.foundations.daos.ERSUsersDAO;
+import com.revature.foundations.services.ERSUsersService;
+import com.revature.foundations.services.TokenService;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -20,8 +23,8 @@ public class ContextLoaderListener implements ServletContextListener {
         JwtConfig jwtConfig = new JwtConfig();
         TokenService tokenService = new TokenService(jwtConfig);
 
-        UserDAO userDAO = new UserDAO();
-        UserService userService = new UserService(userDAO);
+        ERSUsersDAO userDAO = new ERSUsersDAO();
+        ERSUsersService userService = new ERSUsersService(userDAO);
         UserServlet userServlet = new UserServlet(tokenService, userService, mapper);
         AuthServlet authServlet = new AuthServlet(tokenService, userService, mapper);
 
