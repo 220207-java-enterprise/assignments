@@ -1,5 +1,7 @@
 package com.revature.foundations.dtos.requests;
 
+import com.revature.foundations.models.ERSUsers;
+
 public class NewUserRequest {
 
     private String username;
@@ -69,4 +71,5 @@ public class NewUserRequest {
                 ", surname='" + surname + '\'' +
                 '}';
     }
+
 }
