@@ -3,11 +3,14 @@ package com.revature.foundations.services;
 import com.revature.foundations.daos.ERSUsersDAO;
 import com.revature.foundations.dtos.requests.LoginRequest;
 import com.revature.foundations.dtos.requests.NewUserRequest;
+import com.revature.foundations.dtos.responses.ERSUserResponse;
+import com.revature.foundations.models.ERSUserRoles;
 import com.revature.foundations.models.ERSUsers;
 import com.revature.foundations.util.exceptions.AuthenticationException;
 import com.revature.foundations.util.exceptions.InvalidRequestException;
 import com.revature.foundations.util.exceptions.ResourceConflictException;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -24,7 +27,7 @@ public class ERSUsersService {
 
         return ERSUsersDAO.getAll()
                 .stream()
-                .map(ERSUsersDAO::new) // intermediate operation
+                .map(ERSUserResponse::new) // intermediate operation
                 .collect(Collectors.toList());
     }
 
@@ -49,7 +52,7 @@ public class ERSUsersService {
         // TODO encrypt provided password before storing in the database
 
         newUser.setUser_id(UUID.randomUUID().toString());
-        newUser.setRole(new UserRole("7c3521f5-ff75-4e8a-9913-01d15ee4dc97", "BASIC_USER")); // All newly registered users start as BASIC_USER
+        newUser.setRole(new ERSUserRoles("7c3521f5-ff75-4e8a-9913-01d15ee4dc97", "BASIC_USER"));
         userDAO.save(newUser);
 
         return newUser;
@@ -76,10 +79,10 @@ public class ERSUsersService {
 
     }
 
-    public boolean isUserValid(AppUser appUser) {
+    public boolean isUserValid(ERSUsers appUser) {
 
         // First name and last name are not just empty strings or filled with whitespace
-        if (appUser.getFirstName().trim().equals("") || appUser.getLastName().trim().equals("")) {
+        if (appUser.getGiven_name().trim().equals("") || appUser.getSurname().trim().equals("")) {
             return false;
         }
 
@@ -91,6 +94,14 @@ public class ERSUsersService {
         // Passwords require a minimum eight characters, at least one uppercase letter, one lowercase
         // letter, one number and one special character
         if (!isPasswordValid(appUser.getPassword())) {
+            return false;
+        }
+
+        ArrayList<String> validRoles = new ArrayList<String>();
+        validRoles.add("Finance Manager");
+        validRoles.add("Admin");
+        validRoles.add("Employee");
+        if(!(validRoles.contains(ERSUsers.getRole().getRole_id()))) {
             return false;
         }
 

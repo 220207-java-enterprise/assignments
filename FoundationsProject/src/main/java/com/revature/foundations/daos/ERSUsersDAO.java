@@ -13,10 +13,17 @@ import java.util.List;
 public class ERSUsersDAO implements CrudDAO<ERSUsers> {
 
     private final String rootSelect = "SELECT " +
-            "au.USER_ID, au.EMAIL, au.USERNAME, au.PASSWORD, au.ROLE_ID, ur.ROLE " +
-            "FROM ERS_USERS au " +
-            "JOIN ERS_USER_ROLES ur " +
-            "ON au.ROLE_ID = ur.ROLE_ID ";
+                                        "au.USER_ID, " +
+                                        "au.EMAIL, " +
+                                        "au.USERNAME, " +
+                                        "au.PASSWORD, " +
+                                        "au.GIVEN_NAME, " +
+                                        "au.SURNAME, " +
+                                        "au.IS_ACTIVE, " +
+                                        "au.ROLE_ID, ur.ROLE " +
+                                            "FROM ERS_USERS au " +
+                                            "JOIN ERS_USER_ROLES ur " +
+                                            "ON au.ROLE_ID = ur.ROLE_ID ";
 
     public ERSUsers findUserByUsername(String username) {
 
@@ -34,6 +41,9 @@ public class ERSUsersDAO implements CrudDAO<ERSUsers> {
                 user.setEmail(rs.getString("EMAIL"));
                 user.setUsername(rs.getString("USERNAME"));
                 user.setPassword(rs.getString("PASSWORD"));
+                user.setGiven_name(rs.getString("GIVEN_NAME"));
+                user.setSurname(rs.getString("SURNAME"));
+                user.setIs_active(rs.getBoolean("IS_ACTIVE"));
                 user.setRole(new ERSUserRoles(rs.getString("ROLE"), rs.getString("ROLE_ID")));
             }
         } catch (SQLException e) {
@@ -43,7 +53,7 @@ public class ERSUsersDAO implements CrudDAO<ERSUsers> {
         return user;
     }
 
-    public ERSUsers findUserByEmail(String email, Object String) {
+    public ERSUsers findUserByEmail(String email) {
 
         ERSUsers user = null;
 
@@ -59,6 +69,9 @@ public class ERSUsersDAO implements CrudDAO<ERSUsers> {
                 user.setEmail(rs.getString("EMAIL"));
                 user.setUsername(rs.getString("USERNAME"));
                 user.setPassword(rs.getString("PASSWORD"));
+                user.setGiven_name(rs.getString("GIVEN_NAME"));
+                user.setSurname(rs.getString("SURNAME"));
+                user.setIs_active(rs.getBoolean("IS_ACTIVE"));
                 user.setRole(new ERSUserRoles(rs.getString("ROLE"), rs.getString("ROLE_ID")));
             }
 
@@ -87,6 +100,9 @@ public class ERSUsersDAO implements CrudDAO<ERSUsers> {
                     authUser.setEmail(rs.getString("EMAIL"));
                     authUser.setUsername(rs.getString("USERNAME"));
                     authUser.setPassword(rs.getString("PASSWORD"));
+                    authUser.setGiven_name(rs.getString("GIVEN_NAME"));
+                    authUser.setSurname(rs.getString("SURNAME"));
+                    authUser.setIs_active(rs.getBoolean("IS_ACTIVE"));
                     authUser.setRole(new ERSUserRoles(rs.getString("ROLE"), rs.getString("ROLE_ID")));
                 }
 
@@ -101,6 +117,17 @@ public class ERSUsersDAO implements CrudDAO<ERSUsers> {
     public void save(ERSUsers newUser) {
 
         try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
+
+            conn.setAutoCommit(false);
+            PreparedStatement pstmt1 = conn.prepareStatement("INSERT INTO ers_user_roles VALUES (?, ?)");
+            pstmt1.setString(1, newUser.getRole().getRole());
+            pstmt1.setString(2, newUser.getRole().getRole_id());
+
+            int rowsInserted1 = pstmt1.executeUpdate();
+            if (rowsInserted1 != 1) {
+                conn.rollback();
+                throw new ResourcePersistenceException("Failed to persist user role to data source");
+            }
 
             conn.setAutoCommit(false);
             PreparedStatement pstmt = conn.prepareStatement("INSERT INTO ERS_USERS VALUES (?, ?, ?, ?, ?, ?, ?)");
@@ -140,6 +167,9 @@ public class ERSUsersDAO implements CrudDAO<ERSUsers> {
                 user.setEmail(rs.getString("EMAIL"));
                 user.setUsername(rs.getString("USERNAME"));
                 user.setPassword(rs.getString("PASSWORD"));
+                user.setGiven_name(rs.getString("GIVEN_NAME"));
+                user.setSurname(rs.getString("SURNAME"));
+                user.setIs_active(rs.getBoolean("IS_ACTIVE"));
                 user.setRole(new ERSUserRoles(rs.getString("ROLE"), rs.getString("ROLE_ID")));
             }
 
@@ -165,6 +195,9 @@ public class ERSUsersDAO implements CrudDAO<ERSUsers> {
                 user.setEmail(rs.getString("EMAIL"));
                 user.setUsername(rs.getString("USERNAME"));
                 user.setPassword(rs.getString("PASSWORD"));
+                user.setGiven_name(rs.getString("GIVEN_NAME"));
+                user.setSurname(rs.getString("SURNAME"));
+                user.setIs_active(rs.getBoolean("IS_ACTIVE"));
                 user.setRole(new ERSUserRoles(rs.getString("ROLE"), rs.getString("ROLE_ID")));
                 users.add(user);
             }
@@ -181,14 +214,20 @@ public class ERSUsersDAO implements CrudDAO<ERSUsers> {
 
             conn.setAutoCommit(false);
             PreparedStatement pstmt = conn.prepareStatement("UPDATE ERS_USERS " +
-                    "SET EMAIL = ?, " +
-                    "USERNAME = ?, " +
-                    "PASSWORD = ? " +
-                    "WHERE USER_ID = ?");
-            pstmt.setString(3, updatedUser.getEmail());
-            pstmt.setString(4, updatedUser.getUsername());
-            pstmt.setString(5, updatedUser.getPassword());
-            pstmt.setString(6, updatedUser.getUser_id());
+                                                                "SET EMAIL = ?, " +
+                                                                "USERNAME = ?, " +
+                                                                "PASSWORD = ?, " +
+                                                                "GIVEN_NAME = ?, " +
+                                                                "SURNAME = ?, " +
+                                                                "IS_ACTIVE = ? " +
+                                                                "WHERE USER_ID = ?");
+            pstmt.setString(1, updatedUser.getEmail());
+            pstmt.setString(2, updatedUser.getUsername());
+            pstmt.setString(3, updatedUser.getPassword());
+            pstmt.setString(4, updatedUser.getGiven_name());
+            pstmt.setString(5, updatedUser.getSurname());
+            pstmt.setBoolean(6, updatedUser.getIs_active());
+            pstmt.setString(7, updatedUser.getUser_id());
 
             // TODO allow role to be updated as well
 
@@ -209,7 +248,7 @@ public class ERSUsersDAO implements CrudDAO<ERSUsers> {
         try (Connection conn = ConnectionFactory.getInstance().getConnection()) {
 
             conn.setAutoCommit(false);
-            PreparedStatement pstmt = conn.prepareStatement("DELETE FROM app_users WHERE id = ?");
+            PreparedStatement pstmt = conn.prepareStatement("DELETE FROM ERS_USERS WHERE USER_ID = ?");
             pstmt.setString(1, user_id);
 
             int rowsInserted = pstmt.executeUpdate();
@@ -224,5 +263,4 @@ public class ERSUsersDAO implements CrudDAO<ERSUsers> {
             throw new DataSourceException(e);
         }
     }
-
-    }
+}
