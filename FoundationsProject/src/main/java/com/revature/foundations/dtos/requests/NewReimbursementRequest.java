@@ -4,7 +4,6 @@ import com.revature.foundations.models.ReimbursementStatuses;
 import com.revature.foundations.models.ReimbursementTypes;
 import com.revature.foundations.models.Reimbursements;
 
-import java.sql.Timestamp;
 import java.util.UUID;
 
 public class NewReimbursementRequest {
