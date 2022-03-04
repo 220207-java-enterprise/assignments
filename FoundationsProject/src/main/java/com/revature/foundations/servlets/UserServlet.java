@@ -45,7 +45,7 @@ public class UserServlet extends HttpServlet {
         String[] reqFrags = req.getRequestURI().split("/");
         if (reqFrags.length == 4 && reqFrags[3].equals("availability")) {
             checkAvailability(req, resp);
-            logger.debug("UserServlet#doGet returned successfully");
+            logger.debug("UserServlet doGet returned successfully");
             return; // necessary, otherwise we end up doing more work than was requested
         }
 
