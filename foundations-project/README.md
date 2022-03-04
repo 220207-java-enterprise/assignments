@@ -122,7 +122,7 @@ The PRISM application is another internal system that your expense reimbursement
 |---------------------------------------------------------------------------------------------------|-------|
 | The application's codebase adheres to best practice naming conventions                            | 33    |
 | The application's codebase follows some kind of organizational structure                          | 33    |
-| The commit history of the project is detailed with concise and descriptive comments               | 34    |
+| The commit history of the project is detailed with concise and descriptive commits                | 34    |
 
 ## Milestones
 
