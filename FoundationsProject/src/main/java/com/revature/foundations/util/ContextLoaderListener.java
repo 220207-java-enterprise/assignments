@@ -2,9 +2,11 @@ package com.revature.foundations.util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.foundations.daos.UsersDAO;
+import com.revature.foundations.services.ReimbursementsService;
 import com.revature.foundations.services.UsersService;
 import com.revature.foundations.services.TokenService;
 import com.revature.foundations.servlets.AuthServlet;
+import com.revature.foundations.servlets.ReimbursementServlet;
 import com.revature.foundations.servlets.TestServlet;
 import com.revature.foundations.servlets.UserServlet;
 import org.apache.logging.log4j.LogManager;
@@ -16,11 +18,8 @@ import javax.servlet.ServletContextListener;
 
 public class ContextLoaderListener implements ServletContextListener {
 
-    private static Logger logger = LogManager.getLogger(ContextLoaderListener.class);
-
     @Override
     public void contextInitialized(ServletContextEvent sce) {
-        logger.debug("Initializing Foundations web application");
 
         ObjectMapper mapper = new ObjectMapper();
         JwtConfig jwtConfig = new JwtConfig();
@@ -42,8 +41,4 @@ public class ContextLoaderListener implements ServletContextListener {
 
     }
 
-    @Override
-    public void contextDestroyed(ServletContextEvent sce) {
-        logger.debug("Shutting down Foundations web application");
-    }
 }

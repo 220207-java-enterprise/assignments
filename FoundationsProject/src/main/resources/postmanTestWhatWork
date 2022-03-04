@@ -1,0 +1,8 @@
+GET
+
+http://localhost:8080/foundations/test
+
+GET
+
+http://localhost:8080/foundations/users/availability?email=alleniverson@revature.net
+http://localhost:8080/foundations/users/availability?username=alleniverson
