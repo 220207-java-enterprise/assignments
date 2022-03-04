@@ -56,7 +56,7 @@ public class UserServlet extends HttpServlet {
             resp.setStatus(401);
             return;
         }
-        if (!requester.getRole().equals("ADMIN")) {
+        if (!requester.getRole().equals("Admin")) {
             logger.warn("Unauthorized request made by user: " + requester.getUsername());
             resp.setStatus(403); // FORBIDDEN
             return;

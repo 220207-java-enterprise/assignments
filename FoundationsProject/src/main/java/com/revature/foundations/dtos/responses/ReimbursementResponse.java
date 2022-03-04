@@ -1,12 +1,13 @@
-package com.revature.foundations.models;
+package com.revature.foundations.dtos.responses;
 
-import java.sql.Timestamp;
+import com.revature.foundations.models.Reimbursements;
 
-public class Reimbursements {
+public class ReimbursementResponse {
+
     private String reimb_id;
     private double amount;
-    private String submitted;
-    private String resolved;
+    private String submitted; // time submitted
+    private String resolved; // time resolved
     private String description;
     private String payment_id;
     private String author_id;
@@ -14,21 +15,21 @@ public class Reimbursements {
     private String status_id;
     private String type_id;
 
-    public Reimbursements() {
+    public ReimbursementResponse() {
         super();
     }
 
-    public Reimbursements(String reimb_id, double amount, String submitted, String resolved, String description, String payment_id, String author_id, String resolver_id, String status_id, String type_id) {
-        this.reimb_id = reimb_id;
-        this.amount = amount;
-        this.submitted = submitted;
-        this.resolved = resolved;
-        this.description = description;
-        this.payment_id = payment_id;
-        this.author_id = author_id;
-        this.resolver_id = resolver_id;
-        this.status_id = status_id;
-        this.type_id = type_id;
+    public ReimbursementResponse(Reimbursements reimbursement) {
+        this.reimb_id = reimbursement.getReimb_id();
+        this.amount = reimbursement.getAmount();
+        this.submitted = String.valueOf(reimbursement.getSubmitted());
+        this.resolved = String.valueOf(reimbursement.getResolved());
+        this.description = reimbursement.getDescription();
+        this.payment_id = reimbursement.getPayment_id();
+        this.author_id = reimbursement.getAuthor_id();
+        this.resolver_id = reimbursement.getResolver_id();
+        this.status_id = reimbursement.getStatus_id();
+        this.type_id = reimbursement.getType_id();
     }
 
     public String getReimb_id() {
@@ -47,16 +48,16 @@ public class Reimbursements {
         this.amount = amount;
     }
 
-    public Timestamp getSubmitted() {
-        return Timestamp.valueOf(submitted);
+    public String getSubmitted() {
+        return submitted;
     }
 
     public void setSubmitted(String submitted) {
         this.submitted = submitted;
     }
 
-    public Timestamp getResolved() {
-        return Timestamp.valueOf(resolved);
+    public String getResolved() {
+        return resolved;
     }
 
     public void setResolved(String resolved) {
@@ -111,19 +112,4 @@ public class Reimbursements {
         this.type_id = type_id;
     }
 
-    @Override
-    public String toString() {
-        return "ERSReimbursements{" +
-                "reimb_id='" + reimb_id + '\'' +
-                ", amount='" + amount + '\'' +
-                ", submitted='" + submitted + '\'' +
-                ", resolved='" + resolved + '\'' +
-                ", description='" + description + '\'' +
-                ", payment_id='" + payment_id + '\'' +
-                ", author_id='" + author_id + '\'' +
-                ", resolver_id='" + resolver_id + '\'' +
-                ", status_id='" + status_id + '\'' +
-                ", type_id='" + type_id + '\'' +
-                '}';
-    }
 }

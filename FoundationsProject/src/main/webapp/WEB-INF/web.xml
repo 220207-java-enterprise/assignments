@@ -4,20 +4,16 @@
              http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
-    <display-name>Hello, Test Servlet!</display-name>
+    <display-name>ERS Project</display-name>
 
-    <display-name>Hello, Servlets!</display-name>
+    <display-name>Foundations</display-name>
 
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>
     </welcome-file-list>
 
-    <servlet>
-        <servlet-name>TestServlet</servlet-name>
-        <servlet-class>com.revature.servlets.TestServlet</servlet-class>
-    </servlet>
-
     <listener>
-        <listern-class>com.revature.foundations.util.ContextLoaderListener</listern-class>
+        <listener-class>com.revature.foundations.util.ContextLoaderListener</listener-class>
     </listener>
+
 </web-app>
