@@ -1,0 +1,9 @@
+Hello, Wezley.
+
+I need to learn Mockito and Postman to bring my Foundations project up to spec for the mvp.  I need to change my app into java servlets, too.
+
+In my presentation I should have been clearer that the application logs into the database only once.  It authenticates different users as they log in to the application.
+
+What I did well: I got the entity-relationship diagram right, the SQL commands for the demonstrated functionality correctly interacted with the database to persist information, and the app demonstrated all the behaviors except one, retrieving reimbursement requests by author_id.
+
+Art Davidson
