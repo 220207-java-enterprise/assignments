@@ -6,8 +6,8 @@ public class ReimbursementResponse {
 
     private String reimb_id;
     private double amount;
-    private String submitted; // time submitted
-    private String resolved; // time resolved
+    private String submitted;
+    private String resolved;
     private String description;
     private String payment_id;
     private String author_id;
