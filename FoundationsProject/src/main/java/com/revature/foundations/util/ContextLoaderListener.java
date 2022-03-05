@@ -1,6 +1,7 @@
 package com.revature.foundations.util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.revature.foundations.daos.ReimbursementsDAO;
 import com.revature.foundations.daos.UsersDAO;
 import com.revature.foundations.services.ReimbursementsService;
 import com.revature.foundations.services.UsersService;
@@ -29,8 +30,13 @@ public class ContextLoaderListener implements ServletContextListener {
 
         UsersDAO userDAO = new UsersDAO();
         UsersService userService = new UsersService(userDAO);
+
+        ReimbursementsDAO reimbDAO = new ReimbursementsDAO();
+        ReimbursementsService reimbService = new ReimbursementsService(reimbDAO);
+
         UserServlet userServlet = new UserServlet(tokenService, userService, mapper);
         AuthServlet authServlet = new AuthServlet(tokenService, userService, mapper);
+        ReimbursementServlet reimbursementServlet = new ReimbursementServlet(tokenService, reimbService, mapper);
 
 //        // TODO implement missing servlets (also, you'll probably need a ReimbursementServlet)
 //        // Programmatic Servlet Registration
@@ -38,6 +44,7 @@ public class ContextLoaderListener implements ServletContextListener {
         context.addServlet("TestServlet", testServlet).addMapping("/test");
         context.addServlet("UserServlet", userServlet).addMapping("/users/*");
         context.addServlet("AuthServlet", authServlet).addMapping("/auth");
+        context.addServlet("ReimbursementServlet", reimbursementServlet).addMapping("/reimbursements/*");
 
     }
 

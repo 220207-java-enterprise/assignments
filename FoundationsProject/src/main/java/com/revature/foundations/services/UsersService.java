@@ -35,6 +35,8 @@ public class UsersService {
 
         Users newUser = newUserRequest.extractUser();
 
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>" + newUser);
+
         if (!isUserValid(newUser)) {
             throw new InvalidRequestException("Bad registration details given.");
         }

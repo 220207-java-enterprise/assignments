@@ -4,9 +4,7 @@
              http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
          version="3.1">
 
-    <display-name>ERS Project</display-name>
-
-    <display-name>Foundations</display-name>
+    <display-name>ers-app</display-name>
 
     <welcome-file-list>
         <welcome-file>index.html</welcome-file>

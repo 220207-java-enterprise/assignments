@@ -42,11 +42,7 @@ public class UserServlet extends HttpServlet {
             return; // necessary, otherwise we end up doing more work than was requested
         }
 
-        HttpSession session = req.getSession(false);
-        if (session == null) {
-            resp.setStatus(401);
-            return;
-        }
+        // TODO implement some security logic here to protect sensitive operations
 
         Principal requester = tokenService.extractRequesterDetails(req.getHeader("Authorization"));
 
@@ -54,7 +50,7 @@ public class UserServlet extends HttpServlet {
             resp.setStatus(401);
             return;
         }
-        if (!requester.getRole().equals("Admin")) {
+        if (!requester.getRole().equals("ADMIN")) {
             resp.setStatus(403); // FORBIDDEN
             return;
         }
@@ -63,6 +59,7 @@ public class UserServlet extends HttpServlet {
         String payload = mapper.writeValueAsString(users);
         resp.setContentType("application/json");
         resp.getWriter().write(payload);
+
 
     }
 
@@ -75,6 +72,7 @@ public class UserServlet extends HttpServlet {
         try {
 
             NewUserRequest newUserRequest = mapper.readValue(req.getInputStream(), NewUserRequest.class);
+            System.out.println(">>>>>>>>>>>>>>>>>>>>>" + newUserRequest);
             Users newUser = userService.register(newUserRequest);
             resp.setStatus(201); // CREATED
             resp.setContentType("application/json");
@@ -83,11 +81,15 @@ public class UserServlet extends HttpServlet {
 
         } catch (InvalidRequestException | DatabindException e) {
             resp.setStatus(400); // BAD REQUEST
+            e.printStackTrace();
         } catch (ResourceConflictException e) {
+            e.printStackTrace();
             resp.setStatus(409); // CONFLICT
         } catch (Exception e) {
+            e.printStackTrace(); // include for debugging purposes; ideally log it to a file
             resp.setStatus(500);
         }
+
     }
 
     protected void checkAvailability(HttpServletRequest req, HttpServletResponse resp) {

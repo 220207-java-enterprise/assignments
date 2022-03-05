@@ -8,34 +8,19 @@ public class Users {
     private String password;
     private String given_name;
     private String surname;
-    private Boolean is_active;
-    private String role_id;
-    private UserRoles role;
 
     public Users() {
         super();
     }
 
     public Users(String user_id, String username, String email, String password, String given_name, String surname) {
-        this.user_id = user_id;
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.given_name = given_name;
-        this.surname = surname;
-    }
-
-    public Users(String user_id, String username, String email, String password, String given_name, String surname, Boolean is_active, String role_id, UserRoles role) {
-        this.user_id = user_id;
-        this.username = username;
-        this.email = email;
-        this.password = password;
-        this.given_name = given_name;
-        this.surname = surname;
-        this.is_active = is_active;
-        this.role_id = role_id;
-        this.role = role;
-    }
+            this.user_id = user_id;
+            this.username = username;
+            this.email = email;
+            this.password = password;
+            this.given_name = given_name;
+            this.surname = surname;
+        }
 
     public String getUser_id() {
         return user_id;
@@ -85,41 +70,16 @@ public class Users {
         this.surname = surname;
     }
 
-    public Boolean getIs_active() {
-        return is_active;
-    }
-
-    public void setIs_active(Boolean is_active) {
-        this.is_active = is_active;
-    }
-
-    public String getRole_id() {
-        return role_id;
-    }
-
-    public void setRole_id(String role_id) {
-        this.role_id = role_id;
-    }
-
-    public UserRoles getRole() {
-        return role;
-    }
-
-    public void setRole(UserRoles role) {
-        this.role = role;
-    }
     @Override
     public String toString() {
-        return "ERSUsers{" +
+        return "Users{" +
                 "user_id='" + user_id + '\'' +
                 ", username='" + username + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", given_name='" + given_name + '\'' +
                 ", surname='" + surname + '\'' +
-                ", is_active=" + is_active +
-                ", role_id='" + role_id + '\'' +
-                ", role=" + role +
                 '}';
     }
 }
+
