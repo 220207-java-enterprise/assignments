@@ -6,5 +6,4 @@ out/
 target/
 bin/
 .idea/
-
-/.idea/
+resources/
