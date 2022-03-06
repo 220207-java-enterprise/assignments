@@ -100,7 +100,7 @@ The PRISM application is another internal system that your expense reimbursement
 | Basic validation is enforced to ensure that invalid/improper data is not persisted                | Non-Functional            | 10    |
 | User passwords will be encrypted by the system before persisting them to the data source          | Non-Functional            | 5     |
 | Users are unable to recall reimbursement requests once they have been processed                   | Non-Functional            | 10    |
-| Sensitive endpoints are protected from unauthenticated and unauthorized requesters using JWTs     | Non-Functional            | 5     |
+| Sensitive endpoints are protected from unauthenticated and unauthorized requesters                | Non-Functional            | 5     |
 | Errors and exceptions are handled properly and their details are obfuscated from the user         | Non-Functional            | 10    |
 | The system conforms to RESTful architecture constraints                                           | Non-Functional            | 10    |
 | The system's is tested with at least 80% line coverage in all service and utility classes         | Non-Functional            | 10    |
@@ -122,7 +122,7 @@ The PRISM application is another internal system that your expense reimbursement
 |---------------------------------------------------------------------------------------------------|-------|
 | The application's codebase adheres to best practice naming conventions                            | 33    |
 | The application's codebase follows some kind of organizational structure                          | 33    |
-| The commit history of the project is detailed with concise and descriptive comments               | 34    |
+| The commit history of the project is detailed with concise and descriptive commits                | 34    |
 
 ## Milestones
 
