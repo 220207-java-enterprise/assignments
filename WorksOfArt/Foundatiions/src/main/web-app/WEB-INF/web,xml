@@ -14,6 +14,10 @@
             <servlet-name>TestServlet</servlet-name>
             <servlet-class>com.revature.servlets.TestServlet</servlet-class>
         </servlet>
+        <servlet>
+            <servlet-name>addUser</servlet-name>
+            <servlet-class>addUser</servlet-class>
+        </servlet>
 
         <servlet-mapping>
             <servlet-name>TestServlet</servlet-name>
