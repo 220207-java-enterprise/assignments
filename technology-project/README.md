@@ -2,7 +2,7 @@
 
 ## Project Description
 
-For the foundations module of your training you are tasked with building an API that will support a new internal expense reimbursement system. This system will manage the process of reimbursing employees for expenses incurred while on company time. This system will work closely with the internal PRISM application - which is used for processing payments to employees. All registered employees in the company can login and submit requests for reimbursement and view their past tickets and pending requests. Finance managers can log in and view all reimbursement requests and past history for all employees in the company. Finance managers are authorized to approve and deny requests for expense reimbursement.
+For the technology module of your training you are tasked with building a web-based expense reimbursement system. This system will manage the process of reimbursing employees for expenses incurred while on company time. This system will work closely with the internal PRISM application - which is used for processing payments to employees. All registered employees in the company can login and submit requests for reimbursement and view their past tickets and pending requests. Finance managers can log in and view all reimbursement requests and past history for all employees in the company. Finance managers are authorized to approve and deny requests for expense reimbursement.
 
 ### Project Design Specifications and Documents
 
@@ -25,16 +25,22 @@ Reimbursements are to be one of the following types:
 ### Technologies
 
 **Persistence Tier**
-- PostGreSQL (running on Docker)
+- PostGreSQL (running locally using Docker)
 
 **Application Tier**
 - Java 8
+- Spring 5 & Spring Boot
 - Apache Maven
-- JDBC
-- Java EE Servlets
+- Hibernate & Spring Data
 - JSON Web Tokens
 - JUnit
 - Mockito
+
+**Client Tier**
+- HTML
+- CSS
+- TypeScript
+- React
 
 ### PRISM
 
@@ -73,18 +79,19 @@ The PRISM application is another internal system that your expense reimbursement
 - Authenticated employees are able to upload an receipt image along with their reimbursement request
 - The system notifies the user of changes to their account registration status by email
 - The system notifies the user of changes to their reimbursement request status by email
-- Document your API using a tool like OpenAPI/Swagger
 - Run your application within a Docker container
-- Automate builds using GitHub Actions
+- Automate builds using AWS CodeBuild and CodePipeline
+- API is deployed to AWS EC2 (via Elastic Beanstalk) using a CI/CD pipeline
+- UI is deployed to AWS S3 using a CI/CD pipeline
 
 ## Scoring and Milestones
 
-### Technical Scoring Rubric
+### Technical Scoring Rubric (all functional requirements are to be considered as end-to-end - API & UI)
 
 | Requirement                                                                                       | Functional/Non-Functional | Value |
 |---------------------------------------------------------------------------------------------------|---------------------------|-------|
 | The system will register itself with the 3rd-party PRISM application                              | Functional                | 5     |
-| An new employee or new finance manager can request registration with the system                   | Functional                | 10    |
+| A new employee or new finance manager can request registration with the system                    | Functional                | 10    |
 | An admin user can approve or deny new registration requests                                       | Functional                | 5     |
 | The system will register the user's information with the PRISM application for payment processing | Functional                | 5     |
 | A registered employee can authenticate with the system by providing valid credentials             | Functional                | 10    |
@@ -100,11 +107,11 @@ The PRISM application is another internal system that your expense reimbursement
 | Basic validation is enforced to ensure that invalid/improper data is not persisted                | Non-Functional            | 10    |
 | User passwords will be encrypted by the system before persisting them to the data source          | Non-Functional            | 5     |
 | Users are unable to recall reimbursement requests once they have been processed                   | Non-Functional            | 10    |
-| Sensitive endpoints are protected from unauthenticated and unauthorized requesters                | Non-Functional            | 5     |
+| Sensitive API endpoints are protected from unauthenticated and unauthorized requesters using JWTs | Non-Functional            | 5     |
 | Errors and exceptions are handled properly and their details are obfuscated from the user         | Non-Functional            | 10    |
 | The system conforms to RESTful architecture constraints                                           | Non-Functional            | 10    |
-| The system's is tested with at least 80% line coverage in all service and utility classes         | Non-Functional            | 10    |
-| The system's data schema and component design is documented and diagrammed                        | Non-Functional            | 5     |
+| The system's is tested with at least 80% line coverage in all API service classes                 | Non-Functional            | 10    |
+| The system's API is detailed and documented using Swagger/OpenAPI                                 | Non-Functional            | 5     |
 | The system keeps detailed logs on info, error, and fatal events that occur                        | Non-Functional            | 5     |
 
 ### Soft Skill Scoring Rubric 
@@ -122,35 +129,55 @@ The PRISM application is another internal system that your expense reimbursement
 |---------------------------------------------------------------------------------------------------|-------|
 | The application's codebase adheres to best practice naming conventions                            | 33    |
 | The application's codebase follows some kind of organizational structure                          | 33    |
-| The commit history of the project is detailed with concise and descriptive commits                | 34    |
+| The commit history of the project is detailed with concise and descriptive comments               | 34    |
 
-## Milestones
+## Team Milestones
 
-#### 07Feb2022 
+*Please note that these milestones are for the ENTIRE TEAM. It is expected that all of these milestones are met by all project team members. It is also STRONGLY encouraged that you do not divide tasks into "front-end" and "back-end", as that will reduce each individual's exposure to the technologies you are working with in this project; individuals/pairs should work on a feature from end-to-end.* 
+
+#### 07Mar2022 
 - Project requirements delivered
 
-#### 14Feb2022
-- Remote repository is created and is being kept up to date
+#### 10Mar2022
+- Project team structure decided
+- High level Git workflow established
+- Remote repository is created and is being kept up to date using a branching strategy
 - Core model classes are created
-- Registration/Authentication/User operations in progress
-- Rudimentary logging (to file) in place
-
-#### 21Feb2022 
 - Local DB instance running
 - App to DB connection made
 - Specified tables created with proper constraints
-- Registration/Authentication/User operations complete
-- Reimbursement operations in progress
-- Basic persistence layer operations in progress
-- Testing of business logic is in progress
+- API: Spring configuration is in progress
 
-#### 28Feb2022 
-- Reimbursement operations complete (pending PRISM integration)
-- PRISM integration in progress
-- Registration/Authentication web endpoints are accessible and functional
-- Reimbursement web endpoints are accessible and functional
-- User passwords are encrypted when persisted to the DB
-- Testing of business logic is in progress
+#### 14Mar2022
+- API: Spring configuration is complete
+- API: User functional requirements in progress (i.e. DAO, Service, and Controller layer logic)
+- API: Reimbursement functional requirements in progress (i.e. DAO, Service, and Controller layer logic)
+- Logging (to console and file) is in place
 
-#### 04Mar2022 
+#### 21Mar2022 
+- UI: User functional requirements in progress (i.e. UI component views)
+- UI: Reimbursement functional requirements in progress (i.e. UI component views)
+- API: User functional requirements are complete
+- API: Reimbursement functional requirements are complete
+- API: Swagger/OpenAPI implementation in progress
+- Testing of API business logic is in progress
+- PRISM integration for the API in progress
+
+#### 25Mar2022 
 - Project Presentations
+
+## Minimal Viable Product Requirements (End-to-end completion)
+- Functional: Users are able to register for an account with the system
+- Functional: Admin users are able to see a table of system users (sortable and filterable)
+- Functional: Admin users are able to approve pending registration requests
+- Functional: Admin users are able to change the role of a system user
+- Functional: Activated users are able to authenticate with the system
+- Functional: Employee users are able to create and submit new reimbursements
+- Functional: Employee users are able to see a table of all of their reimbursements (sortable and filterable)
+- Functional: Finance managers are able to see a table of all pending reimburesments (sortable and filterable)
+- Functional: Finance managers are able to select a reimbursement from the table and see separate view containing that reimbursement's details
+- Functional: Finance managers are able to approve or deny pending reimbursements
+- Non-Functional: Test coverage of the API's service layer is at least 80%
+- Non-Functional: The API's endpoints are exposed in a RESTful manner
+- Non-Functional: User passwords are hashed or encrypted before persisting to the database
+
